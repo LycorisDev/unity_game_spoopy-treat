@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public float jump_force = 5f;
-    public bool is_on_ground = false;
+    static private float directional_speed = 5f;
+    static private float rotate_speed = directional_speed * directional_speed * directional_speed;
+    static private float jump_force = 6f;
+    private bool is_on_ground = false;
     private float horizontal_input;
     private float forward_input;
     private Rigidbody player_rb;
@@ -18,17 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        /* DIRECTION INPUT: Only the arrow keys
-        if (Input.GetKey(KeyCode.RightArrow))
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
-        if (Input.GetKey(KeyCode.LeftArrow))
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
-        if (Input.GetKey(KeyCode.UpArrow))
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        if (Input.GetKey(KeyCode.DownArrow))
-            transform.Translate(Vector3.back * Time.deltaTime * speed);
-        */
-
         /*
             DIRECTION INPUT
             - Arrow keys
@@ -40,9 +30,11 @@ public class PlayerMovement : MonoBehaviour
         horizontal_input = Input.GetAxis("Horizontal");
         forward_input = Input.GetAxis("Vertical");
 
-        // Move the player on the x and z axis
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontal_input);
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forward_input);
+        // Rotate the player to the left or the right
+        transform.Rotate(Vector3.up * Time.deltaTime * rotate_speed * horizontal_input);
+
+        // Move the player on the z axis
+        transform.Translate(Vector3.forward * Time.deltaTime * directional_speed * forward_input);
 
         // Player jumps
         if (Input.GetKeyDown(KeyCode.Space) && is_on_ground)
@@ -55,6 +47,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             is_on_ground = true;
+
+            // If the player is upside down
+            if (Vector3.Dot(transform.up, Vector3.down) > 0)
+                gameObject.transform.rotation = Quaternion.Euler(new Vector3(gameObject.transform.rotation.x, 1, gameObject.transform.rotation.z));
+        }
     }
 }

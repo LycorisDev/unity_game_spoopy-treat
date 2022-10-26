@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoundingArea : MonoBehaviour
 {
-    public Vector3 SpawnPoint;
+    private Vector3 SpawnPoint = new Vector3(0, 3, 0);
 
     // If the player hits the bound, put them back to the spawn point
     private void OnTriggerExit(Collider other)

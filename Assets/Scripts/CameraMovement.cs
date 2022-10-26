@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     private GameObject target;
+    private Vector3 back;
+    private float height = 0.3f;
+    private float distance = 4f;
 
     void Start()
     {
@@ -14,6 +17,9 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         // The camera follows the player in 3rd person
-        gameObject.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + 1f, target.transform.position.z - 5f);
+        back = -target.transform.forward;
+        back.y = height;
+        gameObject.transform.position = target.transform.position + back * distance;
+        gameObject.transform.forward = target.transform.position - gameObject.transform.position;
     }
 }
