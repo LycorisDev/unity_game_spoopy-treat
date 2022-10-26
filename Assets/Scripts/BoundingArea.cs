@@ -10,10 +10,6 @@ public class BoundingArea : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
             other.gameObject.transform.position = SpawnPoint;
-            other.attachedRigidbody.velocity = Vector3.zero;
-            other.attachedRigidbody.angularVelocity = Vector3.zero;
-        }
     }
 }

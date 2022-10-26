@@ -18,6 +18,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        /* DIRECTION INPUT: Only the arrow keys
+        if (Input.GetKey(KeyCode.RightArrow))
+            transform.Translate(Vector3.right * Time.deltaTime * speed);
+        if (Input.GetKey(KeyCode.LeftArrow))
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+        if (Input.GetKey(KeyCode.UpArrow))
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        if (Input.GetKey(KeyCode.DownArrow))
+            transform.Translate(Vector3.back * Time.deltaTime * speed);
+        */
+
         /*
             DIRECTION INPUT
             - Arrow keys
@@ -29,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         horizontal_input = Input.GetAxis("Horizontal");
         forward_input = Input.GetAxis("Vertical");
 
-        // Move the player in 4 directions
+        // Move the player on the x and z axis
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontal_input);
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forward_input);
 
