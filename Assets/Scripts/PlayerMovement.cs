@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    static private float directional_speed = 5f;
+    static private float directional_speed = 6f;
     static private float rotate_speed = directional_speed * directional_speed * directional_speed;
     static private float jump_force = 6f;
     private bool is_on_ground = false;
@@ -42,17 +42,15 @@ public class PlayerMovement : MonoBehaviour
             player_rb.AddForce(Vector3.up * jump_force, ForceMode.Impulse);
             is_on_ground = false;
         }
+
+        // DEBUG: Put player back onto their feet
+        if (Input.GetKeyDown(KeyCode.Escape))
+            gameObject.transform.rotation = Quaternion.Euler(new Vector3(gameObject.transform.rotation.x, 1, gameObject.transform.rotation.z));
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        {
-            is_on_ground = true;
-
-            // If the player is upside down
-            //if (Vector3.Dot(transform.up, Vector3.down) > 0)
-            //    gameObject.transform.rotation = Quaternion.Euler(new Vector3(gameObject.transform.rotation.x, 1, gameObject.transform.rotation.z));
-        }
+            is_on_ground = true; 
     }
 }
