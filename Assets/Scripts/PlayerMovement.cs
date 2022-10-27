@@ -51,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
             is_on_ground = true;
 
             // If the player is upside down
-            if (Vector3.Dot(transform.up, Vector3.down) > 0)
-                gameObject.transform.rotation = Quaternion.Euler(new Vector3(gameObject.transform.rotation.x, 1, gameObject.transform.rotation.z));
+            //if (Vector3.Dot(transform.up, Vector3.down) > 0)
+            //    gameObject.transform.rotation = Quaternion.Euler(new Vector3(gameObject.transform.rotation.x, 1, gameObject.transform.rotation.z));
         }
     }
 }
