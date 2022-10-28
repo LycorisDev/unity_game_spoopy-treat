@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3163559853693561210}
   - component: {fileID: 2038128943421744863}
   - component: {fileID: 4299833942049591829}
-  - component: {fileID: 3201357372176600686}
   m_Layer: 0
   m_Name: wall-graveyard-3m-corner
   m_TagString: Untagged
@@ -84,17 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3201357372176600686
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354512068455379904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2608956352583634243, guid: b104dc6782e99914ab621eedffa44649, type: 3}
