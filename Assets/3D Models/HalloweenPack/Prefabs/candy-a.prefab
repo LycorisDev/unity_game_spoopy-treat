@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2433125124260682739}
   - component: {fileID: 1615642166387659862}
   - component: {fileID: 3571106789745041564}
-  - component: {fileID: 2760296547074686949}
+  - component: {fileID: 2645350056109114579}
+  - component: {fileID: 7676500863998386390}
   m_Layer: 0
   m_Name: candy-a
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,10 +54,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,17 +84,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2760296547074686949
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2645350056109114579
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3066919204299112777}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6684783063693002975, guid: 12492c7c64cf9b3499851c24d33d0b35, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.04172114
+  m_Center: {x: 0, y: 0, z: 0.00000003291466}
+--- !u!114 &7676500863998386390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066919204299112777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bce006cfb071a248c8550e5d00db4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
