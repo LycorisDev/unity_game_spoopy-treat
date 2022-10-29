@@ -42,10 +42,6 @@ public class PlayerMovement : MonoBehaviour
             player_rb.AddForce(jump_force * player_rb.mass * (player_rb.mass / 4) * Vector3.up, ForceMode.Impulse);
             is_on_ground = false;
         }
-
-        // DEBUG: Put player back onto their feet
-        if (Input.GetKeyDown(KeyCode.Escape))
-            gameObject.transform.rotation = Quaternion.Euler(new Vector3(gameObject.transform.rotation.x, 1, gameObject.transform.rotation.z));
     }
 
     private void OnCollisionEnter(Collision collision)
