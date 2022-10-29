@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         // Player jumps
         if (Input.GetKeyDown(KeyCode.Space) && is_on_ground)
         {
-            player_rb.AddForce(jump_force * player_rb.mass * Vector3.up, ForceMode.Impulse);
+            player_rb.AddForce(jump_force * player_rb.mass * (player_rb.mass / 4) * Vector3.up, ForceMode.Impulse);
             is_on_ground = false;
         }
 
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Character"))
-            is_on_ground = true; 
+        if (!collision.gameObject.CompareTag("InvisibleWall"))
+            is_on_ground = true;
     }
 }
