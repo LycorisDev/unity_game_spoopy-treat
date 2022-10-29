@@ -9,6 +9,6 @@ public class BoundingArea : MonoBehaviour
     // If an object hits the bound, put it back to the spawn point
     private void OnTriggerExit(Collider other)
     {
-        other.gameObject.transform.position = SpawnPoint;
+        other.transform.position = SpawnPoint;
     }
 }

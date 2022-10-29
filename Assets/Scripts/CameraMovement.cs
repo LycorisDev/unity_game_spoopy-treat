@@ -20,14 +20,14 @@ public class CameraMovement : MonoBehaviour
         // The camera follows the target in 3rd person
         back = -target.transform.forward;
         back.y = height;
-        gameObject.transform.position = target.transform.position + back * distance;
+        transform.position = target.transform.position + back * distance;
 
         // The camera turns to the left or the right with the target
-        gameObject.transform.forward = target.transform.position - gameObject.transform.position;
+        transform.forward = target.transform.position - transform.position;
         
         // Fix the camera x rotation axis so the target is horizontally in the center of the view and not towards the top
-        rotation = gameObject.transform.rotation.eulerAngles;
+        rotation = transform.rotation.eulerAngles;
         rotation.x = 0;
-        gameObject.transform.rotation = Quaternion.Euler(rotation);
+        transform.rotation = Quaternion.Euler(rotation);
     }
 }

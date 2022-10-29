@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     static private float directional_speed = 6f;
-    static private float rotate_speed = directional_speed * directional_speed * directional_speed;
-    static private float jump_force = 5f;
+    private float rotate_speed = directional_speed * directional_speed * directional_speed;
+    private float jump_force = 5f;
     private bool is_on_ground = false;
     private float horizontal_input;
     private float forward_input;

@@ -6,12 +6,12 @@ public class CollectCandy : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Character"))
+        if (other.CompareTag("Player") || other.CompareTag("Character"))
         {
-            if (other.gameObject.GetComponent<Character>().nbr_candies < 3)
+            if (other.GetComponent<Character>().nbr_candies < 3)
             {
-                other.gameObject.GetComponent<Character>().nbr_candies++;
-                other.gameObject.GetComponent<Rigidbody>().mass++;
+                other.GetComponent<Character>().nbr_candies++;
+                other.GetComponent<Rigidbody>().mass++;
                 Destroy(gameObject);
             }
         }

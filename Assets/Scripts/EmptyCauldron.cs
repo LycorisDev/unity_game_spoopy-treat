@@ -11,15 +11,15 @@ public class EmptyCauldron : MonoBehaviour
     void Update()
     {
         // If full caudron has fallen over
-        if (gameObject.transform.rotation.x < -0.3 || gameObject.transform.rotation.x > 0.3)
+        if (transform.rotation.x < -0.3 || transform.rotation.x > 0.3)
         { 
             // Drop candy in front of it (and a bit above ground so it doesn't clip)
-            candy_position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
+            candy_position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
             candy_position += Vector3.forward * 3;
-            Instantiate(candy_prefab, candy_position, gameObject.transform.rotation);
+            Instantiate(candy_prefab, candy_position, transform.rotation);
 
             // Replace cauldron with empty version
-            Instantiate(empty_cauldron_prefab, gameObject.transform.position, gameObject.transform.rotation);
+            Instantiate(empty_cauldron_prefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
