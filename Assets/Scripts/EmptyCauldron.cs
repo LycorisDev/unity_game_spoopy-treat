@@ -14,8 +14,7 @@ public class EmptyCauldron : MonoBehaviour
         if (transform.rotation.x < -0.3 || transform.rotation.x > 0.3)
         { 
             // Drop candy in front of it (and a bit above ground so it doesn't clip)
-            candy_position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-            candy_position += Vector3.forward * 3;
+            candy_position = transform.position + Vector3.forward * 3;
             Instantiate(candy_prefab, candy_position, transform.rotation);
 
             // Replace cauldron with empty version

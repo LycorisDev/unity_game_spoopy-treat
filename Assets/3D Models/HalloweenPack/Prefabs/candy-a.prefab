@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3571106789745041564}
   - component: {fileID: 2645350056109114579}
   - component: {fileID: 7676500863998386390}
+  - component: {fileID: 419965509585636859}
   m_Layer: 0
   m_Name: candy-a
   m_TagString: Untagged
@@ -110,3 +111,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bce006cfb071a248c8550e5d00db4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!122 &419965509585636859
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066919204299112777}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4288635179
+  m_Size: 1
