@@ -7,12 +7,14 @@ public class CameraMovement : MonoBehaviour
     private GameObject target;
     private Vector3 back;
     private Vector3 rotation;
-    private float height = 0.5f;
-    private float distance = 4f;
+    private float height;
+    private float distance;
 
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        height = 0.6f;
+        distance = 4f;
     }
 
     void Update()

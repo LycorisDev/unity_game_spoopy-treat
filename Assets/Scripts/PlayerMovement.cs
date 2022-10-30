@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    static private float directional_speed = 6f;
-    private float rotate_speed = directional_speed * directional_speed * directional_speed;
-    private float jump_force = 5f;
-    private bool is_on_ground = false;
+    private float directional_speed;
+    private float rotate_speed;
+    private float jump_force;
+    private bool is_on_ground;
     private float horizontal_input;
     private float forward_input;
     private Rigidbody player_rb;
 
     void Start()
     {
+        directional_speed = 6f;
+        rotate_speed = directional_speed * directional_speed * directional_speed;
+        jump_force = 5f;
+        is_on_ground = false;
         player_rb = GetComponent<Rigidbody>();
     }
 

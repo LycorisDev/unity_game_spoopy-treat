@@ -6,7 +6,7 @@ public class EmptyCauldron : MonoBehaviour
 {
     public GameObject empty_cauldron_prefab;
     public GameObject candy_prefab;
-    private Vector3 candy_position = new Vector3(0, 0, 0);
+    private Vector3 candy_position;
 
     void Update()
     {
