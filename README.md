@@ -10,7 +10,7 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 
 [LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/440a1a09e6b6f24df655d0fe97c3d8b10f8bf1fa)
 
-![](./ingame_screenshot.png)
+![](./ingame_screenshot_0.png)
 
 ### FEATURES
 - The game is made with Unity.
@@ -41,8 +41,20 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 [Linux](https://drive.google.com/file/d/1B_Hm94iHYwdwe8fpQxhm6IjIazULjODu/view?usp=sharing)  
 
 ### ISSUES
-- An increase in speed makes the player ignore collisions.
-- An increase in speed and/or in mass makes pushing moveable objects more difficult, because the player would then tend to be sent flying.
-- On rare occasions, the cauldrons do not empty even when knocked over.
-- On rarer occasions, the camera will rotate on the x axis for a bit even when the player is immobile.
+1. An increase in speed makes the player ignore collisions.
+2. An increase in speed and/or in mass makes pushing moveable objects more difficult, because the player would then tend to be sent flying.
+3. On rare occasions, the cauldrons do not empty even when knocked over.
+4. On rarer occasions, the camera will rotate on the x axis for a bit even when the player is immobile.
+
+## SECOND VERSION
+
+![](./ingame_screenshot_1.png)
+
+### PREVIOUS ISSUES FIXED
+- Issues n°1 and n°2 have been fixed.
+- Issues n°3 and n°4 are rare and not an actual problem, so they are left as is for now.
+
+### ADDED FEATURES
+- The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit, and as for the candies' halo a less intense color has been picked.
+- At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
 
