@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2645350056109114579}
   - component: {fileID: 7676500863998386390}
   - component: {fileID: 419965509585636859}
+  - component: {fileID: 7592617446395608747}
   m_Layer: 0
   m_Name: candy-a
   m_TagString: Untagged
@@ -123,3 +124,15 @@ Halo:
     serializedVersion: 2
     rgba: 4283380235
   m_Size: 1.25
+--- !u!114 &7592617446395608747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066919204299112777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a535edb5591e6b8df90ff01862df1e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
