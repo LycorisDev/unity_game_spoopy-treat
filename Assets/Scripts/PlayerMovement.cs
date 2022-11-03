@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float directional_speed;
-    private float rotate_speed;
-    private float jump_force;
-    private bool is_on_ground;
     private float horizontal_input;
     private float forward_input;
     private Rigidbody player_rb;
+    private Character character_script;
 
     void Start()
     {
-        directional_speed = 6f;
-        rotate_speed = directional_speed * directional_speed * directional_speed;
-        jump_force = 5f;
-        is_on_ground = false;
         player_rb = GetComponent<Rigidbody>();
+        character_script = GetComponent<Character>();
     }
 
     void Update()
@@ -35,22 +29,22 @@ public class PlayerMovement : MonoBehaviour
         forward_input = Input.GetAxis("Vertical");
 
         // Rotate the player to the left or the right
-        transform.Rotate(rotate_speed * player_rb.mass / 4 * Vector3.up * horizontal_input * Time.deltaTime);
+        transform.Rotate(Vector3.up * horizontal_input * Time.deltaTime * character_script.rotate_speed);
 
         // Move the player on the z axis
-        transform.Translate(directional_speed * player_rb.mass / 4 * Vector3.forward * forward_input * Time.deltaTime);
+        transform.Translate(Vector3.forward * forward_input * Time.deltaTime * character_script.directional_speed);
 
         // Player jumps
-        if (Input.GetKeyDown(KeyCode.Space) && is_on_ground)
+        if (Input.GetKeyDown(KeyCode.Space) && character_script.is_on_ground)
         {
-            player_rb.AddForce(jump_force * player_rb.mass * (player_rb.mass / 4) * Vector3.up, ForceMode.Impulse);
-            is_on_ground = false;
+            player_rb.AddForce(Vector3.up * character_script.jump_force, ForceMode.Impulse);
+            character_script.is_on_ground = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("InvisibleWall"))
-            is_on_ground = true;
+            character_script.is_on_ground = true;
     }
 }
