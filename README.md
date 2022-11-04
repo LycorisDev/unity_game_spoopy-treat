@@ -51,10 +51,12 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 ![](./ingame_screenshot_1.png)
 
 ### PREVIOUS ISSUES FIXED
-- Issues n°1 and n°2 have been fixed.
-- Issues n°3 and n°4 are rare and not an actual problem, so they are left as is for now.
+- Issues n°1, n°2 and n°3 have been fixed.
+- Issue n°4 is rare and not an actual problem, so it's left as is for now.
 
 ### ADDED FEATURES
 - The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit, and as for the candies' halo a less intense color has been picked.
 - At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
+- The candy counter now displays a 3D candy.
+- The cauldron emptying script is fixed. I was only checking the x rotation axis, and now the z one is checked as well.
 
