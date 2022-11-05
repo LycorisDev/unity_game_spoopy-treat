@@ -59,4 +59,5 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 - At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
 - The candy counter now displays a 3D candy.
 - The cauldron emptying script is fixed. I was only checking the x rotation axis, and now the z one is checked as well.
+- Pause/Resume the game with the Escape key.
 
