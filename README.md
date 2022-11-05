@@ -2,7 +2,7 @@
 
 *Spoopy Treat* is a Unity game made for a school's recruiting process. Enjoying the concept I've found for it so much, I've decided to turn it into an actual game and will ship it as a Mofumofu product.  
 
-This game is in fact the prototype for a longer game called *Knock On*. If *Knock On* is a platformer adventure game in a similar spirit as Spyro or Mario 64, *Spoopy Treat* is a brawl game in an arena. Both are in 3D.
+This game is in fact the prototype for a longer game called *Knock On*. If *Knock On* is a platformer game in a similar spirit as Spyro or Mario 64, *Spoopy Treat* is a brawl game in an arena. Both are in 3D.
 
 ---
 

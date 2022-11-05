@@ -9,18 +9,29 @@ public class PlayerControls : MonoBehaviour
     private float forward_input;
     private Rigidbody player_rb;
     private Character character_script;
+    private Behaviour menu_camera;
+    private Behaviour ui_camera;
 
     void Start()
     {
         player_rb = GetComponent<Rigidbody>();
         character_script = GetComponent<Character>();
+        menu_camera = (Behaviour)GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
+        ui_camera = (Behaviour)GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
+
+        OpenMenu();
     }
 
     void Update()
     {
-        // Pause/Resume game
+        // Open/Close menu
         if (Input.GetKeyDown(KeyCode.Escape))
-            Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+        {
+            if (Time.timeScale == 1)
+                OpenMenu();
+            else
+                ResumeGame();
+        }
 
         if (Time.timeScale == 1)
         {
@@ -48,6 +59,26 @@ public class PlayerControls : MonoBehaviour
                 character_script.is_on_ground = false;
             }
         }
+    }
+
+    private void OpenMenu()
+    {
+        // Pause the game
+        Time.timeScale = 0;
+        // Activate the menu camera
+        menu_camera.enabled = true;
+        // Deactivate the UI camera so it doesn't show in the menu
+        ui_camera.enabled = false;
+    }
+
+    private void ResumeGame()
+    {
+        // Resume the game
+        Time.timeScale = 1;
+        // Deactivate the menu camera
+        menu_camera.enabled = false;
+        // Reactivate the UI camera for the game
+        ui_camera.enabled = true;
     }
 
     private void OnCollisionEnter(Collision collision)

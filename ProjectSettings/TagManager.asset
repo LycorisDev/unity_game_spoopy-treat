@@ -7,6 +7,8 @@ TagManager:
   - Character
   - InvisibleWall
   - PlayerCandyCounter
+  - MenuCamera
+  - UICamera
   layers:
   - Default
   - TransparentFX
