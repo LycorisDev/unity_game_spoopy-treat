@@ -67,6 +67,10 @@ public class Controls : MonoBehaviour
             MenuControls();
         else
             GameControls();
+        
+        // Switch between fullscreen and windowed mode
+        if (Input.GetKeyDown(KeyCode.F4))
+            Screen.fullScreen = !Screen.fullScreen;
     }
 
     private void OpenMenu()
