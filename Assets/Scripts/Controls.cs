@@ -115,8 +115,8 @@ public class Controls : MonoBehaviour
         foreach (TextMeshProUGUI tmp in arr_menu_tmp)
             tmp.color = new Color(1f, 1f, 1f, 1f);
 
-        // Set the selected option to red
-        arr_menu_tmp[index_menu_option].color = new Color(0.49f, 0.03f, 0.14f, 1f);
+        // Set the selected option to orange
+        arr_menu_tmp[index_menu_option].color = new Color(0.65f, 0.19f, 0.08f, 1f);
 
         // Controls to select an option
         if (Input.GetKeyDown(KeyCode.UpArrow))
