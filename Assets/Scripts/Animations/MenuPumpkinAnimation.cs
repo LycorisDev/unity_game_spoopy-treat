@@ -11,7 +11,7 @@ public class MenuPumpkinAnimation : MonoBehaviour
     void Start()
     {
         degrees = 0.2f;
-        z_limit = 0.135f;
+        z_limit = transform.rotation.z - 0.001f;
         turning_left = true;
     }
 
