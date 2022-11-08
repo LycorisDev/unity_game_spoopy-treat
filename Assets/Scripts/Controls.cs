@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -12,37 +13,54 @@ public class Controls : MonoBehaviour
     private Character character_script;
     private Behaviour menu_camera;
     private Behaviour ui_camera;
-    private GameObject[] arr_menu_go;
+    private TextMeshProUGUI[] arr_menu_tmp;
     private int index_menu_option;
     private int min_index_menu_option;
     private bool is_first_game;
+    private static bool user_asked_for_restart = false;
 
     void Start()
     {
+        GameObject[] arr_menu_go;
+        int i;
+
         player_rb = GetComponent<Rigidbody>();
         character_script = GetComponent<Character>();
         menu_camera = (Behaviour)GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
         ui_camera = (Behaviour)GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
-        arr_menu_go = GameObject.FindGameObjectsWithTag("MainMenuOption");
 
-        // When the soft starts, there is no ongoing game, so disable the first option ("Resume current game")
-        arr_menu_go[0].GetComponent<TextMeshProUGUI>().enabled = false;
-        index_menu_option = 1;
-        min_index_menu_option = 1;
+        // Set arr_menu_tmp
+        arr_menu_go = GameObject.FindGameObjectsWithTag("MainMenuOption");
+        arr_menu_go = arr_menu_go.OrderBy(e => e.name).ToArray();
+        arr_menu_tmp = new TextMeshProUGUI[arr_menu_go.Length];
+        for (i = 0; i < arr_menu_go.Length; ++i)
+            arr_menu_tmp[i] = arr_menu_go[i].GetComponent<TextMeshProUGUI>();
+
+        // When the soft starts, there is no ongoing game, so disable the first option ("Resume Current Game")
+        DisableFirstMenuOption();
+        index_menu_option = min_index_menu_option;
         is_first_game = true;
 
-        OpenMenu();
+        // If user had started a game and then selects "New Game" again, the new game needs to start immediately
+        if (user_asked_for_restart)
+        {
+            ResumeGame();
+            // A game starting also implies that "Resume Current Game" needs to be enabled
+            EnableFirstMenuOption();
+        }
+        else
+            OpenMenu();
     }
 
     void Update()
     {
-        // Open/Close menu
+        // Open menu if in game, or close the soft if already in menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 1)
                 OpenMenu();
             else
-                ResumeGame();
+                Application.Quit();
         }
 
         if (Time.timeScale == 0)
@@ -59,6 +77,7 @@ public class Controls : MonoBehaviour
         menu_camera.enabled = true;
         // Deactivate the UI camera so it doesn't show in the menu
         ui_camera.enabled = false;
+        index_menu_option = min_index_menu_option;
     }
 
     private void ResumeGame()
@@ -74,20 +93,32 @@ public class Controls : MonoBehaviour
         index_menu_option = min_index_menu_option;
     }
 
+    private void DisableFirstMenuOption()
+    {
+        arr_menu_tmp[0].enabled = false;
+        min_index_menu_option = 1;
+    }
+
+    private void EnableFirstMenuOption()
+    {
+        arr_menu_tmp[0].enabled = true;
+        min_index_menu_option = 0;
+    }
+
     private void MenuControls()
     {
         // Set all options to white
-        foreach (GameObject go in arr_menu_go)
-            go.GetComponent<TextMeshProUGUI>().color = new Color(1f, 1f, 1f, 1f);
+        foreach (TextMeshProUGUI tmp in arr_menu_tmp)
+            tmp.color = new Color(1f, 1f, 1f, 1f);
 
         // Set the selected option to red
-        arr_menu_go[index_menu_option].GetComponent<TextMeshProUGUI>().color = new Color(0.49f, 0.03f, 0.14f, 1f);
+        arr_menu_tmp[index_menu_option].color = new Color(0.49f, 0.03f, 0.14f, 1f);
 
         // Controls to select an option
-        if (Input.GetKeyDown(KeyCode.UpArrow) && index_menu_option > min_index_menu_option)
-            index_menu_option--;
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && index_menu_option < arr_menu_go.Length - 1)
-            index_menu_option++;
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            index_menu_option = index_menu_option > min_index_menu_option ? index_menu_option - 1 : arr_menu_tmp.Length - 1;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            index_menu_option = index_menu_option < arr_menu_tmp.Length - 1 ? index_menu_option + 1 : min_index_menu_option;
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -100,10 +131,12 @@ public class Controls : MonoBehaviour
                 // New Game
                 case 1:
                     if (!is_first_game)
+                    {
+                        user_asked_for_restart = true;
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
                     ResumeGame();
-                    arr_menu_go[0].GetComponent<TextMeshProUGUI>().enabled = true;
-                    min_index_menu_option = 0;
+                    EnableFirstMenuOption();
                     break;
                 // Options
                 case 2:

@@ -2439,7 +2439,7 @@ GameObject:
   - component: {fileID: 237263432}
   - component: {fileID: 237263431}
   m_Layer: 5
-  m_Name: TMP - Options
+  m_Name: TMP - 2. Options
   m_TagString: MainMenuOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5064,7 +5064,7 @@ GameObject:
   - component: {fileID: 460812261}
   - component: {fileID: 460812260}
   m_Layer: 5
-  m_Name: TMP - Licenses
+  m_Name: TMP - 3. Licenses
   m_TagString: MainMenuOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10920,7 +10920,7 @@ GameObject:
   - component: {fileID: 1058475674}
   - component: {fileID: 1058475673}
   m_Layer: 5
-  m_Name: TMP - Resume current game
+  m_Name: TMP - 0. Resume current game
   m_TagString: MainMenuOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15325,7 +15325,7 @@ GameObject:
   - component: {fileID: 1535917351}
   - component: {fileID: 1535917350}
   m_Layer: 5
-  m_Name: TMP - New Game
+  m_Name: TMP - 1. New Game
   m_TagString: MainMenuOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21893,7 +21893,7 @@ GameObject:
   - component: {fileID: 2130931592}
   - component: {fileID: 2130931591}
   m_Layer: 5
-  m_Name: TMP - Quit
+  m_Name: TMP - 4. Quit
   m_TagString: MainMenuOption
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
