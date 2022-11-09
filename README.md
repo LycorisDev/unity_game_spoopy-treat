@@ -68,3 +68,7 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.
 - The static platforms are arranged differently.
 
+### ISSUES
+4. **Left as is for now because it's not an actual problem:** On rarer occasions, the camera will rotate on the x axis for a bit even when the player is immobile.
+5. The camera can clip behind meshes. Cinemachine is a solution.
+
