@@ -44,7 +44,7 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 1. An increase in speed makes the player ignore collisions.
 2. An increase in speed and/or in mass makes pushing moveable objects more difficult, because the player would then tend to be sent flying.
 3. On rare occasions, the cauldrons do not empty even when knocked over.
-4. On rarer occasions, the camera will rotate on the x axis for a bit even when the player is immobile.
+4. On rarer occasions, the player rotates on the x axis for a bit even without input.
 
 ## SECOND VERSION
 
@@ -68,8 +68,9 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.
 - The static platforms are arranged differently.
 - Candies' halo changed from blue to red. The reason is that the candies are actually red, and the environment is mostly green and red is the color which clashes the most with it.
+- The UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
 
 ### ISSUES
-4. **Left as is for now because it's not an actual problem:** On rarer occasions, the camera will rotate on the x axis for a bit even when the player is immobile.
+4. Sometimes, the player rotates on the x axis for a bit even without input.
 5. The camera can clip behind meshes. Cinemachine is a solution.
 
