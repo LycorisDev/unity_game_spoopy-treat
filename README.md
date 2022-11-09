@@ -67,6 +67,7 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 - "New Game" resets the scene if this wasn't the first game. A boolean is carried through the next iteration of the scene in order to know to load the game immediately instead of awaiting for input.
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.
 - The static platforms are arranged differently.
+- Candies' halo changed from blue to red. The reason is that the candies are actually red, and the environment is mostly green and red is the color which clashes the most with it.
 
 ### ISSUES
 4. **Left as is for now because it's not an actual problem:** On rarer occasions, the camera will rotate on the x axis for a bit even when the player is immobile.
