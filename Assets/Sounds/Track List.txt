@@ -1,0 +1,128 @@
+MENU
+
+	[Music Theme]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: music_box_cm_80bpm_05
+		--> Has been edited
+
+	[Sound Effect - Select]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: hits_dark_slam
+
+	[Sound Effect - Validate]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: hits_slider
+
+	[Sound Effect - Back]
+		Album: GhostHack - Ambient Motion
+		Title: warped_hit_1
+
+	[Sound Effect - Forward]
+		Album: GhostHack - Ambient Motion
+		Title: warped_hit_2
+
+GAME
+
+	[Music Theme]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: music_box_cm_90bpm_04
+
+	[Music Theme - Timer]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: music_box_fm_80bpm_02
+
+	[Ambience]
+		Album: GhostHack - Cinematic Essentials - Pulse Loops
+		Title: ce_pulse_loop_120_blackout_g
+		--> Has been edited
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: creeper
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: dark_forest
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: feeding_time
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: freddies_back
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: gates_of_hell
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: ghost_machine
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: graveyard_breeze
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: hells_choir
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: mournful_spirit
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: paranoia
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: sleeping_giant
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: the_reanimator
+
+	[Ambience]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: the_thing
+
+	[Sound Effect - Pumpkins - Damage]
+	Note: Each for each pumpkin - For the player it's at random
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: short_zombie_growl_29
+		Title: short_zombie_growl_30
+		Title: short_zombie_growl_31
+		Title: short_zombie_growl_32
+
+	[Sound Effect - Zombie Hand - Popping Up]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: creature_growl_07
+
+	[Sound Effect - Zombie Hand - Death]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: creature_growl_17
+
+	[Sound Effect - Portals - Opening]
+		Album: GhostHack - Ambient Motion
+		Title: portals_c
+
+	[Sound Effect - Candies - One Collected]
+		Album: GhostHack - Ambient Motion
+		Title: wood
+
+	[Sound Effect - Candies - Collection Complete]
+		Album: GhostHack - Ambient Motion
+		Title: synth_perc
+
+	[Sound Effect - Candies - Ambience]
+		Album: GhostHack - Ambient Motion
+		Title: foley_ambience_8
+		Title: haunted_c
+		Title: light_c
+		Title: pad_c_5
+		Title: pad_c_8
+		Title: pad_c_11
+		Title: uplift_drone_c
+
