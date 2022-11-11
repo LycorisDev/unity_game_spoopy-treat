@@ -68,6 +68,8 @@
 - Candies' halo changed from blue to red. The reason is that the candies are actually red, and the environment is mostly green and red is the color which clashes the most with it.
 - The UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
 - Sound effects and sound ambiences are added to the game.
+- Lights have been added to objects around the map.
+- The game has a goal. Once reached, the process waits for a few seconds before sending the user back to the main menu.
 
 ### ISSUES
 4. Sometimes, the player rotates on the x axis for a bit even without input.

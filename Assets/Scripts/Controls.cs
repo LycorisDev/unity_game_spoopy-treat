@@ -7,16 +7,16 @@ using TMPro;
 
 public class Controls : MonoBehaviour
 {
-    private AudioManager audio_manager;
+    private static AudioManager audio_manager;
     private float horizontal_input;
     private float forward_input;
     private Rigidbody player_rb;
     private Character character_script;
-    private Behaviour menu_camera;
-    private Behaviour ui_camera;
-    private TextMeshProUGUI[] arr_menu_tmp;
-    private int index_menu_option;
-    private int min_index_menu_option;
+    private static Behaviour menu_camera;
+    private static Behaviour ui_camera;
+    private static TextMeshProUGUI[] arr_menu_tmp;
+    private static int index_menu_option;
+    private static int min_index_menu_option;
     private bool is_first_game;
     private static bool user_asked_for_restart = false;
 
@@ -76,7 +76,7 @@ public class Controls : MonoBehaviour
             Screen.fullScreen = !Screen.fullScreen;
     }
 
-    private void OpenMenu()
+    public static void OpenMenu()
     {
         // Pause the game
         Time.timeScale = 0;
@@ -111,14 +111,14 @@ public class Controls : MonoBehaviour
         audio_manager.Play("GameAmbienceCreeper");
     }
 
-    private void StopGameAmbience()
+    private static void StopGameAmbience()
     {
         audio_manager.Stop("GameAmbiencePulse");
         audio_manager.Stop("GameAmbienceForest");
         audio_manager.Stop("GameAmbienceCreeper");
     }
 
-    private void DisableFirstMenuOption()
+    public static void DisableFirstMenuOption()
     {
         arr_menu_tmp[0].enabled = false;
         min_index_menu_option = 1;
