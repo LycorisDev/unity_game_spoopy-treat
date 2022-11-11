@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        directional_speed = 6f;
+        directional_speed = 5f;
         rotate_speed = directional_speed / 2 * directional_speed * directional_speed;
         jump_force = 20f;
         is_on_ground = false;
