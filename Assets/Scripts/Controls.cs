@@ -7,6 +7,7 @@ using TMPro;
 
 public class Controls : MonoBehaviour
 {
+    private AudioManager audio_manager;
     private float horizontal_input;
     private float forward_input;
     private Rigidbody player_rb;
@@ -24,6 +25,7 @@ public class Controls : MonoBehaviour
         GameObject[] arr_menu_go;
         int i;
 
+        audio_manager = FindObjectOfType<AudioManager>();
         player_rb = GetComponent<Rigidbody>();
         character_script = GetComponent<Character>();
         menu_camera = (Behaviour)GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
@@ -57,6 +59,7 @@ public class Controls : MonoBehaviour
         // Open menu if in game, or close the soft if already in menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            audio_manager.Play("MenuBack");
             if (Time.timeScale == 1)
                 OpenMenu();
             else
@@ -82,6 +85,8 @@ public class Controls : MonoBehaviour
         // Deactivate the UI camera so it doesn't show in the menu
         ui_camera.enabled = false;
         index_menu_option = min_index_menu_option;
+        StopGameAmbience();
+        audio_manager.Play("MenuTheme");
     }
 
     private void ResumeGame()
@@ -95,6 +100,22 @@ public class Controls : MonoBehaviour
         ui_camera.enabled = true;
         // Reset the menu option selector
         index_menu_option = min_index_menu_option;
+        audio_manager.Stop("MenuTheme");
+        PlayGameAmbience();
+    }
+
+    private void PlayGameAmbience()
+    {
+        audio_manager.Play("GameAmbiencePulse");
+        audio_manager.Play("GameAmbienceForest");
+        audio_manager.Play("GameAmbienceCreeper");
+    }
+
+    private void StopGameAmbience()
+    {
+        audio_manager.Stop("GameAmbiencePulse");
+        audio_manager.Stop("GameAmbienceForest");
+        audio_manager.Stop("GameAmbienceCreeper");
     }
 
     private void DisableFirstMenuOption()
@@ -120,9 +141,15 @@ public class Controls : MonoBehaviour
 
         // Controls to select an option
         if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            audio_manager.Play("MenuSelect");
             index_menu_option = index_menu_option > min_index_menu_option ? index_menu_option - 1 : arr_menu_tmp.Length - 1;
+        }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            audio_manager.Play("MenuSelect");
             index_menu_option = index_menu_option < arr_menu_tmp.Length - 1 ? index_menu_option + 1 : min_index_menu_option;
+        }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -130,10 +157,12 @@ public class Controls : MonoBehaviour
             {
                 // Resume Current Game
                 case 0:
+                    audio_manager.Play("MenuForward");
                     ResumeGame();
                     break;
                 // New Game
                 case 1:
+                    audio_manager.Play("MenuValidate");
                     if (!is_first_game)
                     {
                         user_asked_for_restart = true;
@@ -144,12 +173,15 @@ public class Controls : MonoBehaviour
                     break;
                 // Options
                 case 2:
+                    audio_manager.Play("MenuValidate");
                     break;
                 // Licenses
                 case 3:
+                    audio_manager.Play("MenuValidate");
                     break;
                 // Quit
                 case 4:
+                    audio_manager.Play("MenuBack");
                     Application.Quit();
                     break;
             }

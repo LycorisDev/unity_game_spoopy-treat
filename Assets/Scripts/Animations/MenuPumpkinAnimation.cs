@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class MenuPumpkinAnimation : MonoBehaviour
 {
+    /*
+        The time is stopped in the menu, so the delta time cannot be used.
+        This is alright, however, because the pumpkin doesn't need to have a fixed speed, 
+        it can become slower or faster without any issue. It just needs not to be too fast.
+        Also note that the pumpkin is slower in the build, which is just right.
+    */
+
     private float degrees;
     private float z_limit;
     private bool turning_left;

@@ -1,8 +1,6 @@
 # Spoopy Treat
 
-*Spoopy Treat* is a Unity game made for a school's recruiting process. Enjoying the concept I've found for it so much, I've decided to turn it into an actual game and will ship it as a Mofumofu product.  
-
-This game is in fact the prototype for a longer game called *Knock On*. If *Knock On* is a platformer game in a similar spirit as Spyro or Mario 64, *Spoopy Treat* is a brawl game in an arena. Both are in 3D.
+*Spoopy Treat* is a Unity game made for a school's recruiting process. Enjoying the concept I've found for it so much, I've decided to turn it into an actual game and will ship it as a Mofumofu product. It will be a 3D platformer, and this repository holds the demo version.  
 
 ---
 
@@ -69,6 +67,7 @@ This game is in fact the prototype for a longer game called *Knock On*. If *Knoc
 - The static platforms are arranged differently.
 - Candies' halo changed from blue to red. The reason is that the candies are actually red, and the environment is mostly green and red is the color which clashes the most with it.
 - The UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
+- Sound effects and sound ambiences are added to the game.
 
 ### ISSUES
 4. Sometimes, the player rotates on the x axis for a bit even without input.

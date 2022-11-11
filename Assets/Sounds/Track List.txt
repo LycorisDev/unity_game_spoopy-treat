@@ -2,93 +2,53 @@ MENU
 
 	[Music Theme]
 		Album: GhostHack - Halloween 2022 Freebie
-		Title: music_box_cm_80bpm_05
+		Title: music_box_cm_90bpm_04
 		--> Has been edited
 
-	[Sound Effect - Select]
+	[Select]
 		Album: GhostHack - Halloween 2022 Freebie
 		Title: hits_dark_slam
 
-	[Sound Effect - Validate]
+	[Validate]
 		Album: GhostHack - Halloween 2022 Freebie
 		Title: hits_slider
 
-	[Sound Effect - Back]
+	[Back]
 		Album: GhostHack - Ambient Motion
 		Title: warped_hit_1
 
-	[Sound Effect - Forward]
+	[Forward]
 		Album: GhostHack - Ambient Motion
 		Title: warped_hit_2
 
-GAME
+GAME > DEFAULT AMBIENCE
 
-	[Music Theme]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: music_box_cm_90bpm_04
-
-	[Music Theme - Timer]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: music_box_fm_80bpm_02
-
-	[Ambience]
+	[Background Filling Noise]
 		Album: GhostHack - Cinematic Essentials - Pulse Loops
 		Title: ce_pulse_loop_120_blackout_g
 		--> Has been edited
 
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: creeper
-
-	[Ambience]
+	[Environment]
 		Album: GhostHack - Halloween 2022 Freebie
 		Title: dark_forest
 
-	[Ambience]
+	[Dark Atmosphere]
 		Album: GhostHack - Halloween 2022 Freebie
-		Title: feeding_time
+		Title: creeper
 
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: freddies_back
+GAME > CANDIES
 
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: gates_of_hell
+	[One Collected]
+		Album: GhostHack - Ambient Motion
+		Title: wood
 
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: ghost_machine
+	[Collection Complete]
+		Album: GhostHack - Ambient Motion
+		Title: synth_perc
 
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: graveyard_breeze
+CURRENTLY UNUSED
 
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: hells_choir
-
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: mournful_spirit
-
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: paranoia
-
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: sleeping_giant
-
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: the_reanimator
-
-	[Ambience]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: the_thing
-
-	[Sound Effect - Pumpkins - Damage]
+	[Pumpkins - Damage]
 	Note: Each for each pumpkin - For the player it's at random
 		Album: GhostHack - Halloween 2022 Freebie
 		Title: short_zombie_growl_29
@@ -96,33 +56,45 @@ GAME
 		Title: short_zombie_growl_31
 		Title: short_zombie_growl_32
 
-	[Sound Effect - Zombie Hand - Popping Up]
+	[Zombie Hand - Popping Up]
 		Album: GhostHack - Halloween 2022 Freebie
 		Title: creature_growl_07
 
-	[Sound Effect - Zombie Hand - Death]
+	[Zombie Hand - Death]
 		Album: GhostHack - Halloween 2022 Freebie
 		Title: creature_growl_17
 
-	[Sound Effect - Portals - Opening]
+	[Portals - Default Portal]
+		Album: GhostHack - Ambient Motion
+		Title: light_c
+		--> Has been edited
+
+	[Portals - Corrupted Portal]
+		Album: GhostHack - Ambient Motion
+		Title: haunted_c
+
+	[Portals - Crossing]
 		Album: GhostHack - Ambient Motion
 		Title: portals_c
 
-	[Sound Effect - Candies - One Collected]
-		Album: GhostHack - Ambient Motion
-		Title: wood
+	[Music Theme - Game Over]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: music_box_cm_90bpm_05
+		--> Has been edited
 
-	[Sound Effect - Candies - Collection Complete]
-		Album: GhostHack - Ambient Motion
-		Title: synth_perc
+	[Music Theme - Timer]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: music_box_fm_80bpm_02
 
-	[Sound Effect - Candies - Ambience]
-		Album: GhostHack - Ambient Motion
-		Title: foley_ambience_8
-		Title: haunted_c
-		Title: light_c
-		Title: pad_c_5
-		Title: pad_c_8
-		Title: pad_c_11
+	[Deep Waters]
+	Album: GhostHack - Ambient Motion
 		Title: uplift_drone_c
+
+	[Inverted Commands]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: mournful_spirit
+
+	[Sky Flight]
+		Album: GhostHack - Halloween 2022 Freebie
+		Title: graveyard_breeze
 

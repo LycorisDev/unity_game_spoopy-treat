@@ -6,6 +6,7 @@ using TMPro;
 
 public class CollectCandy : MonoBehaviour
 {
+    private AudioManager audio_manager;
     private Character character_script;
     private TextMeshProUGUI tmp;
     private GameObject[] ui_candies;
@@ -14,6 +15,7 @@ public class CollectCandy : MonoBehaviour
 
     void Start()
     {
+        audio_manager = FindObjectOfType<AudioManager>();
         tmp = GameObject.FindGameObjectWithTag("PlayerCandyCounter").GetComponent<TextMeshProUGUI>();
         ui_candies = GameObject.FindGameObjectsWithTag("UICandy");
         ui_candies = ui_candies.OrderBy(e => e.name).ToArray();
@@ -37,6 +39,12 @@ public class CollectCandy : MonoBehaviour
                 // Collect candy
                 character_script.nbr_candies++;
                 Destroy(gameObject);
+
+                // If candy is gained (and not lost)
+                if (character_script.nbr_candies == 3)
+                    audio_manager.Play("GameCandyCollectionComplete");
+                else
+                    audio_manager.Play("GameCandyOneCollected");
 
                 // Update candy counter
                 if (other.CompareTag("Player"))
