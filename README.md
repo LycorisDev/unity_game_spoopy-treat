@@ -69,9 +69,10 @@
 - The UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
 - Sound effects and sound ambiences are added to the game.
 - Lights have been added to objects around the map.
-- The game has a goal. Once reached, the process waits for a few seconds before sending the user back to the main menu.
+- The game has a goal. Once reached, the process waits for a second before sending the user back to the main menu.
 
 ### ISSUES
 4. Sometimes, the player rotates on the x axis for a bit even without input.
 5. The camera can clip behind meshes. Cinemachine is a solution.
+6. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
 

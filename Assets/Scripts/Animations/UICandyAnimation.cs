@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UICandyAnimation : MonoBehaviour
 {
-    private float degrees_per_sec;
+    private static float degrees_per_sec;
 
     void Start()
     {

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CandyIdleAnimation : MonoBehaviour
 {
+    private static float degrees_per_sec;
+    private static float amplitude;
+    private static float frequency;
     Vector3 position_offset;
     Vector3 temp_position;
-    private float degrees_per_sec;
-    private float amplitude;
-    private float frequency;
 
     void Start()
     {
-        position_offset = transform.position;
-        position_offset.y += 1f;
         degrees_per_sec = 30f;
         amplitude = 0.5f;
         frequency = 0.8f;
+        position_offset = transform.position;
+        position_offset.y += 1f;
     }
 
     void Update()

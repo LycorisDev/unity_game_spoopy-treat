@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CompleteGoal : MonoBehaviour
 {
-    private AudioManager audio_manager;
-    private Character player_script;
-    private Behaviour light_component;
+    private static AudioManager audio_manager;
+    private static Character player_script;
+    private static Behaviour light_component;
 
     void Start()
     {
@@ -21,9 +21,9 @@ public class CompleteGoal : MonoBehaviour
         {
             light_component.enabled = false;
             audio_manager.Play("GameVictory");
-            yield return new WaitForSecondsRealtime(2);
-            Controls.DisableFirstMenuOption();
-            Controls.OpenMenu();
+            yield return new WaitForSecondsRealtime(1);
+            MenuManager.DisableFirstMenuOption();
+            MenuManager.OpenMenu();
         }
     }
 }

@@ -6,12 +6,12 @@ using TMPro;
 
 public class CollectCandy : MonoBehaviour
 {
-    private AudioManager audio_manager;
+    private static AudioManager audio_manager;
+    private static TextMeshProUGUI tmp;
+    private static GameObject[] ui_candies;
+    private static Vector3 ui_candy_pos_displayed;
+    private static Vector3 ui_candy_pos_hidden;
     private Character character_script;
-    private TextMeshProUGUI tmp;
-    private GameObject[] ui_candies;
-    private Vector3 ui_candy_pos_displayed;
-    private Vector3 ui_candy_pos_hidden;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class CollectCandy : MonoBehaviour
             ui_candy_pos_displayed = ui_candies[0].transform.position;
 
             This can't be used because somehow "ui_candy_pos_displayed" is rewritten before ui_candies[3] is moved, 
-            placing it outside of the canvas. Even making it a static field doesn't help, so hardcoded values are used instead.
+            placing it outside of the canvas. Hardcoded values are used instead.
         */
         ui_candy_pos_displayed = new Vector3(-4.83f, 183.15f, 109.17f);
         ui_candy_pos_hidden = ui_candies[1].transform.position;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoundingArea : MonoBehaviour
 {
-    private Vector3 spawn_point;
+    private static Vector3 spawn_point;
 
     void Start()
     {
@@ -12,7 +12,7 @@ public class BoundingArea : MonoBehaviour
     }
 
     // If an object hits the bound, put it back to the spawn point
-    private void OnTriggerExit(Collider other)
+    private static void OnTriggerExit(Collider other)
     {
         other.transform.position = spawn_point;
     }

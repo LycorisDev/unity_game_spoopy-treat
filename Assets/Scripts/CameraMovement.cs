@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    private GameObject target;
-    private Vector3 back;
-    private Vector3 rotation;
-    private float height;
-    private float distance;
+    private static GameObject target;
+    private static Vector3 back;
+    private static Vector3 rotation;
+    private static float height;
+    private static float distance;
 
     void Start()
     {

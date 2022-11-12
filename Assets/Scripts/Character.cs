@@ -20,4 +20,10 @@ public class Character : MonoBehaviour
         jump_force = 20f;
         is_on_ground = false;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.CompareTag("InvisibleWall"))
+            is_on_ground = true;
+    }
 }

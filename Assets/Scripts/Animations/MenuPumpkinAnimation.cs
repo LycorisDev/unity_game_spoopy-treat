@@ -11,9 +11,9 @@ public class MenuPumpkinAnimation : MonoBehaviour
         Also note that the pumpkin is slower in the build, which is just right.
     */
 
-    private float degrees;
-    private float z_limit;
-    private bool turning_left;
+    private static float degrees;
+    private static float z_limit;
+    private static bool turning_left;
 
     void Start()
     {
