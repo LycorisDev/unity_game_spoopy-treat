@@ -49,8 +49,7 @@
 ![](./ingame_screenshot_1.png)
 
 ### PREVIOUS ISSUES FIXED
-- Issues n°1, n°2 and n°3 have been fixed.
-- Issue n°4 is rare and not an actual problem, so it's left as is for now.
+- All previous issues have been fixed.
 
 ### ADDED FEATURES
 - The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit, and as for the candies' halo a less intense color has been picked.
@@ -70,9 +69,9 @@
 - Sound effects and sound ambiences are added to the game.
 - Lights have been added to objects around the map.
 - The game has a goal. Once reached, the process waits for a second before sending the user back to the main menu.
+- The player used to rotate on the y axis randomly, without any input. It has been fixed by freezing the player's y rotation axis. I thought this would prevent input-based rotation, but no, this only freezes it for the physics engine, and the transform can still be updated from code. The enemies' y rotation axis has also been freezed to match the player's logic.
 
 ### ISSUES
-4. Sometimes, the player rotates on the x axis for a bit even without input.
 5. The camera can clip behind meshes. Cinemachine is a solution.
 6. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
 
