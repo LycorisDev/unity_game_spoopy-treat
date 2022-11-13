@@ -93,5 +93,4 @@
 ### ISSUES
 5. The camera can clip behind meshes. Cinemachine is a solution.
 6. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
-7. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
 

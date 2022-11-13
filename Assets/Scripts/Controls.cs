@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    private static AudioManager audio_manager;
     private Rigidbody player_rb;
     private Character character_script;
     private float horizontal_input;
@@ -10,7 +9,6 @@ public class Controls : MonoBehaviour
 
     void Start()
     {
-        audio_manager = FindObjectOfType<AudioManager>();
         player_rb = GetComponent<Rigidbody>();
         character_script = GetComponent<Character>();
     }
@@ -21,10 +19,7 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 1)
-            {
-                audio_manager.Play("MenuBack");
                 MenuManager.OpenMenu();
-            }
             else
                 MenuManager.Quit();
         }

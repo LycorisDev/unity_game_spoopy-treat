@@ -38,6 +38,7 @@ public class MenuManager : MonoBehaviour
         // If user had started a game and then selects "New Game" again, the new game needs to start immediately
         if (user_asked_for_restart)
         {
+            audio_manager.Play("MenuValidate");
             ResumeGame();
             // A game starting also implies that "Resume Current Game" needs to be enabled
             EnableFirstMenuOption();
@@ -48,6 +49,8 @@ public class MenuManager : MonoBehaviour
 
     public static void OpenMenu()
     {
+        if (!is_first_game)
+            audio_manager.Play("MenuBack");
         // Pause the game
         Time.timeScale = 0;
         // Activate the menu camera
