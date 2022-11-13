@@ -69,6 +69,10 @@
 - "Resume Current Game" is hidden and unusable if no game has been started yet.
 - "New Game" resets the scene if this wasn't the first game. A boolean is carried through the next iteration of the scene in order to know to load the game immediately instead of awaiting for input in the menu.
 
+### ADDED FEATURES: PLATFORMER
+- The last platform now moves to allow the player to reach the candy at the end of the platformer section.
+- The player can move along with the platform without input.
+
 ### ADDED FEATURES: GAME LOOP
 - The game has a physical goal. Once reached and if the player has the required amount of candies, the process waits for a second before sending the user back to the main menu.
 
@@ -87,7 +91,7 @@
 - Cauldrons are candy holders, and the light emitted from them is a subtle indication that something can be done with them, but even if the player doesn't notice that the cauldrons can be knocked over to reveal a candy, three other candies are in the scene so the experience shouldn't be frustrating.
 
 ### ISSUES
-5. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
-6. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
-7. The camera can clip behind meshes. Cinemachine is a solution.
+5. The camera can clip behind meshes. Cinemachine is a solution.
+6. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
+7. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
 
