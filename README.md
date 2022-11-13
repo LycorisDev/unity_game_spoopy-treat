@@ -15,7 +15,7 @@
 - Installing it on Ubuntu (Linux) is not as straight forward as it seems. The Hub cannot open because it keeps crashing. The solution is to execute the AppImage file with the "--no-sandbox" option.
 - Configuring the IDE for Unity.
 - Version control has been used in the making of the project. Here is the .gitignore file for Unity: https://github.com/github/gitignore/blob/main/Unity.gitignore
-- The game features one scene.
+- The game features no more than one scene.
 - The player can move with the arrow and WASD keys (or equivalent to WASD as physical keys are used).
 - The player can jump with the space bar.
 - The player can collide with other objects, and go through others (the small plants).
@@ -48,31 +48,46 @@
 
 ![](./ingame_screenshot_1.png)
 
-### PREVIOUS ISSUES FIXED
-- All previous issues have been fixed.
+### ALL PREVIOUS ISSUES HAVE BEEN FIXED
+- **ISSUES N°1 AND N°2:** At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
+- **ISSUE N°3:** The cauldron emptying script is fixed. I was only checking the x rotation axis, and now the z one is checked as well.
+- **ISSUE N°4:** The player used to rotate on the y axis randomly, without any input. It has been fixed by freezing the player's y rotation axis. I thought this would prevent input-based rotation, but no, this only freezes it for the physics engine, and the transform can still be updated from code. The y rotation axis of the enemies (= the other big pumpkins) has also been freezed to match the player's logic.
 
-### ADDED FEATURES
-- The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit, and as for the candies' halo a less intense color has been picked.
-- At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
-- The candy counter now displays a 3D candy.
-- The cauldron emptying script is fixed. I was only checking the x rotation axis, and now the z one is checked as well.
-- Main menu: "Resume Current Game", "New Game", "Options" (WIP), "Licenses" (WIP) and "Quit".
+### ADDED FEATURES: APPEARANCE
+- The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit.
+- Now that the scene is darker, the candies' halo has been made less intense. The halo color has also changed from blue to red.
+- The candy counter now displays a 3D candy, and the UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
+- The static platforms are arranged differently, and other objects have been added (both fixed and moveable).
+- Lights have been added to objects around the map. The candles have a flicker animation and can be extinguished when knocked over.
+- Sound effects and sound ambiences are added to the game.
+
+### ADDED FEATURES: MAIN MENU
+- Options are "Resume Current Game", "New Game", "Options" (WIP), "Licenses" (WIP) and "Quit".
 - The main menu is a canvas and not another scene. It is navigated with the arrow keys and the Enter key. 
 - The main menu is opened first thing, and once in game it can be opened with the Escape key. Using the Escape key again while in the menu is the same as selecting "Quit".
 - The game is paused while the menu is open.
 - "Resume Current Game" is hidden and unusable if no game has been started yet.
-- "New Game" resets the scene if this wasn't the first game. A boolean is carried through the next iteration of the scene in order to know to load the game immediately instead of awaiting for input.
+- "New Game" resets the scene if this wasn't the first game. A boolean is carried through the next iteration of the scene in order to know to load the game immediately instead of awaiting for input in the menu.
+
+### ADDED FEATURES: GAME LOOP
+- The game has a physical goal. Once reached and if the player has the required amount of candies, the process waits for a second before sending the user back to the main menu.
+
+### ADDED FEATURES: INPUT
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.
-- The static platforms are arranged differently.
-- Candies' halo changed from blue to red. The reason is that the candies are actually red, and the environment is mostly green and red is the color which clashes the most with it.
-- The UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
-- Sound effects and sound ambiences are added to the game.
-- Lights have been added to objects around the map. The candles have a flicker animation and can be extinguished when knocked over.
-- The game has a goal. Once reached, the process waits for a second before sending the user back to the main menu.
-- The player used to rotate on the y axis randomly, without any input. It has been fixed by freezing the player's y rotation axis. I thought this would prevent input-based rotation, but no, this only freezes it for the physics engine, and the transform can still be updated from code. The enemies' y rotation axis has also been freezed to match the player's logic.
+
+### LEVEL DESIGN NOTE
+- The UI has a candy counter and it's displayed at all times and not just when a candy is collected. Said counter also displays the maximum amount. This is in order to convey the objective of the game, which is collecting 3 candies, instead of just expressing that items can be collected but we don't know what for.
+- The lights are used to guide the player towards the goal, and the flickering of the candles is also to grab their attention.
+- The candies' aura is made red, not only to match with the candies themselves because they are actually red, but especially because the environment is mostly green, and red is the color which clashes the most with it. It allows the player to notice the collectibles with more ease.
+- The candies slowly bob up and down also in order to make them more noticeable, and also because this movement expresses the idea of a collectible.
+- There is a candy right in front of the player when they pop into the scene, but not too close to the player that they would collect it by accident. This is a way to teach the player to collect them. The sound effect when a candy is collected also indicates that the player did a thing, and that this thing is good.
+- When three candies are collected, another sound effect is triggered, which indicates a feeling of completion.
+- The first candy is a bit high. It is still reachable without a jump, but seeing the candy up in the air might push the player to attempt a jump, teaching them that jumping is indeed possible in this game. There is also a small enclosure containing a candy, which requires a jump in order to get inside of it, but since the enclosure has doors the player may think it requires a key and may not attempt a jump. This is why, worst case, there is a platformer area which definitely requires a jumping ability. The player can then go back to the enclosure and attempt a jump in order to get all three obvious candies.
+- Beyond the first candy, there are a few big pumpkins. They are meant to be enemies, but in the meantime they are regular moveable objects. If the player gets curious and reaches them, they may understand that objects can be moved in this game, which is relevant for the cauldrons.
+- Cauldrons are candy holders, and the light emitted from them is a subtle indication that something can be done with them, but even if the player doesn't notice that the cauldrons can be knocked over to reveal a candy, three other candies are in the scene so the experience shouldn't be frustrating.
 
 ### ISSUES
-5. The camera can clip behind meshes. Cinemachine is a solution.
+5. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
 6. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
-7. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
+7. The camera can clip behind meshes. Cinemachine is a solution.
 
