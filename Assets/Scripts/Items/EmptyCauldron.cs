@@ -9,8 +9,8 @@ public class EmptyCauldron : MonoBehaviour
     void Update()
     {
         // If full caudron has fallen over
-        if (transform.rotation.x < -0.3 || transform.rotation.x > 0.3 || transform.rotation.z < -0.3 || transform.rotation.z > 0.3)
-        { 
+        if (transform.rotation.x < -0.4 || transform.rotation.x > 0.4 || transform.rotation.z < -0.4 || transform.rotation.z > 0.4)
+        {
             // Drop candy in front of it (and a bit above ground so it doesn't clip)
             candy_position = transform.position + Vector3.forward * 3;
             Instantiate(candy_prefab, candy_position, transform.rotation);

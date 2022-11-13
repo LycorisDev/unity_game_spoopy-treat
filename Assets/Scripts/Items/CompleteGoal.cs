@@ -20,7 +20,7 @@ public class CompleteGoal : MonoBehaviour
         {
             light_component.enabled = false;
             audio_manager.Play("GameVictory");
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSecondsRealtime(1f);
             MenuManager.DisableFirstMenuOption();
             MenuManager.OpenMenu();
         }
