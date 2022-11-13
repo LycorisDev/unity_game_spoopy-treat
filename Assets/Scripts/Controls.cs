@@ -2,21 +2,32 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    private Rigidbody player_rb;
-    private Character character_script;
-    private float horizontal_input;
-    private float forward_input;
+    private static Rigidbody player_rb;
+    private static Character player_script;
+    private static KeyCode key_menu, key_screen_mode, key_validate, key_up, key_down, key_left, key_right, key_side_left, key_side_right, key_jump;
 
     void Start()
     {
         player_rb = GetComponent<Rigidbody>();
-        character_script = GetComponent<Character>();
+        player_script = GetComponent<Character>();
+
+        // "Use Physical Keys" enabled (QWERTY)
+        key_menu = KeyCode.Escape;
+        key_screen_mode = KeyCode.F4;
+        key_validate = KeyCode.Return;
+        key_up = KeyCode.W;
+        key_down = KeyCode.S;
+        key_left = KeyCode.A;
+        key_right = KeyCode.D;
+        key_side_left = KeyCode.Q;
+        key_side_right = KeyCode.E;
+        key_jump = KeyCode.Space;
     }
 
     void Update()
     {
         // Open menu if in game, or close the soft if already in menu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(key_menu))
         {
             if (Time.timeScale == 1)
                 MenuManager.OpenMenu();
@@ -30,7 +41,7 @@ public class Controls : MonoBehaviour
             GameControls();
         
         // Switch between fullscreen and windowed mode
-        if (Input.GetKeyDown(KeyCode.F4))
+        if (Input.GetKeyDown(key_screen_mode))
             Screen.fullScreen = !Screen.fullScreen;
     }
 
@@ -38,12 +49,26 @@ public class Controls : MonoBehaviour
     {
         MenuManager.SetGraphicsForSelectedOption();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        /*
+            - Go up with UP and LEFT input
+            - Go down with DOWN and RIGHT input
+        
+            UP/DOWN and LEFT/RIGHT are in different if-statements for optimisation reasons.
+            Indeed, it is more likely that people go for the UP/DOWN input instead of the LEFT/RIGHT.
+            This means that if the user didn't press an UP key, I don't want to have to check all three 
+            LEFT keys before I realize that the user wanted to go down instead.
+        */
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(key_up))
             MenuManager.SelectUp();
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(key_down))
+            MenuManager.SelectDown();
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(key_left) || Input.GetKeyDown(key_side_left))
+            MenuManager.SelectUp();
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(key_right) || Input.GetKeyDown(key_side_right))
             MenuManager.SelectDown();
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(key_validate))
         {
             switch (MenuManager.index_option)
             {
@@ -68,28 +93,29 @@ public class Controls : MonoBehaviour
 
     private void GameControls()
     {
-        /*
-            DIRECTION INPUT
-            - Arrow keys
-            - "Use physical keys" is enabled, so it's not necessarily WASD but whatever equivalent
-            - Console controller
-        */
-
-        // Get player directional input
-        horizontal_input = Input.GetAxis("Horizontal");
-        forward_input = Input.GetAxis("Vertical");
+        // Move the player forward or backward
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(key_up))
+            transform.Translate(Vector3.forward * Time.deltaTime * player_script.directional_speed);
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(key_down))
+            transform.Translate(Vector3.back * Time.deltaTime * player_script.directional_speed);
 
         // Rotate the player to the left or the right
-        transform.Rotate(Vector3.up * horizontal_input * Time.deltaTime * character_script.rotate_speed);
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(key_left))
+            transform.Rotate(Vector3.down * Time.deltaTime * player_script.rotate_speed);
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(key_right))
+            transform.Rotate(Vector3.up * Time.deltaTime * player_script.rotate_speed);
 
-        // Move the player on the z axis
-        transform.Translate(Vector3.forward * forward_input * Time.deltaTime * character_script.directional_speed);
+        // Move the player to the side
+        if (Input.GetKey(key_side_left))
+            transform.Translate(Vector3.left * Time.deltaTime * player_script.directional_speed);
+        if (Input.GetKey(key_side_right))
+            transform.Translate(Vector3.right * Time.deltaTime * player_script.directional_speed);
 
-        // Player jumps
-        if (Input.GetKeyDown(KeyCode.Space) && character_script.is_on_ground)
+        // Make the player jump
+        if (Input.GetKeyDown(key_jump) && player_script.is_on_ground)
         {
-            player_rb.AddForce(Vector3.up * character_script.jump_force, ForceMode.Impulse);
-            character_script.is_on_ground = false;
+            player_rb.AddForce(Vector3.up * player_script.jump_force, ForceMode.Impulse);
+            player_script.is_on_ground = false;
         }
     }
 }
