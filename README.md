@@ -67,11 +67,12 @@
 - Candies' halo changed from blue to red. The reason is that the candies are actually red, and the environment is mostly green and red is the color which clashes the most with it.
 - The UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
 - Sound effects and sound ambiences are added to the game.
-- Lights have been added to objects around the map.
+- Lights have been added to objects around the map. The candles have a flicker animation and can be extinguished when knocked over.
 - The game has a goal. Once reached, the process waits for a second before sending the user back to the main menu.
 - The player used to rotate on the y axis randomly, without any input. It has been fixed by freezing the player's y rotation axis. I thought this would prevent input-based rotation, but no, this only freezes it for the physics engine, and the transform can still be updated from code. The enemies' y rotation axis has also been freezed to match the player's logic.
 
 ### ISSUES
 5. The camera can clip behind meshes. Cinemachine is a solution.
 6. The "MenuValidate" sound effect in MenuManager.NewGame() only plays the first time the method is called.
+7. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
 
