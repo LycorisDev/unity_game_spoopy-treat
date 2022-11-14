@@ -9,8 +9,11 @@ TagManager:
   - PlayerCandyCounter
   - MenuCamera
   - UICamera
-  - MainMenuOption
   - UICandy
+  - MainMenuScreen
+  - MenuLicensesScreen
+  - MenuGoBackOption
+  - MenuOption
   layers:
   - Default
   - TransparentFX

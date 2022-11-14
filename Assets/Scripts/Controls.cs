@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
+    private static string current_sub_menu;
     private static Rigidbody player_rb;
     private static Character player_script;
     private static KeyCode key_menu, key_screen_mode, key_validate, key_up, key_down, key_left, key_right, key_side_left, key_side_right, key_jump;
 
     void Start()
     {
+        current_sub_menu = "main";
         player_rb = GetComponent<Rigidbody>();
         player_script = GetComponent<Character>();
 
@@ -26,28 +28,44 @@ public class Controls : MonoBehaviour
 
     void Update()
     {
-        // Open menu if in game, or close the soft if already in menu
         if (Input.GetKeyDown(key_menu))
         {
+            // Open menu if in game
             if (Time.timeScale == 1)
+            {
                 MenuManager.OpenMenu();
+            }
+            // Go back to main menu if in sub-menu
+            else if (current_sub_menu == "licenses")
+            {
+                MenuManager.CloseLicensesMenu();
+                current_sub_menu = "main";
+            }
+            // Close the soft if already in menu
             else
+            {
                 MenuManager.Quit();
+            }
         }
 
         if (Time.timeScale == 0)
-            MenuControls();
+        {
+            if (current_sub_menu == "main")
+                HandleMainMenuInput();
+            else
+                HandleLicensesMenuInput();
+        }
         else
-            GameControls();
+            HandleGameInput();
         
         // Switch between fullscreen and windowed mode
         if (Input.GetKeyDown(key_screen_mode))
             Screen.fullScreen = !Screen.fullScreen;
     }
 
-    private static void MenuControls()
+    private static void HandleMainMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption();
+        MenuManager.SetGraphicsForSelectedOption("main");
 
         /*
             - Go up with UP and LEFT input
@@ -60,13 +78,13 @@ public class Controls : MonoBehaviour
         */
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(key_up))
-            MenuManager.SelectUp();
+            MenuManager.SelectUp("main");
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(key_down))
-            MenuManager.SelectDown();
+            MenuManager.SelectDown("main");
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(key_left) || Input.GetKeyDown(key_side_left))
-            MenuManager.SelectUp();
+            MenuManager.SelectUp("main");
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(key_right) || Input.GetKeyDown(key_side_right))
-            MenuManager.SelectDown();
+            MenuManager.SelectDown("main");
 
         if (Input.GetKeyDown(key_validate))
         {
@@ -82,7 +100,8 @@ public class Controls : MonoBehaviour
                     MenuManager.Options();
                     break;
                 case 3:
-                    MenuManager.Licenses();
+                    MenuManager.OpenLicensesMenu();
+                    current_sub_menu = "licenses";
                     break;
                 case 4:
                     MenuManager.Quit();
@@ -91,7 +110,50 @@ public class Controls : MonoBehaviour
         }
     }
 
-    private void GameControls()
+    private static void HandleLicensesMenuInput()
+    {
+        MenuManager.SetGraphicsForSelectedOption("licenses");
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(key_up))
+            MenuManager.SelectUp("licenses");
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(key_down))
+            MenuManager.SelectDown("licenses");
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(key_left) || Input.GetKeyDown(key_side_left))
+            MenuManager.SelectUp("licenses");
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(key_right) || Input.GetKeyDown(key_side_right))
+            MenuManager.SelectDown("licenses");
+
+        if (Input.GetKeyDown(key_validate))
+        {
+            switch (MenuManager.index_option)
+            {
+                case 0:
+                    MenuManager.OpenLink("https://www.ghosthack.de");
+                    break;
+                case 1:
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/exterior/halloween-pumpkins-50597");
+                    break;
+                case 2:
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153");
+                    break;
+                case 3:
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/mausoleum-128753");
+                    break;
+                case 4:
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/poly-halloween-pack-236625");
+                    break;
+                case 5:
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
+                    break;
+                case 6:
+                    MenuManager.CloseLicensesMenu();
+                    current_sub_menu = "main";
+                    break;
+            }
+        }
+    }
+
+    private void HandleGameInput()
     {
         // Move the player forward or backward
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(key_up))

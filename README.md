@@ -67,12 +67,13 @@
 - The player can step to the side with the Q (left) and E (right) keys, or whatever physical equivalent to QWERTY.
 
 ### ADDED FEATURES: MAIN MENU
-- Options are "Resume Current Game", "New Game", "Options" (WIP), "Licenses" (WIP) and "Quit".
+- Options are "Resume Current Game", "New Game", "Options" (WIP), "Licenses" and "Quit".
 - The main menu is a canvas and not another scene. It is navigated with WASD/Q-E/arrow keys and the Enter key.
-- The main menu is opened first thing, and once in game it can be opened with the Escape key. Using the Escape key again while in the menu is the same as selecting "Quit".
+- The main menu is opened first thing, and once in game it can be opened with the Escape key. Using the Escape key again while in the main menu is the same as selecting "Quit", and if the user is in a sub-menu instead, the Escape key brings them back to the main menu.
 - The game is paused while the menu is open.
 - "Resume Current Game" is hidden and unusable if no game has been started yet.
 - "New Game" resets the scene if this wasn't the first game. A boolean is carried through the next iteration of the scene in order to know to load the game immediately instead of awaiting for input in the menu.
+- "Licenses" holds URLs that can be selected and opened in the browser, as well as an option to go back to the main menu.
 
 ### ADDED FEATURES: SCREEN MODE
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.
@@ -93,7 +94,7 @@
 
 ### INPUT NOTE
 - It makes sense to use the arrow keys for the menu, but in order to make the handling of the game as intuitive as possible, I have allowed the use of the WASD keys and of the Q/E ones as well. And what's more, these keys are ideal because they are ones that every gamer knows, so even without displaying the controls the user should be able to find the keys. The recent "Physical Keys" Unity feature also allows anyone in the world to use the keys they are familiar with instead of updating the key bindings.
-- On commonly used keys, the space bar is indeed used for jumping, the Escape key for the menu, the Enter key to validate or interact, and F4 is common for the windowed screen mode as well.
+- On commonly used keys, the space bar is indeed used for jumping, the Escape key for the menu/closing/going back, the Enter key to validate or interact, and it is my understanding that F4 is common for the windowed screen mode as well.
 
 ### ISSUES
 5. The camera can clip behind meshes. Cinemachine is a solution.

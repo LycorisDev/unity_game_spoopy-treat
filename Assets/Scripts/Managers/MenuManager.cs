@@ -8,7 +8,8 @@ public class MenuManager : MonoBehaviour
     private static AudioManager audio_manager;
     private static Behaviour menu_camera;
     private static Behaviour ui_camera;
-    private static TextMeshProUGUI[] arr_tmp;
+    private static GameObject screen_main, screen_licenses;
+    private static TextMeshProUGUI[] arr_tmp_main, arr_tmp_licenses;
     public static int index_option;
     private static int min_index_option;
     private static bool is_first_game;
@@ -23,15 +24,33 @@ public class MenuManager : MonoBehaviour
         menu_camera = (Behaviour)GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
         ui_camera = (Behaviour)GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
 
-        // Set arr_tmp
-        arr_go = GameObject.FindGameObjectsWithTag("MainMenuOption");
+        // Set screen_main and screen_licenses
+        screen_main = GameObject.FindGameObjectWithTag("MainMenuScreen");
+        screen_licenses = GameObject.FindGameObjectWithTag("MenuLicensesScreen");
+
+        // Set arr_tmp_main
+        screen_licenses.SetActive(false);
+        arr_go = GameObject.FindGameObjectsWithTag("MenuOption");
         arr_go = arr_go.OrderBy(e => e.name).ToArray();
-        arr_tmp = new TextMeshProUGUI[arr_go.Length];
+        arr_tmp_main = new TextMeshProUGUI[arr_go.Length];
         for (i = 0; i < arr_go.Length; ++i)
-            arr_tmp[i] = arr_go[i].GetComponent<TextMeshProUGUI>();
+            arr_tmp_main[i] = arr_go[i].GetComponent<TextMeshProUGUI>();
+
+        // Set arr_tmp_licenses
+        screen_main.SetActive(false);
+        screen_licenses.SetActive(true);
+        arr_go = GameObject.FindGameObjectsWithTag("MenuOption");
+        arr_go = arr_go.OrderBy(e => e.name).ToArray();
+        arr_tmp_licenses = new TextMeshProUGUI[arr_go.Length];
+        for (i = 0; i < arr_go.Length; ++i)
+            arr_tmp_licenses[i] = arr_go[i].GetComponent<TextMeshProUGUI>();
+
+        // Only activate the main screen
+        screen_licenses.SetActive(false);
+        screen_main.SetActive(true);
 
         // When the soft starts, there is no ongoing game, so disable the first option ("Resume Current Game")
-        DisableFirstMenuOption();
+        DisableFirstMainMenuOption();
         index_option = min_index_option;
         is_first_game = true;
 
@@ -41,7 +60,7 @@ public class MenuManager : MonoBehaviour
             audio_manager.Play("MenuValidate");
             ResumeGame();
             // A game starting also implies that "Resume Current Game" needs to be enabled
-            EnableFirstMenuOption();
+            EnableFirstMainMenuOption();
         }
         else
             OpenMenu();
@@ -91,20 +110,22 @@ public class MenuManager : MonoBehaviour
         audio_manager.Stop("GameAmbienceCreeper");
     }
 
-    public static void DisableFirstMenuOption()
+    public static void DisableFirstMainMenuOption()
     {
-        arr_tmp[0].enabled = false;
+        arr_tmp_main[0].enabled = false;
         min_index_option = 1;
     }
 
-    private static void EnableFirstMenuOption()
+    private static void EnableFirstMainMenuOption()
     {
-        arr_tmp[0].enabled = true;
+        arr_tmp_main[0].enabled = true;
         min_index_option = 0;
     }
 
-    public static void SetGraphicsForSelectedOption()
+    public static void SetGraphicsForSelectedOption(string menu)
     {
+        TextMeshProUGUI[] arr_tmp = menu == "main" ? arr_tmp_main : arr_tmp_licenses;
+
         // Set all options to white
         foreach (TextMeshProUGUI tmp in arr_tmp)
             tmp.color = new Color(1f, 1f, 1f, 1f);
@@ -113,16 +134,40 @@ public class MenuManager : MonoBehaviour
         arr_tmp[index_option].color = new Color(0.65f, 0.19f, 0.08f, 1f);
     }
 
-    public static void SelectUp()
+    public static void SelectUp(string menu)
     {
+        int length, min;
+        if (menu == "main")
+        {
+            length = arr_tmp_main.Length;
+            min = min_index_option;
+        }
+        else
+        {
+            length = arr_tmp_licenses.Length;
+            min = 0;
+        }
+
         audio_manager.Play("MenuSelect");
-        index_option = index_option > min_index_option ? index_option - 1 : arr_tmp.Length - 1;
+        index_option = index_option > min ? index_option - 1 : length - 1;
     }
 
-    public static void SelectDown()
+    public static void SelectDown(string menu)
     {
+        int length, min;
+        if (menu == "main")
+        {
+            length = arr_tmp_main.Length;
+            min = min_index_option;
+        }
+        else
+        {
+            length = arr_tmp_licenses.Length;
+            min = 0;
+        }
+
         audio_manager.Play("MenuSelect");
-        index_option = index_option < arr_tmp.Length - 1 ? index_option + 1 : min_index_option;
+        index_option = index_option < length - 1 ? index_option + 1 : min;
     }
 
     public static void ResumeCurrentGame()
@@ -140,7 +185,7 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         ResumeGame();
-        EnableFirstMenuOption();
+        EnableFirstMainMenuOption();
     }
 
     public static void Options()
@@ -148,9 +193,26 @@ public class MenuManager : MonoBehaviour
         audio_manager.Play("MenuValidate");
     }
 
-    public static void Licenses()
+    public static void OpenLicensesMenu()
     {
         audio_manager.Play("MenuValidate");
+        screen_main.SetActive(false);
+        screen_licenses.SetActive(true);
+        index_option = 0;
+    }
+
+    public static void OpenLink(string link)
+    {
+        audio_manager.Play("MenuValidate");
+        Application.OpenURL(link);
+    }
+
+    public static void CloseLicensesMenu()
+    {
+        audio_manager.Play("MenuBack");
+        screen_licenses.SetActive(false);
+        screen_main.SetActive(true);
+        index_option = min_index_option;
     }
 
     public static void Quit()
