@@ -22,7 +22,7 @@ public class CompleteGoal : MonoBehaviour
             audio_manager.Play("GameVictory");
             yield return new WaitForSecondsRealtime(1f);
             MenuManager.DisableFirstMainMenuOption();
-            MenuManager.OpenMenu();
+            MenuManager.OpenMainMenu();
         }
     }
 }

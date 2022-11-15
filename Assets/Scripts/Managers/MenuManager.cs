@@ -8,8 +8,8 @@ public class MenuManager : MonoBehaviour
     private static AudioManager audio_manager;
     private static Behaviour menu_camera;
     private static Behaviour ui_camera;
-    private static GameObject screen_main, screen_licenses;
-    private static TextMeshProUGUI[] arr_tmp_main, arr_tmp_licenses;
+    private static GameObject screen_main, screen_options, screen_licenses;
+    private static TextMeshProUGUI[] arr_tmp_main, arr_tmp_options, arr_tmp_licenses;
     public static int index_option;
     private static int min_index_option;
     private static bool is_first_game;
@@ -24,11 +24,13 @@ public class MenuManager : MonoBehaviour
         menu_camera = (Behaviour)GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
         ui_camera = (Behaviour)GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
 
-        // Set screen_main and screen_licenses
+        // Set the screen variables
         screen_main = GameObject.FindGameObjectWithTag("MainMenuScreen");
+        screen_options = GameObject.FindGameObjectWithTag("MenuOptionsScreen");
         screen_licenses = GameObject.FindGameObjectWithTag("MenuLicensesScreen");
 
         // Set arr_tmp_main
+        screen_options.SetActive(false);
         screen_licenses.SetActive(false);
         arr_go = GameObject.FindGameObjectsWithTag("MenuOption");
         arr_go = arr_go.OrderBy(e => e.name).ToArray();
@@ -36,8 +38,17 @@ public class MenuManager : MonoBehaviour
         for (i = 0; i < arr_go.Length; ++i)
             arr_tmp_main[i] = arr_go[i].GetComponent<TextMeshProUGUI>();
 
-        // Set arr_tmp_licenses
+        // Set arr_tmp_options
         screen_main.SetActive(false);
+        screen_options.SetActive(true);
+        arr_go = GameObject.FindGameObjectsWithTag("MenuOption");
+        arr_go = arr_go.OrderBy(e => e.name).ToArray();
+        arr_tmp_options = new TextMeshProUGUI[arr_go.Length];
+        for (i = 0; i < arr_go.Length; ++i)
+            arr_tmp_options[i] = arr_go[i].GetComponent<TextMeshProUGUI>();
+
+        // Set arr_tmp_licenses
+        screen_options.SetActive(false);
         screen_licenses.SetActive(true);
         arr_go = GameObject.FindGameObjectsWithTag("MenuOption");
         arr_go = arr_go.OrderBy(e => e.name).ToArray();
@@ -63,10 +74,10 @@ public class MenuManager : MonoBehaviour
             EnableFirstMainMenuOption();
         }
         else
-            OpenMenu();
+            OpenMainMenu();
     }
 
-    public static void OpenMenu()
+    public static void OpenMainMenu()
     {
         if (!is_first_game)
             audio_manager.Play("MenuBack");
@@ -124,7 +135,13 @@ public class MenuManager : MonoBehaviour
 
     public static void SetGraphicsForSelectedOption(string menu)
     {
-        TextMeshProUGUI[] arr_tmp = menu == "main" ? arr_tmp_main : arr_tmp_licenses;
+        TextMeshProUGUI[] arr_tmp;
+        if (menu == "options")
+            arr_tmp = arr_tmp_options;
+        else if (menu == "licenses")
+            arr_tmp = arr_tmp_licenses;
+        else
+            arr_tmp = arr_tmp_main;
 
         // Set all options to white
         foreach (TextMeshProUGUI tmp in arr_tmp)
@@ -137,15 +154,20 @@ public class MenuManager : MonoBehaviour
     public static void SelectUp(string menu)
     {
         int length, min;
-        if (menu == "main")
+        if (menu == "options")
         {
-            length = arr_tmp_main.Length;
-            min = min_index_option;
+            length = arr_tmp_options.Length;
+            min = 0;
         }
-        else
+        else if (menu == "licenses")
         {
             length = arr_tmp_licenses.Length;
             min = 0;
+        }
+        else
+        {
+            length = arr_tmp_main.Length;
+            min = min_index_option;
         }
 
         audio_manager.Play("MenuSelect");
@@ -155,15 +177,20 @@ public class MenuManager : MonoBehaviour
     public static void SelectDown(string menu)
     {
         int length, min;
-        if (menu == "main")
+        if (menu == "options")
         {
-            length = arr_tmp_main.Length;
-            min = min_index_option;
+            length = arr_tmp_options.Length;
+            min = 0;
         }
-        else
+        else if (menu == "licenses")
         {
             length = arr_tmp_licenses.Length;
             min = 0;
+        }
+        else
+        {
+            length = arr_tmp_main.Length;
+            min = min_index_option;
         }
 
         audio_manager.Play("MenuSelect");
@@ -188,36 +215,44 @@ public class MenuManager : MonoBehaviour
         EnableFirstMainMenuOption();
     }
 
-    public static void Options()
+    public static void Quit()
     {
-        audio_manager.Play("MenuValidate");
+        audio_manager.Play("MenuBack");
+        Application.Quit();
     }
 
-    public static void OpenLicensesMenu()
+    public static void OpenSubMenu(string menu)
     {
         audio_manager.Play("MenuValidate");
         screen_main.SetActive(false);
-        screen_licenses.SetActive(true);
+
+        if (menu == "options")
+            screen_options.SetActive(true);
+        else if (menu == "licenses")
+            screen_licenses.SetActive(true);
+        // Error, so just quit
+        else
+            Quit();
+
         index_option = 0;
+    }
+
+    public static void CloseSubMenu(string menu)
+    {
+        audio_manager.Play("MenuBack");
+
+        if (menu == "options")
+            screen_options.SetActive(false);
+        else if (menu == "licenses")
+            screen_licenses.SetActive(false);
+
+        screen_main.SetActive(true);
+        index_option = min_index_option;
     }
 
     public static void OpenLink(string link)
     {
         audio_manager.Play("MenuValidate");
         Application.OpenURL(link);
-    }
-
-    public static void CloseLicensesMenu()
-    {
-        audio_manager.Play("MenuBack");
-        screen_licenses.SetActive(false);
-        screen_main.SetActive(true);
-        index_option = min_index_option;
-    }
-
-    public static void Quit()
-    {
-        audio_manager.Play("MenuBack");
-        Application.Quit();
     }
 }

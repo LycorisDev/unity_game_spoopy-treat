@@ -32,29 +32,17 @@ public class Controls : MonoBehaviour
         {
             // Open menu if in game
             if (Time.timeScale == 1)
-            {
-                MenuManager.OpenMenu();
-            }
-            // Go back to main menu if in sub-menu
-            else if (current_sub_menu == "licenses")
-            {
-                MenuManager.CloseLicensesMenu();
-                current_sub_menu = "main";
-            }
-            // Close the soft if already in menu
-            else
-            {
+                MenuManager.OpenMainMenu();
+            // Close the soft if in main menu
+            else if (current_sub_menu == "main")
                 MenuManager.Quit();
-            }
+            // Go back to main menu if in sub-menu
+            else
+                GoBackToMainMenu();
         }
 
         if (Time.timeScale == 0)
-        {
-            if (current_sub_menu == "main")
-                HandleMainMenuInput();
-            else
-                HandleLicensesMenuInput();
-        }
+            HandleMenuInput();
         else
             HandleGameInput();
         
@@ -63,10 +51,18 @@ public class Controls : MonoBehaviour
             Screen.fullScreen = !Screen.fullScreen;
     }
 
-    private static void HandleMainMenuInput()
+    private static void HandleMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption("main");
+        if (current_sub_menu == "options")
+            HandleOptionsMenuInput();
+        else if (current_sub_menu == "licenses")
+            HandleLicensesMenuInput();
+        else
+            HandleMainMenuInput();
+    }
 
+    private static void SelectMenuOption()
+    {
         /*
             - Go up with UP and LEFT input
             - Go down with DOWN and RIGHT input
@@ -78,13 +74,35 @@ public class Controls : MonoBehaviour
         */
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(key_up))
-            MenuManager.SelectUp("main");
+            MenuManager.SelectUp(current_sub_menu);
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(key_down))
-            MenuManager.SelectDown("main");
+            MenuManager.SelectDown(current_sub_menu);
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(key_left) || Input.GetKeyDown(key_side_left))
-            MenuManager.SelectUp("main");
+            MenuManager.SelectUp(current_sub_menu);
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(key_right) || Input.GetKeyDown(key_side_right))
-            MenuManager.SelectDown("main");
+            MenuManager.SelectDown(current_sub_menu);
+    }
+
+    private static void SelectMenuOptionVerticalOnly()
+    {
+        /* Used for when the sub-menu requires the horizontal input for other specific options (e.g. volume sliders). */
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(key_up))
+            MenuManager.SelectUp(current_sub_menu);
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(key_down))
+            MenuManager.SelectDown(current_sub_menu);
+    }
+
+    private static void GoBackToMainMenu()
+    {
+        MenuManager.CloseSubMenu(current_sub_menu);
+        current_sub_menu = "main";
+    }
+
+    private static void HandleMainMenuInput()
+    {
+        MenuManager.SetGraphicsForSelectedOption(current_sub_menu);
+        SelectMenuOption();
 
         if (Input.GetKeyDown(key_validate))
         {
@@ -97,11 +115,12 @@ public class Controls : MonoBehaviour
                     MenuManager.NewGame();
                     break;
                 case 2:
-                    MenuManager.Options();
+                    current_sub_menu = "options";
+                    MenuManager.OpenSubMenu(current_sub_menu);
                     break;
                 case 3:
-                    MenuManager.OpenLicensesMenu();
                     current_sub_menu = "licenses";
+                    MenuManager.OpenSubMenu(current_sub_menu);
                     break;
                 case 4:
                     MenuManager.Quit();
@@ -110,18 +129,38 @@ public class Controls : MonoBehaviour
         }
     }
 
+    private static void HandleOptionsMenuInput()
+    {
+        MenuManager.SetGraphicsForSelectedOption(current_sub_menu);
+        SelectMenuOptionVerticalOnly();
+
+        if (Input.GetKeyDown(key_validate))
+        {
+            switch (MenuManager.index_option)
+            {
+                case 0:
+                    // General Volume
+                    break;
+                case 1:
+                    // Music Volume
+                    break;
+                case 2:
+                    // Ambience Volume
+                    break;
+                case 3:
+                    // Effects Volume
+                    break;
+                case 4:
+                    GoBackToMainMenu();
+                    break;
+            }
+        }
+    }
+
     private static void HandleLicensesMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption("licenses");
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(key_up))
-            MenuManager.SelectUp("licenses");
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(key_down))
-            MenuManager.SelectDown("licenses");
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(key_left) || Input.GetKeyDown(key_side_left))
-            MenuManager.SelectUp("licenses");
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(key_right) || Input.GetKeyDown(key_side_right))
-            MenuManager.SelectDown("licenses");
+        MenuManager.SetGraphicsForSelectedOption(current_sub_menu);
+        SelectMenuOption();
 
         if (Input.GetKeyDown(key_validate))
         {
@@ -146,8 +185,7 @@ public class Controls : MonoBehaviour
                     MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
                     break;
                 case 6:
-                    MenuManager.CloseLicensesMenu();
-                    current_sub_menu = "main";
+                    GoBackToMainMenu();
                     break;
             }
         }

@@ -14,6 +14,7 @@ TagManager:
   - MenuLicensesScreen
   - MenuGoBackOption
   - MenuOption
+  - MenuOptionsScreen
   layers:
   - Default
   - TransparentFX
