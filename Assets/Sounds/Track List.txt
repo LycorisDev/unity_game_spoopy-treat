@@ -46,6 +46,13 @@ GAME > CANDIES
 		Album: GhostHack - Ambient Motion
 		Title: synth_perc
 
+GAME > PORTALS
+
+	[Crossing]
+		Album: GhostHack - Ambient Motion
+		Title: portals_c
+		--> Used right now for the victory sound
+
 CURRENTLY UNUSED
 
 	[Pumpkins - Damage]
@@ -72,10 +79,6 @@ CURRENTLY UNUSED
 	[Portals - Corrupted Portal]
 		Album: GhostHack - Ambient Motion
 		Title: haunted_c
-
-	[Portals - Crossing]
-		Album: GhostHack - Ambient Motion
-		Title: portals_c
 
 	[Music Theme - Game Over]
 		Album: GhostHack - Halloween 2022 Freebie
