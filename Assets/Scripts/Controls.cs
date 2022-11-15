@@ -134,27 +134,15 @@ public class Controls : MonoBehaviour
         MenuManager.SetGraphicsForSelectedOption(current_sub_menu);
         SelectMenuOptionVerticalOnly();
 
-        if (Input.GetKeyDown(key_validate))
+        if (MenuManager.index_option == 4)
         {
-            switch (MenuManager.index_option)
-            {
-                case 0:
-                    // General Volume
-                    break;
-                case 1:
-                    // Music Volume
-                    break;
-                case 2:
-                    // Ambience Volume
-                    break;
-                case 3:
-                    // Effects Volume
-                    break;
-                case 4:
-                    GoBackToMainMenu();
-                    break;
-            }
+            if (Input.GetKeyDown(key_validate))
+                GoBackToMainMenu();
         }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(key_left) || Input.GetKeyDown(key_side_left))
+            MenuManager.UpdateVolume(MenuManager.index_option, -1);
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(key_right) || Input.GetKeyDown(key_side_right))
+            MenuManager.UpdateVolume(MenuManager.index_option, 1);
     }
 
     private static void HandleLicensesMenuInput()

@@ -1,3 +1,8 @@
+ERROR
+
+	Album: GhostHack - Ambient Motion
+	Title: synth_bass_c_20
+
 MENU
 
 	[Music Theme]
@@ -20,6 +25,10 @@ MENU
 	[Forward]
 		Album: GhostHack - Ambient Motion
 		Title: warped_hit_2
+
+	[Limit]
+		Album: GhostHack - Ambient Motion
+		Title: perc_16
 
 GAME > DEFAULT AMBIENCE
 

@@ -4,11 +4,14 @@
 
 ---
 
-## FIRST VERSION FOR THE SCHOOL
+## FIRST VERSION
 
 [LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/440a1a09e6b6f24df655d0fe97c3d8b10f8bf1fa)
 
 ![](./ingame_screenshot_0.png)
+
+**Released on the 30th of October 2022**  
+**This version respects the school's requirements for the prototype and goes a little bit beyond them.**  
 
 ### FEATURES
 - The game is made with Unity.
@@ -46,7 +49,12 @@
 
 ## SECOND VERSION
 
+[LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/b6fec2ab7510d4a3fe25a6bba41956eaf2e87670)
+
 ![](./ingame_screenshot_1.png)
+
+**Released on the 15th of November 2022**  
+**This version still respects the school's requirements for the prototype, and since I had time before the deadline I added more features.**  
 
 ### ALL PREVIOUS ISSUES HAVE BEEN FIXED
 - **ISSUES N°1 AND N°2:** At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
@@ -67,13 +75,14 @@
 - The player can step to the side with the Q (left) and E (right) keys, or whatever physical equivalent to QWERTY.
 
 ### ADDED FEATURES: MAIN MENU
-- Options are "Resume Current Game", "New Game", "Options" (WIP), "Licenses" and "Quit".
-- The main menu is a canvas and not another scene. It is navigated with WASD/Q-E/arrow keys and the Enter key.
+- Options are "Resume Current Game", "New Game", "Options", "Licenses" and "Quit".
+- The main menu is a canvas and not another scene. It is navigated with WASD/Q-E/arrow keys and the Enter key. This means that options can be browsed through with an UP/DOWN input, and also with a LEFT/RIGHT one, whichever feels right to the user.
 - The main menu is opened first thing, and once in game it can be opened with the Escape key. Using the Escape key again while in the main menu is the same as selecting "Quit", and if the user is in a sub-menu instead, the Escape key brings them back to the main menu.
 - The game is paused while the menu is open.
 - "Resume Current Game" is hidden and unusable if no game has been started yet.
 - "New Game" resets the scene if this wasn't the first game. A boolean is carried through the next iteration of the scene in order to know to load the game immediately instead of awaiting for input in the menu.
-- "Licenses" holds URLs that can be selected and opened in the browser, as well as an option to go back to the main menu.
+- "Options" allows the user to update the sound volumes: General, Music, Ambience and Effects. In this sub-menu, the different options cannot be browsed through with the LEFT/RIGHT input, as these are used to update the volume values. Below those, a "Go Back" option can be selected and validated to go back to the main menu.
+- "Licenses" holds URLs that can be selected and opened in the browser, as well as the "Go Back" option.
 
 ### ADDED FEATURES: SCREEN MODE
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.

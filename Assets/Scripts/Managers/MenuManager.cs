@@ -255,4 +255,12 @@ public class MenuManager : MonoBehaviour
         audio_manager.Play("MenuValidate");
         Application.OpenURL(link);
     }
+
+    public static void UpdateVolume(int index_option, int input)
+    {
+        int new_percentage = 0;
+        new_percentage = audio_manager.SetMixerVolume(index_option, input);
+        if (new_percentage != -1)
+            arr_tmp_options[index_option].text = new_percentage.ToString() + "%";
+    }
 }
