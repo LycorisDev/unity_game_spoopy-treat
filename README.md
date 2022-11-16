@@ -49,7 +49,7 @@
 
 ## SECOND VERSION
 
-[LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/b6fec2ab7510d4a3fe25a6bba41956eaf2e87670)
+[LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/5149900246764ce182620c481d69bc1d849e3c1a)
 
 ![](./ingame_screenshot_1.png)
 
