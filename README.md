@@ -13,6 +13,12 @@
 **Released on the 30th of October 2022**  
 **This version respects the school's requirements for the prototype and goes a little bit beyond them.**  
 
+### DOWNLOAD LINKS
+[Windows 64-bit](https://drive.google.com/file/d/1E9B2NhY4a15ldAh5JdclrArnrq13H0u4/view?usp=sharing)  
+[Windows 32-bit](https://drive.google.com/file/d/1tv8Bt5AxLdgjNghCpy7fORK90F3h-XoV/view?usp=sharing)  
+[Mac](https://drive.google.com/file/d/18QgwM1pAAbZzFY2Y7FaUrqxlUyEmOtAC/view?usp=sharing)  
+[Linux](https://drive.google.com/file/d/1B_Hm94iHYwdwe8fpQxhm6IjIazULjODu/view?usp=sharing)  
+
 ### FEATURES
 - The game is made with Unity.
 - Installing it on Ubuntu (Linux) is not as straight forward as it seems. The Hub cannot open because it keeps crashing. The solution is to execute the AppImage file with the "--no-sandbox" option.
@@ -35,12 +41,6 @@
 - When a full cauldron is knocked over, a candy is created and the cauldron is replaced by an empty one.
 - The game is compiled for Windows 64-bit, Windows 32-bit, Mac and Linux.
 
-### DOWNLOAD LINKS
-[Windows 64-bit](https://drive.google.com/file/d/1E9B2NhY4a15ldAh5JdclrArnrq13H0u4/view?usp=sharing)  
-[Windows 32-bit](https://drive.google.com/file/d/1tv8Bt5AxLdgjNghCpy7fORK90F3h-XoV/view?usp=sharing)  
-[Mac](https://drive.google.com/file/d/18QgwM1pAAbZzFY2Y7FaUrqxlUyEmOtAC/view?usp=sharing)  
-[Linux](https://drive.google.com/file/d/1B_Hm94iHYwdwe8fpQxhm6IjIazULjODu/view?usp=sharing)  
-
 ### ISSUES
 1. An increase in speed makes the player ignore collisions.
 2. An increase in speed and/or in mass makes pushing moveable objects more difficult, because the player would then tend to be sent flying.
@@ -55,6 +55,12 @@
 
 **Released on the 15th of November 2022**  
 **This version still respects the school's requirements for the prototype, and since I had time before the deadline I added more features.**  
+
+### DOWNLOAD LINKS
+[Windows 64-bit](https://drive.google.com/file/d/1ZCRyhYCYrFM8J7bncQ68OSAH15iQgXnx/view?usp=sharing)  
+[Windows 32-bit](https://drive.google.com/file/d/1sokVXgT3msWIA2ez4VfTUolJYjGRMWM9/view?usp=sharing)  
+[Mac](https://drive.google.com/file/d/1eWCKfyV48FLE-JOZVT66_4sWZDiC-AMu/view?usp=sharing)  
+[Linux](https://drive.google.com/file/d/1D7Mb3NmgJeBeZqo90Q4XrMwyQ54-RxeT/view?usp=sharing)  
 
 ### ALL PREVIOUS ISSUES HAVE BEEN FIXED
 - **ISSUES N°1 AND N°2:** At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
