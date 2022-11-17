@@ -47,6 +47,8 @@
 3. On rare occasions, the cauldrons do not empty even when knocked over.
 4. On rarer occasions, the player rotates on the x axis for a bit even without input.
 
+---
+
 ## SECOND VERSION
 
 [LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/5149900246764ce182620c481d69bc1d849e3c1a)
@@ -114,4 +116,10 @@
 ### ISSUES
 5. The camera can clip behind meshes. Cinemachine is a solution.
 6. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
+
+---
+
+## THIRD VERSION
+
+[Ongoing]
 
