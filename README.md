@@ -2,22 +2,31 @@
 
 *Spoopy Treat* is a Unity game made for a school's recruiting process. Enjoying the concept I've found for it so much, I've decided to turn it into an actual game and will ship it as a Mofumofu product. It will be a 3D platformer, and this repository holds the demo version.  
 
+**DISCLAIMERS**
+For a given version, only the most recent sub-version builds are available. If you are interested in testing earlier sub-versions, a link to each sub-version's last commit is available in the notes down below. You are allowed to clone and build from Unity.  
+You are however not allowed to claim this project as your own, even if the version you use is a pre-release one or a demo available for free.  
+And when it comes to using the assets, you are of course allowed to dispose of them as you will as long as you have the authorization of the respective owners.  
+
 ---
 
-## FIRST VERSION
+## DOWNLOAD LINKS
 
-[LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/440a1a09e6b6f24df655d0fe97c3d8b10f8bf1fa)
+**VERSION 0.0.0 --> 0.0.0-a (30/10/22) / 0.0.0-b (15/11/22) / 0.0.0-c (ongoing)**  
+[Windows 64-bit](https://drive.google.com/file/d/1ZCRyhYCYrFM8J7bncQ68OSAH15iQgXnx/view?usp=sharing)  
+[Windows 32-bit](https://drive.google.com/file/d/1sokVXgT3msWIA2ez4VfTUolJYjGRMWM9/view?usp=sharing)  
+[Mac](https://drive.google.com/file/d/1eWCKfyV48FLE-JOZVT66_4sWZDiC-AMu/view?usp=sharing)  
+[Linux](https://drive.google.com/file/d/1D7Mb3NmgJeBeZqo90Q4XrMwyQ54-RxeT/view?usp=sharing)  
 
-![](./ingame_screenshot_0.png)
+---
+
+## NOTES FOR SUB-VERSION 0.0.0-a
+
+[LINK TO THIS SUB-VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/440a1a09e6b6f24df655d0fe97c3d8b10f8bf1fa)
+
+![](./ingame_screenshot_0_0_0_a.png)
 
 **Released on the 30th of October 2022**  
-**This version respects the school's requirements for the prototype and goes a little bit beyond them.**  
-
-### DOWNLOAD LINKS
-[Windows 64-bit](https://drive.google.com/file/d/1E9B2NhY4a15ldAh5JdclrArnrq13H0u4/view?usp=sharing)  
-[Windows 32-bit](https://drive.google.com/file/d/1tv8Bt5AxLdgjNghCpy7fORK90F3h-XoV/view?usp=sharing)  
-[Mac](https://drive.google.com/file/d/18QgwM1pAAbZzFY2Y7FaUrqxlUyEmOtAC/view?usp=sharing)  
-[Linux](https://drive.google.com/file/d/1B_Hm94iHYwdwe8fpQxhm6IjIazULjODu/view?usp=sharing)  
+**This sub-version respects the school's requirements for the prototype and goes a little bit beyond them.**  
 
 ### FEATURES
 - The game is made with Unity.
@@ -49,20 +58,14 @@
 
 ---
 
-## SECOND VERSION
+## NOTES FOR SUB-VERSION 0.0.0-b
 
-[LINK TO THIS VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/5149900246764ce182620c481d69bc1d849e3c1a)
+[LINK TO THIS SUB-VERSION'S LAST COMMIT](https://github.com/TheLycorisRadiata/game_unity_spoopytreat/tree/5149900246764ce182620c481d69bc1d849e3c1a)
 
-![](./ingame_screenshot_1.png)
+![](./ingame_screenshot_0_0_0_b.png)
 
 **Released on the 15th of November 2022**  
-**This version still respects the school's requirements for the prototype, and since I had time before the deadline I added more features.**  
-
-### DOWNLOAD LINKS
-[Windows 64-bit](https://drive.google.com/file/d/1ZCRyhYCYrFM8J7bncQ68OSAH15iQgXnx/view?usp=sharing)  
-[Windows 32-bit](https://drive.google.com/file/d/1sokVXgT3msWIA2ez4VfTUolJYjGRMWM9/view?usp=sharing)  
-[Mac](https://drive.google.com/file/d/1eWCKfyV48FLE-JOZVT66_4sWZDiC-AMu/view?usp=sharing)  
-[Linux](https://drive.google.com/file/d/1D7Mb3NmgJeBeZqo90Q4XrMwyQ54-RxeT/view?usp=sharing)  
+**This sub-version still respects the school's requirements for the prototype, and since I had time before the deadline I added more features.**  
 
 ### ALL PREVIOUS ISSUES HAVE BEEN FIXED
 - **ISSUES N°1 AND N°2:** At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
@@ -119,7 +122,7 @@
 
 ---
 
-## THIRD VERSION
+## NOTES FOR SUB-VERSION 0.0.0-c
 
 [Ongoing]
 
