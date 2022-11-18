@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraManager: MonoBehaviour
 {
     private static GameObject target;
     private static Vector3 back;
