@@ -2,20 +2,20 @@
 
 *Spoopy Treat* is a Unity game made for a school's recruiting process. Enjoying the concept I've found for it so much, I've decided to turn it into an actual game and will ship it as a Mofumofu product. It will be a 3D platformer, and this repository holds the demo version.  
 
-**DISCLAIMERS**
+**DISCLAIMERS**  
 For a given version, only the most recent sub-version builds are available. If you are interested in testing earlier sub-versions, a link to each sub-version's last commit is available in the notes down below. You are allowed to clone and build from Unity.  
-You are however not allowed to claim this project as your own, even if the version you use is a pre-release one or a demo available for free.  
-And when it comes to using the assets, you are of course allowed to dispose of them as you will as long as you have the authorization of the respective owners.  
+
+You are however not allowed to claim this project as your own, even if the version you use is a pre-release one or a demo available for free. And when it comes to using the assets, you are of course allowed to dispose of them as you will as long as you have the authorization of the respective owners.  
 
 ---
 
 ## DOWNLOAD LINKS
 
 **VERSION 0.0.0 --> 0.0.0-a (30/10/22) / 0.0.0-b (15/11/22) / 0.0.0-c (ongoing)**  
-[Windows 64-bit](https://drive.google.com/file/d/1ZCRyhYCYrFM8J7bncQ68OSAH15iQgXnx/view?usp=sharing)  
-[Windows 32-bit](https://drive.google.com/file/d/1sokVXgT3msWIA2ez4VfTUolJYjGRMWM9/view?usp=sharing)  
-[Mac](https://drive.google.com/file/d/1eWCKfyV48FLE-JOZVT66_4sWZDiC-AMu/view?usp=sharing)  
-[Linux](https://drive.google.com/file/d/1D7Mb3NmgJeBeZqo90Q4XrMwyQ54-RxeT/view?usp=sharing)  
+[Windows 64-bit](https://drive.google.com/file/d/1yDRjVo54Ebq0wapv3Y0YFk3opZ0FqQCU/view?usp=sharing)  
+[Windows 32-bit](https://drive.google.com/file/d/15bONl5WAew-0hzXvoV9lPr4S2aYFUcwN/view?usp=sharing)  
+[Mac](https://drive.google.com/file/d/1Tj1hFGQi7Dx3kraMMRJOI37j3jE7yqEZ/view?usp=sharing)  
+[Linux](https://drive.google.com/file/d/1Dbz8kAHt0K_If7a1v-sT9D_8HfUfwgdp/view?usp=sharing)  
 
 ---
 
@@ -131,12 +131,12 @@ And when it comes to using the assets, you are of course allowed to dispose of t
 - The goal's light switches between gray and the candy number's color until it is fed.
 - Once fed, the number of candies is taken from the player, and the light's color is constant and a default yellow one.
 
-I'll study Unity properly, from the very beginning, before resuming the development of this game.  
-
 **PLAN FOR THIS SUB-VERSION**
 - Fix the previous issues.
 - [Maybe] Add a bounce animation when characters move forwards or backwards and have 0 candy. When they have 1 candy or more, they glide like they currently do.
 - Add a sound effect when characters jump.
 - Add sound effects for when cauldrons are pushed, knocked over, and emptied.
 - [Maybe] Add a sound effect when characters move.
+
+I'll study Unity properly, from the very beginning, before resuming the development of this game.  
 
