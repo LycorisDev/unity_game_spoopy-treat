@@ -117,12 +117,26 @@ And when it comes to using the assets, you are of course allowed to dispose of t
 - On commonly used keys, the space bar is indeed used for jumping, the Escape key for the menu/closing/going back, the Enter key to validate or interact, and it is my understanding that F4 is common for the windowed screen mode as well.
 
 ### ISSUES
-5. The camera can clip behind meshes. Cinemachine is a solution.
-6. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
+5. Rare wall climbing on invisible walls. A solution is to push the player a bit backwards when they collide with these walls.
+6. The camera can clip behind meshes. Cinemachine is a solution.
+7. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
 
 ---
 
 ## NOTES FOR SUB-VERSION 0.0.0-c
 
-[Ongoing]
+### ADDED FEATURES: GAME LOOP
+- Only the player can use the goal. In the current version, the goal still brings the player back to main menu, and in next versions the goal will serve as a portal to another part of the game world.
+- The goal requires a certain amount of candies be fed to it to be activated, between 0 and 3.
+- The goal's light switches between gray and the candy number's color until it is fed.
+- Once fed, the number of candies is taken from the player, and the light's color is constant and a default yellow one.
+
+I'll study Unity properly, from the very beginning, before resuming the development of this game.  
+
+**PLAN FOR THIS SUB-VERSION**
+- Fix the previous issues.
+- [Maybe] Add a bounce animation when characters move forwards or backwards and have 0 candy. When they have 1 candy or more, they glide like they currently do.
+- Add a sound effect when characters jump.
+- Add sound effects for when cauldrons are pushed, knocked over, and emptied.
+- [Maybe] Add a sound effect when characters move.
 

@@ -24600,6 +24600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3717ddd9a4f01348d3b3cc6f6cecb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_goal_fed: 0
+  required_nbr_candies: 3
 --- !u!65 &1669631254
 BoxCollider:
   m_ObjectHideFlags: 0
