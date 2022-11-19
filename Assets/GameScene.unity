@@ -15960,6 +15960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1136385243}
   - component: {fileID: 1136385242}
+  - component: {fileID: 1136385246}
   - component: {fileID: 1136385241}
   - component: {fileID: 1136385244}
   - component: {fileID: 1136385245}
@@ -16029,7 +16030,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136385240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 2.544, z: -0.16}
+  m_LocalPosition: {x: 1.02, y: 2.544, z: -5.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16057,6 +16058,19 @@ Skybox:
   m_GameObject: {fileID: 1136385240}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: c9ec6e8fde1426847a863e9ea1b54790, type: 2}
+--- !u!65 &1136385246
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136385240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1139752843
 PrefabInstance:
   m_ObjectHideFlags: 0
