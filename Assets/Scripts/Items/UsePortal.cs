@@ -1,20 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class CompleteGoal : MonoBehaviour
+public class UsePortal : MonoBehaviour
 {
     private static AudioManager audio_manager;
     private static Character player_script;
     private static Light light_component;
     private Color default_color, dull_color, candy_color;
-    public bool is_goal_fed;
+    public bool is_portal_fed;
     public int required_nbr_candies;
 
     void Start()
     {
         audio_manager = FindObjectOfType<AudioManager>();
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        light_component = gameObject.GetComponent<Light>();
+        light_component = gameObject.GetComponentInChildren(typeof(Light)) as Light;
 
         default_color = light_component.color;
         dull_color = Color.gray;
@@ -37,7 +37,7 @@ public class CompleteGoal : MonoBehaviour
 
     void Update()
     {
-        if (!is_goal_fed)
+        if (!is_portal_fed)
         {
             float time = Mathf.PingPong(Time.time, 1f) / 1f;
             light_component.color = Color.Lerp(dull_color, candy_color, time);
@@ -48,18 +48,18 @@ public class CompleteGoal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!is_goal_fed)
+            if (!is_portal_fed)
             {
                 if (player_script.nbr_candies >= required_nbr_candies)
                 {
                     player_script.nbr_candies -= required_nbr_candies;
-                    is_goal_fed = true;
+                    is_portal_fed = true;
                 }
                 else
                     yield break;
             }
 
-            audio_manager.Play("GameVictory");
+            audio_manager.Play("GamePortalOpening");
             yield return new WaitForSecondsRealtime(1f);
 
             // Version 0.0.0: End the game for now

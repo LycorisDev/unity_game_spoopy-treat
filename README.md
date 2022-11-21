@@ -130,9 +130,10 @@ You are however not allowed to claim this project as your own, even if the versi
 ## NOTES FOR SUB-VERSION 0.0.0-c
 
 ### ADDED FEATURES: GAME LOOP
-- Only the player can use the goal. In the current version, the goal still brings the player back to main menu, and in next versions the goal will serve as a portal to another part of the game world.
-- The goal requires a certain amount of candies be fed to it to be activated, between 0 and 3.
-- The goal's light switches between gray and the candy number's color until it is fed.
+- The goal is now called a portal.
+- Only the player can use the portal. In the current version, the portal still brings the player back to main menu, and in next versions it will serve as a portal to another part of the game world.
+- The portal requires a certain amount of candies be fed to it to be activated, between 0 and 3.
+- The portal's light switches between gray and the candy number's color until it is fed.
 - Once fed, the number of candies is taken from the player, and the light's color is constant and a default yellow one.
 
 **PLAN FOR THIS SUB-VERSION**
@@ -141,6 +142,4 @@ You are however not allowed to claim this project as your own, even if the versi
 - Add a sound effect when characters jump.
 - Add sound effects for when cauldrons are pushed, knocked over, and emptied.
 - [Maybe] Add a sound effect when characters move.
-
-I'll study Unity properly, from the very beginning, before resuming the development of this game.  
 
