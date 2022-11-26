@@ -71,10 +71,14 @@ You are however not allowed to claim this project as your own, even if the versi
 **Released on the 15th of November 2022**  
 **This sub-version still respects the school's requirements for the prototype, and since I had time before the deadline I added more features.**  
 
-### ALL PREVIOUS ISSUES HAVE BEEN FIXED
-- **ISSUES N°1 AND N°2:** At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.
-- **ISSUE N°3:** The cauldron emptying script is fixed. I was only checking the x rotation axis, and now the z one is checked as well.
-- **ISSUE N°4:** The player used to rotate on the y axis randomly, without any input. It has been fixed by freezing the player's y rotation axis. I thought this would prevent input-based rotation, but no, this only freezes it for the physics engine, and the transform can still be updated from code. The y rotation axis of the enemies (= the other big pumpkins) has also been freezed to match the player's logic.
+### ISSUES
+- All previous issues have been fixed:
+**ISSUES N°1 AND N°2:** At candy intake, the mass is increased of 2 points instead of 1. The directional speed, rotating speed and jump force still increase at candy intake but in a smaller amount than before. This not only fixes issues n°1 and n°2, it also makes the character more pleasant to maneuver: the increase in mass makes moving objects easier, and the decrease in speed makes the character easier to control. I was also wrong to think that mass has an impact on moving speed, it only does for impulsion, so the jump force. Still, I like the game this way, with the character going faster the more candies they take, so this misconception allowed me to find a nice concept.  
+**ISSUE N°3:** The cauldron emptying script is fixed. I was only checking the x rotation axis, and now the z one is checked as well.  
+**ISSUE N°4:** The player used to rotate on the y axis randomly, without any input. It has been fixed by freezing the player's y rotation axis. I thought this would prevent input-based rotation, but no, this only freezes it for the physics engine, and the transform can still be updated from code. The y rotation axis of the enemies (= the other big pumpkins) has also been freezed to match the player's logic.  
+5. Rare wall climbing on invisible walls. A solution is to push the player a bit backwards when they collide with these walls.
+6. The camera can clip behind meshes. Cinemachine is a solution.
+7. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
 
 ### ADDED FEATURES: APPEARANCE
 - The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit.
@@ -120,14 +124,12 @@ You are however not allowed to claim this project as your own, even if the versi
 - It makes sense to use the arrow keys for the menu, but in order to make the handling of the game as intuitive as possible, I have allowed the use of the WASD keys and of the Q/E ones as well. And what's more, these keys are ideal because they are ones that every gamer knows, so even without displaying the controls the user should be able to find the keys. The recent "Physical Keys" Unity feature also allows anyone in the world to use the keys they are familiar with instead of updating the key bindings.
 - On commonly used keys, the space bar is indeed used for jumping, the Escape key for the menu/closing/going back, the Enter key to validate or interact, and it is my understanding that F4 is common for the windowed screen mode as well.
 
-### ISSUES
-5. Rare wall climbing on invisible walls. A solution is to push the player a bit backwards when they collide with these walls.
-6. The camera can clip behind meshes. Cinemachine is a solution.
-7. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
-
 ---
 
 ## NOTES FOR SUB-VERSION 0.0.0-c
+
+### ISSUES
+6. Issue n°6 has a fix, although not perfect. I did not use Cinemachine and I'm quite proud of it, but I'll have to learn more about Unity in order to write a better camera behavior.
 
 ### ADDED FEATURES: GAME LOOP
 - The goal is now called a portal.

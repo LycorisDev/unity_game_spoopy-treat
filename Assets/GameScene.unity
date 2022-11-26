@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -621,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1463,7 +1463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1775,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849542632, guid: c6308cb7062fac34e8e50600086b12a1, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1945,7 +1945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2773,7 +2773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3039,7 +3039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3447,7 +3447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_portal_fed: 0
-  required_nbr_candies: 2
+  required_nbr_candies: 3
 --- !u!65 &239819870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4327,7 +4327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6955,7 +6955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8460,7 +8460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8690,6 +8690,10 @@ PrefabInstance:
       value: Rock_04 (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
+      propertyPath: m_TagString
+      value: CameraCollide
+      objectReference: {fileID: 0}
+    - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -8769,7 +8773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9167,7 +9171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9370,7 +9374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -10518,7 +10522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -12439,7 +12443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13106,7 +13110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15260,7 +15264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15509,7 +15513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -15745,7 +15749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491908617939, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -16031,7 +16035,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -16098,7 +16102,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1139752843
 PrefabInstance:
@@ -18984,7 +18988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -19785,7 +19789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 5202732821079448320, guid: cebfacc247a640945a2c30b442202fca, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -20953,7 +20957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -21067,7 +21071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22056,7 +22060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 8957304962413023527, guid: 3f9b178ccd3b86f4ebbfc1f5a2815e56, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -22314,7 +22318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -23059,7 +23063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26141,7 +26145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26798,7 +26802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011247071026, guid: 2b7f7cd7ac6fcfc4eb1a46ce3aa1a968, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1000011247071026, guid: 2b7f7cd7ac6fcfc4eb1a46ce3aa1a968, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -26974,7 +26978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27813,7 +27817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731160225450, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27949,7 +27953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -28815,7 +28819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -29743,7 +29747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1686021177304871604, guid: ebee340de387f334f9ac44e044abd8fb, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -30125,7 +30129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1279437348525479949, guid: e2e682b966e3f644392ffbfab511e0e2, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -30563,7 +30567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -32646,7 +32650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: CameraCollide
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
       propertyPath: m_StaticEditorFlags

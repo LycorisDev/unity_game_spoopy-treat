@@ -15,6 +15,7 @@ TagManager:
   - MenuGoBackOption
   - MenuOption
   - MenuOptionsScreen
+  - CameraCollide
   layers:
   - Default
   - TransparentFX
