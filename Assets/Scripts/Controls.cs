@@ -5,7 +5,8 @@ public class Controls : MonoBehaviour
     private static string current_sub_menu;
     private static Rigidbody player_rb;
     private static Character player_script;
-    private static KeyCode key_menu, key_screen_mode, key_validate, key_up, key_down, key_left, key_right, key_side_left, key_side_right, key_jump;
+    private static KeyCode key_menu, key_help_mode, key_quick_save, key_pov_mode, key_screen_mode, 
+        key_validate, key_up, key_down, key_left, key_right, key_side_left, key_side_right, key_jump;
 
     void Start()
     {
@@ -15,6 +16,9 @@ public class Controls : MonoBehaviour
 
         // "Use Physical Keys" enabled (QWERTY)
         key_menu = KeyCode.Escape;
+        key_help_mode = KeyCode.F1;
+        key_quick_save = KeyCode.F2;
+        key_pov_mode = KeyCode.F3;
         key_screen_mode = KeyCode.F4;
         key_validate = KeyCode.Return;
         key_up = KeyCode.W;
@@ -45,7 +49,7 @@ public class Controls : MonoBehaviour
             HandleMenuInput();
         else
             HandleGameInput();
-        
+
         // Switch between fullscreen and windowed mode
         if (Input.GetKeyDown(key_screen_mode))
             Screen.fullScreen = !Screen.fullScreen;
@@ -205,5 +209,23 @@ public class Controls : MonoBehaviour
             player_rb.AddForce(Vector3.up * player_script.jump_force, ForceMode.Impulse);
             player_script.is_on_ground = false;
         }
+
+        // Toggle/Untoggle help mode
+        if (Input.GetKeyDown(key_help_mode))
+        {
+            // Tutorial/Advice and not just a display of the different keys
+            Debug.Log("Help Key");
+        }
+
+        // Quick save
+        if (Input.GetKeyDown(key_quick_save))
+        {
+            // Quick save only - Do not open the save sub-menu
+            Debug.Log("Quick Save Key");
+        }
+
+        // Switch between 3rd (default) and 1st person POV
+        if (Input.GetKeyDown(key_pov_mode))
+            CameraManager.SwitchCameraMode();
     }
 }

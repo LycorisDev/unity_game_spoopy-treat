@@ -138,8 +138,13 @@ You are however not allowed to claim this project as your own, even if the versi
 - The portal's light switches between gray and the candy number's color until it is fed.
 - Once fed, the number of candies is taken from the player, and the light's color is constant and a default yellow one.
 
+### ADDED FEATURES: CAMERA MODE
+- The F3 key is the Camera Mode key. It allows to switch between 3rd (default) and 1st person POVs.
+- "F3" has been picked to represent the 3rd person, while F1 is the first key and therefore suitable for Help Mode. Then, remains F2, which will be used for the quick save feature. The idea that it's right next to the Help Mode key also makes sense. As for the other F-keys, I remind that F4 is currently in use and switches the screen mode, and it also makes sense that the Screen Mode and Camera Mode keys are next to each other.
+
 **PLAN FOR THIS SUB-VERSION**
 - Fix the previous issues.
+- [Maybe next version instead] Implement the Help Mode (F1) and the Quick Save (F2).
 - [Maybe] Add a bounce animation when characters move forwards or backwards and have 0 candy. When they have 1 candy or more, they glide like they currently do.
 - Add a sound effect when characters jump.
 - Add sound effects for when cauldrons are pushed, knocked over, and emptied.

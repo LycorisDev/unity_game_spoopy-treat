@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CameraManager: MonoBehaviour
 {
+    private static bool is_pov_3rd_person;
     private static Transform target;
     private static Vector3 back;
     private static float min_distance, max_distance, curr_distance, slider_distance;
@@ -11,6 +12,8 @@ public class CameraManager: MonoBehaviour
 
     void Start()
     {
+        is_pov_3rd_person = true;
+
         // The camera is the target's child as to inherit its position
         target = GameObject.FindGameObjectWithTag("Player").transform;
         transform.SetParent(target);
@@ -33,13 +36,12 @@ public class CameraManager: MonoBehaviour
         int i;
         bool any_collider_got_nulled = false;
 
-        // 3rd person POV
         back = -target.forward * curr_distance;
         back.y = curr_height;
         transform.position = target.position + back;
 
         // Reset the values once all the collided with objects are far enough
-        if (curr_distance != max_distance)
+        if (is_pov_3rd_person && curr_distance != max_distance)
         {
             if (curr_colliders[0] == null)
             {
@@ -67,7 +69,7 @@ public class CameraManager: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("CameraCollide") && curr_distance > 0f)
+        if (is_pov_3rd_person && other.CompareTag("CameraCollide") && curr_distance > 0f)
         {
             // The minimum values put the camera in 1st person POV
             curr_distance -= slider_distance;
@@ -78,7 +80,7 @@ public class CameraManager: MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         int i;
-        if (other.CompareTag("CameraCollide"))
+        if (is_pov_3rd_person && other.CompareTag("CameraCollide"))
         {
             // Add new colliding object to array
             for (i = 0; i < curr_colliders.Length; ++i)
@@ -91,6 +93,17 @@ public class CameraManager: MonoBehaviour
                 else
                     curr_colliders[i] = other;
             }
+        }
+    }
+
+    public static void SwitchCameraMode()
+    {
+        is_pov_3rd_person = !is_pov_3rd_person;
+
+        if (!is_pov_3rd_person)
+        {
+            curr_distance = min_distance;
+            curr_height = min_height;
         }
     }
 }
