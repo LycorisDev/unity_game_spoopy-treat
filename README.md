@@ -16,10 +16,10 @@ You are however not allowed to claim this project as your own, even if the versi
 ## DOWNLOAD LINKS
 
 **VERSION 0.0.0 --> 0.0.0-a (30/10/22) / 0.0.0-b (15/11/22) / 0.0.0-c (ongoing)**  
-[Windows 64-bit](https://drive.google.com/file/d/1yDRjVo54Ebq0wapv3Y0YFk3opZ0FqQCU/view?usp=sharing)  
-[Windows 32-bit](https://drive.google.com/file/d/15bONl5WAew-0hzXvoV9lPr4S2aYFUcwN/view?usp=sharing)  
-[Mac](https://drive.google.com/file/d/1Tj1hFGQi7Dx3kraMMRJOI37j3jE7yqEZ/view?usp=sharing)  
-[Linux](https://drive.google.com/file/d/1Dbz8kAHt0K_If7a1v-sT9D_8HfUfwgdp/view?usp=sharing)  
+[Windows 64-bit](https://drive.google.com/file/d/1zsWHgHF-OjmTtFo659Bs8iEyV5WWmTxg/view?usp=sharing)  
+[Windows 32-bit](https://drive.google.com/file/d/1fVEO6ZQPr6tn3_uS67RCESEcaa3McP3-/view?usp=sharing)  
+[Mac](https://drive.google.com/file/d/1KLfQmmZ_9RUOr9EVo47qCDks9nHhvzKI/view?usp=sharing)  
+[Linux](https://drive.google.com/file/d/1wnPplYoLuHB6MoqDGzZgR-eTcTlpW_hi/view?usp=sharing)  
 
 ---
 
@@ -141,6 +141,9 @@ You are however not allowed to claim this project as your own, even if the versi
 ### ADDED FEATURES: CAMERA MODE
 - The F3 key is the Camera Mode key. It allows to switch between 3rd (default) and 1st person POVs.
 - "F3" has been picked to represent the 3rd person, while F1 is the first key and therefore suitable for Help Mode. Then, remains F2, which will be used for the quick save feature. The idea that it's right next to the Help Mode key also makes sense. As for the other F-keys, I remind that F4 is currently in use and switches the screen mode, and it also makes sense that the Screen Mode and Camera Mode keys are next to each other.
+
+### ADDED FEATURES: CHARACTERS
+- The enemy pumpkins have been removed from this prototype. They are present in code, just deactivated so they don't appear in game. Indeed, they are not used at this moment, and would only confuse the player who tries to interact with them.
 
 **PLAN FOR THIS SUB-VERSION**
 - Fix the previous issues.
