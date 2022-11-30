@@ -1,33 +1,77 @@
 fileFormatVersion: 2
 guid: 9e8f804a2c3822347b496dec7395b0c6
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Medieval_Foliage_Fern_Large
-    100002: Medieval_Foliage_Fern_Med
-    100004: Medieval_Foliage_Fern_SideSml_A
-    100006: Medieval_Foliage_Fern_SideSml_B
-    100008: //RootNode
-    400000: Medieval_Foliage_Fern_Large
-    400002: Medieval_Foliage_Fern_Med
-    400004: Medieval_Foliage_Fern_SideSml_A
-    400006: Medieval_Foliage_Fern_SideSml_B
-    400008: //RootNode
-    2300000: Medieval_Foliage_Fern_Large
-    2300002: Medieval_Foliage_Fern_Med
-    2300004: Medieval_Foliage_Fern_SideSml_A
-    2300006: Medieval_Foliage_Fern_SideSml_B
-    3300000: Medieval_Foliage_Fern_Large
-    3300002: Medieval_Foliage_Fern_Med
-    3300004: Medieval_Foliage_Fern_SideSml_A
-    3300006: Medieval_Foliage_Fern_SideSml_B
-    4300000: Medieval_Foliage_Fern_Large
-    4300002: Medieval_Foliage_Fern_SideSml_B
-    4300004: Medieval_Foliage_Fern_SideSml_A
-    4300006: Medieval_Foliage_Fern_Med
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Medieval_Foliage_Fern_Large
+  - first:
+      1: 100002
+    second: Medieval_Foliage_Fern_Med
+  - first:
+      1: 100004
+    second: Medieval_Foliage_Fern_SideSml_A
+  - first:
+      1: 100006
+    second: Medieval_Foliage_Fern_SideSml_B
+  - first:
+      1: 100008
+    second: //RootNode
+  - first:
+      4: 400000
+    second: Medieval_Foliage_Fern_Large
+  - first:
+      4: 400002
+    second: Medieval_Foliage_Fern_Med
+  - first:
+      4: 400004
+    second: Medieval_Foliage_Fern_SideSml_A
+  - first:
+      4: 400006
+    second: Medieval_Foliage_Fern_SideSml_B
+  - first:
+      4: 400008
+    second: //RootNode
+  - first:
+      23: 2300000
+    second: Medieval_Foliage_Fern_Large
+  - first:
+      23: 2300002
+    second: Medieval_Foliage_Fern_Med
+  - first:
+      23: 2300004
+    second: Medieval_Foliage_Fern_SideSml_A
+  - first:
+      23: 2300006
+    second: Medieval_Foliage_Fern_SideSml_B
+  - first:
+      33: 3300000
+    second: Medieval_Foliage_Fern_Large
+  - first:
+      33: 3300002
+    second: Medieval_Foliage_Fern_Med
+  - first:
+      33: 3300004
+    second: Medieval_Foliage_Fern_SideSml_A
+  - first:
+      33: 3300006
+    second: Medieval_Foliage_Fern_SideSml_B
+  - first:
+      43: 4300000
+    second: Medieval_Foliage_Fern_Large
+  - first:
+      43: 4300002
+    second: Medieval_Foliage_Fern_SideSml_B
+  - first:
+      43: 4300004
+    second: Medieval_Foliage_Fern_SideSml_A
+  - first:
+      43: 4300006
+    second: Medieval_Foliage_Fern_Med
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -36,6 +80,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -60,25 +105,34 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -87,10 +141,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -100,13 +154,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
