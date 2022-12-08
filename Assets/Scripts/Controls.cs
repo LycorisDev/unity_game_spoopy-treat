@@ -19,7 +19,7 @@ public class Controls : MonoBehaviour
         key_help_mode = KeyCode.F1;
         key_quick_save = KeyCode.F2;
         key_pov_mode = KeyCode.F3;
-        key_screen_mode = KeyCode.F4;
+        key_screen_mode = KeyCode.F11;
         key_validate = KeyCode.Return;
         key_up = KeyCode.W;
         key_down = KeyCode.S;

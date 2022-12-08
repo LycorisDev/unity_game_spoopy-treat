@@ -80,7 +80,7 @@ You are however not allowed to claim this project as your own, even if the versi
 6. Light sources flicker by themselves. Ghostbusters are busy so gotta call a bakery.
 7. Rare wall climbing on invisible walls. A solution is to push the player a bit backwards when they collide with these walls.
 
-### ADDED FEATURES: APPEARANCE
+### ADDED FEATURE: APPEARANCE
 - The skybox provided with the assets is used. The lighting's color has been made a dark blue to fit.
 - Now that the scene is darker, the candies' halo has been made less intense. The halo color has also changed from blue to red.
 - The candy counter now displays a 3D candy, and the UI's candy has an halo as well, depending on the number of candies: 0 (nothing), 1 (red), 2 (blue) and 3 (gold).
@@ -88,12 +88,12 @@ You are however not allowed to claim this project as your own, even if the versi
 - Lights have been added to objects around the map. The candles have a flicker animation and can be extinguished when knocked over.
 - Sound effects and sound ambiences are added to the game.
 
-### ADDED FEATURES: PLATFORMER
+### ADDED FEATURE: PLATFORMER
 - The last platform now moves to allow the player to reach the candy at the end of the platformer section.
 - The player can move along with the platform without input.
 - The player can step to the side with the Q (left) and E (right) keys, or whatever physical equivalent to QWERTY.
 
-### ADDED FEATURES: MAIN MENU
+### ADDED FEATURE: MAIN MENU
 - Options are "Resume Current Game", "New Game", "Options", "Licenses" and "Quit".
 - The main menu is a canvas and not another scene. It is navigated with WASD/Q-E/arrow keys and the Enter key. This means that options can be browsed through with an UP/DOWN input, and also with a LEFT/RIGHT one, whichever feels right to the user.
 - The main menu is opened first thing, and once in game it can be opened with the Escape key. Using the Escape key again while in the main menu is the same as selecting "Quit", and if the user is in a sub-menu instead, the Escape key brings them back to the main menu.
@@ -103,13 +103,13 @@ You are however not allowed to claim this project as your own, even if the versi
 - "Options" allows the user to update the sound volumes: General, Music, Ambience and Effects. In this sub-menu, the different options cannot be browsed through with the LEFT/RIGHT input, as these are used to update the volume values. Below those, a "Go Back" option can be selected and validated to go back to the main menu.
 - "Licenses" holds URLs that can be selected and opened in the browser, as well as the "Go Back" option.
 
-### ADDED FEATURES: SCREEN MODE
+### ADDED FEATURE: SCREEN MODE
 - The F4 key allows to switch between fullscreen and windowed mode. It can be used both in game and in the menu.
 
-### ADDED FEATURES: GAME LOOP
+### ADDED FEATURE: GAME LOOP
 - The game has a physical goal. Once reached and if the player has the required amount of candies, the process waits for a second before sending the user back to the main menu.
 
-### LEVEL DESIGN NOTE
+### NOTE: LEVEL DESIGN
 - The UI has a candy counter and it's displayed at all times and not just when a candy is collected. Said counter also displays the maximum amount. This is in order to convey the objective of the game, which is collecting 3 candies, instead of just expressing that items can be collected but we don't know what for.
 - The lights are used to guide the player towards the goal, and the flickering of the candles is also to grab their attention.
 - The candies' aura is made red, not only to match with the candies themselves because they are actually red, but especially because the environment is mostly green, and red is the color which clashes the most with it. It allows the player to notice the collectibles with more ease.
@@ -120,7 +120,7 @@ You are however not allowed to claim this project as your own, even if the versi
 - Beyond the first candy, there are a few big pumpkins. They are meant to be enemies, but in the meantime they are regular moveable objects. If the player gets curious and reaches them, they may understand that objects can be moved in this game, which is relevant for the cauldrons.
 - Cauldrons are candy holders, and the light emitted from them is a subtle indication that something can be done with them, but even if the player doesn't notice that the cauldrons can be knocked over to reveal a candy, three other candies are in the scene so the experience shouldn't be frustrating.
 
-### INPUT NOTE
+### NOTE: INPUT
 - It makes sense to use the arrow keys for the menu, but in order to make the handling of the game as intuitive as possible, I have allowed the use of the WASD keys and of the Q/E ones as well. And what's more, these keys are ideal because they are ones that every gamer knows, so even without displaying the controls the user should be able to find the keys. The recent "Physical Keys" Unity feature also allows anyone in the world to use the keys they are familiar with instead of updating the key bindings.
 - On commonly used keys, the space bar is indeed used for jumping, the Escape key for the menu/closing/going back, the Enter key to validate or interact, and it is my understanding that F4 is common for the windowed screen mode as well.
 
@@ -132,18 +132,21 @@ You are however not allowed to claim this project as your own, even if the versi
 5. Issue n°5 has a fix, although not perfect. I did not use Cinemachine and I'm quite proud of it, but I'll have to learn more about Unity in order to write a better camera behavior.
 6. The light is baked, but same thing it's not perfect.
 
-### ADDED FEATURES: GAME LOOP
+### ADDED FEATURE: GAME LOOP
 - The goal is now called a portal.
 - Only the player can use the portal. In the current version, the portal still brings the player back to main menu, and in next versions it will serve as a portal to another part of the game world.
 - The portal requires a certain amount of candies be fed to it to be activated, between 0 and 3.
 - The portal's light switches between gray and the candy number's color until it is fed.
 - Once fed, the number of candies is taken from the player, and the light's color is constant and a default yellow one.
 
-### ADDED FEATURES: CAMERA MODE
-- The F3 key is the Camera Mode key. It allows to switch between 3rd (default) and 1st person POVs.
-- "F3" has been picked to represent the 3rd person, while F1 is the first key and therefore suitable for Help Mode. Then, remains F2, which will be used for the quick save feature. The idea that it's right next to the Help Mode key also makes sense. As for the other F-keys, I remind that F4 is currently in use and switches the screen mode, and it also makes sense that the Screen Mode and Camera Mode keys are next to each other.
+### CHANGED FEATURE: SCREEN MODE
+- The key has been changed from F4 to F11, because I've just remembered that F11 is used for fullscreen mode, for instance in the browser and terminal.
 
-### ADDED FEATURES: CHARACTERS
+### ADDED FEATURE: CAMERA MODE
+- The F3 key is the Camera Mode key. It allows to switch between 3rd (default) and 1st person POVs.
+- "F3" has been picked to represent the 3rd person, while F1 is the first key and therefore suitable for Help Mode. Then, remains F2, which will be used for the quick save feature. The idea that it's right next to the Help Mode key also makes sense. As for the other F-keys, I remind that F11 is currently in use and switches the screen mode, and it also makes sense that the Screen Mode and Camera Mode keys are next to each other.
+
+### ADDED FEATURE: CHARACTERS
 - The enemy pumpkins have been removed from this prototype. They are present in code, just deactivated so they don't appear in game. Indeed, they are not used at this moment, and would only confuse the player who tries to interact with them.
 
 **PLAN FOR THIS SUB-VERSION**
