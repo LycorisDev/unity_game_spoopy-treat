@@ -128,6 +128,8 @@ You are however not allowed to claim this project as your own, even if the versi
 
 ## NOTES FOR SUB-VERSION 0.0.0-c
 
+![](./ingame_screenshot_0_0_0_c.png)
+
 ### ISSUES
 5. Issue n°5 has a fix, although not perfect. I did not use Cinemachine and I'm quite proud of it, but I'll have to learn more about Unity in order to write a better camera behavior.
 6. The light is baked, but same thing it's not perfect.
