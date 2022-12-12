@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class CandleFlickeringAnimation : MonoBehaviour
 {
+    private Light light_component;
     private static float min_range, max_range;
     private static float min_intensity, max_intensity;
-    private Light light_component;
+
+    void Awake()
+    {
+        light_component = GetComponent<Light>();
+    }
 
     void Start()
     {
@@ -14,7 +19,6 @@ public class CandleFlickeringAnimation : MonoBehaviour
         max_range = 2f;
         min_intensity = 1.8f;
         max_intensity = 2f;
-        light_component = GetComponent<Light>();
     }
 
     void Update()

@@ -11,13 +11,16 @@ public class GUIManager : MonoBehaviour
     private static Vector3 ui_candy_pos_displayed;
     private static Vector3 ui_candy_pos_hidden;
 
-    void Start()
+    void Awake()
     {
         audio_manager = FindObjectOfType<AudioManager>();
         tmp = GameObject.FindGameObjectWithTag("PlayerCandyCounter").GetComponent<TextMeshProUGUI>();
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-
         ui_candies = GameObject.FindGameObjectsWithTag("UICandy");
+    }
+
+    void Start()
+    {
         ui_candies = ui_candies.OrderBy(e => e.name).ToArray();
         ui_candy_pos_displayed = ui_candies[0].transform.position;
         ui_candy_pos_hidden = ui_candies[1].transform.position;

@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     private static bool is_first_game;
     private static bool user_asked_for_restart = false;
 
-    void Start()
+    void Awake()
     {
         GameObject[] arr_go;
         int i;
@@ -59,7 +59,10 @@ public class MenuManager : MonoBehaviour
         // Only activate the main screen
         screen_licenses.SetActive(false);
         screen_main.SetActive(true);
+    }
 
+    void Start()
+    {
         // When the soft starts, there is no ongoing game, so disable the first option ("Resume Current Game")
         DisableFirstMainMenuOption();
         index_option = min_index_option;

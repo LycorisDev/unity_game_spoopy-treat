@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    private static string current_sub_menu;
     private static Rigidbody player_rb;
     private static Character player_script;
+    private static string current_sub_menu;
     private static KeyCode key_menu, key_help_mode, key_quick_save, key_pov_mode, key_screen_mode, 
         key_validate, key_up, key_down, key_left, key_right, key_side_left, key_side_right, key_jump;
+
+    void Awake()
+    {
+        player_rb = GetComponent<Rigidbody>();
+        player_script = GetComponent<Character>();
+    }
 
     void Start()
     {
         current_sub_menu = "main";
-        player_rb = GetComponent<Rigidbody>();
-        player_script = GetComponent<Character>();
 
         // "Use Physical Keys" enabled (QWERTY)
         key_menu = KeyCode.Escape;

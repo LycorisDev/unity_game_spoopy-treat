@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class EmptyCauldron : MonoBehaviour
 {
-    public GameObject empty_cauldron_prefab;
-    public GameObject candy_prefab;
+    [SerializeField]
+    private GameObject empty_cauldron_prefab;
+    [SerializeField]
+    private GameObject candy_prefab;
     private Vector3 candy_position;
 
     void Update()

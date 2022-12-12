@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ExtinguishCandles : MonoBehaviour
 {
-    public GameObject unlit_skull_prefab;
+    [SerializeField]
+    private GameObject unlit_skull_prefab;
 
     void Update()
     {

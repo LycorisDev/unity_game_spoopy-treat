@@ -3,20 +3,23 @@ using UnityEngine;
 
 public class CameraManager: MonoBehaviour
 {
-    private static bool is_pov_3rd_person;
     private static Transform target;
+    private static bool is_pov_3rd_person;
     private static Vector3 back;
     private static float min_distance, max_distance, curr_distance, slider_distance;
     private static float min_height, max_height, curr_height, slider_height;
     private static Collider[] curr_colliders;
 
-    void Start()
+    void Awake()
     {
-        is_pov_3rd_person = true;
-
         // The camera is the target's child as to inherit its position
         target = GameObject.FindGameObjectWithTag("Player").transform;
         transform.SetParent(target);
+    }
+
+    void Start()
+    {
+        is_pov_3rd_person = true;
 
         min_distance = -0.2f;
         max_distance = 4f;

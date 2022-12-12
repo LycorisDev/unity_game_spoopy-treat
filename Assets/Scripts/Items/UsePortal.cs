@@ -10,12 +10,15 @@ public class UsePortal : MonoBehaviour
     public bool is_portal_fed;
     public int required_nbr_candies;
 
-    void Start()
+    void Awake()
     {
         audio_manager = FindObjectOfType<AudioManager>();
         player_script = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         light_component = gameObject.GetComponentInChildren(typeof(Light)) as Light;
+    }
 
+    void Start()
+    {
         default_color = light_component.color;
         dull_color = Color.gray;
         switch (required_nbr_candies)
