@@ -6,9 +6,8 @@ ERROR
 MENU
 
 	[Music Theme]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: music_box_cm_90bpm_04
-		--> Has been edited
+		Origin: https://opengameart.org/content/a-tricky-puzzle-loop
+		Title: a_tricky_puzzle
 
 	[Select]
 		Album: GhostHack - Halloween 2022 Freebie

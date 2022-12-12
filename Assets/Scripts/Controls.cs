@@ -159,24 +159,27 @@ public class Controls : MonoBehaviour
             switch (MenuManager.index_option)
             {
                 case 0:
-                    MenuManager.OpenLink("https://www.ghosthack.de");
+                    MenuManager.OpenLink("https://opengameart.org/content/a-tricky-puzzle-loop");
                     break;
                 case 1:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/exterior/halloween-pumpkins-50597");
+                    MenuManager.OpenLink("https://www.ghosthack.de");
                     break;
                 case 2:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153");
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/exterior/halloween-pumpkins-50597");
                     break;
                 case 3:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/mausoleum-128753");
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153");
                     break;
                 case 4:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/poly-halloween-pack-236625");
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/mausoleum-128753");
                     break;
                 case 5:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/poly-halloween-pack-236625");
                     break;
                 case 6:
+                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
+                    break;
+                case 7:
                     GoBackToMainMenu();
                     break;
             }
