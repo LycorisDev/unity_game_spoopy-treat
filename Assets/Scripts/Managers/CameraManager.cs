@@ -31,7 +31,7 @@ public class CameraManager: MonoBehaviour
         curr_colliders = new Collider[10];
     }
 
-    void Update()
+    void LateUpdate()
     {
         int i;
         bool any_collider_got_nulled = false;
