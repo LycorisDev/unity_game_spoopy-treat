@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d7d0f9f0c25dc238d3740f117812f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  empty_cauldron_prefab: {fileID: 3983813268400723696, guid: fe6bb0e66688f734a9e4cc5bfb502051, type: 3}
-  candy_prefab: {fileID: 4290281812158737284, guid: 834562c73fca1c251ad2be2446647692, type: 3}
+  emptyCauldronPrefab: {fileID: 3983813268400723696, guid: fe6bb0e66688f734a9e4cc5bfb502051, type: 3}
+  candyPrefab: {fileID: 4290281812158737284, guid: 834562c73fca1c251ad2be2446647692, type: 3}
 --- !u!1001 &8925849637287980673
 PrefabInstance:
   m_ObjectHideFlags: 0

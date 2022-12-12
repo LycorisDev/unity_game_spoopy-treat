@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class UICandyAnimation : MonoBehaviour
 {
-    private static float degrees_per_sec;
+    private static float degreesPerSec;
 
     void Start()
     {
-        degrees_per_sec = 30f;
+        degreesPerSec = 30f;
     }
 
     void Update()
     {
-        transform.Rotate(new Vector3(0f, Time.deltaTime * degrees_per_sec, 0f), Space.World);
+        transform.Rotate(new Vector3(0f, Time.deltaTime * degreesPerSec, 0f), Space.World);
     }
 }

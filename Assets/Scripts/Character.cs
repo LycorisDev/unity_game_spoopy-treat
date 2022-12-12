@@ -3,25 +3,25 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     // Movement
-    public float directional_speed;
-    public float rotate_speed;
-    public float jump_force;
-    public bool is_on_ground;
+    public float directionalSpeed;
+    public float rotateSpeed;
+    public float jumpForce;
+    public bool isOnGround;
 
     // Items
-    public int nbr_candies = 0;
+    public int nbrCandies = 0;
 
     void Start()
     {
-        directional_speed = 5f;
-        rotate_speed = directional_speed / 2 * directional_speed * directional_speed;
-        jump_force = 20f;
-        is_on_ground = false;
+        directionalSpeed = 5f;
+        rotateSpeed = directionalSpeed / 2 * directionalSpeed * directionalSpeed;
+        jumpForce = 20f;
+        isOnGround = false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("InvisibleWall"))
-            is_on_ground = true;
+            isOnGround = true;
     }
 }

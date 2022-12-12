@@ -10,29 +10,29 @@ public class MenuPumpkinAnimation : MonoBehaviour
     */
 
     private static float degrees;
-    private static float z_limit;
-    private static bool turning_left;
+    private static float zLimit;
+    private static bool turningLeft;
 
     void Start()
     {
         degrees = 0.2f;
-        z_limit = transform.rotation.z - 0.001f;
-        turning_left = true;
+        zLimit = transform.rotation.z - 0.001f;
+        turningLeft = true;
     }
 
     void Update()
     {
-        if (turning_left)
+        if (turningLeft)
         {
             transform.Rotate(new Vector3(0f, 0f, degrees), Space.World);
-            if (transform.rotation.z < z_limit)
-                turning_left = false;
+            if (transform.rotation.z < zLimit)
+                turningLeft = false;
         }
         else
         {
             transform.Rotate(new Vector3(0f, 0f, -degrees), Space.World);
-            if (transform.rotation.z < z_limit)
-                turning_left = true;
+            if (transform.rotation.z < zLimit)
+                turningLeft = true;
         }
     }
 }

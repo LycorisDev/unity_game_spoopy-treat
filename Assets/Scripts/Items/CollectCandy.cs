@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class CollectCandy : MonoBehaviour
 {
-    private Character character_script;
+    private Character characterScript;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Character"))
         {
-            character_script = other.GetComponent<Character>();
-            if (character_script.nbr_candies < 3)
+            characterScript = other.GetComponent<Character>();
+            if (characterScript.nbrCandies < 3)
             {
                 // Collect candy
-                character_script.nbr_candies++;
+                characterScript.nbrCandies++;
                 Destroy(gameObject);
 
                 if (other.CompareTag("Player"))
@@ -26,9 +26,9 @@ public class CollectCandy : MonoBehaviour
                 other.GetComponent<Rigidbody>().mass += 2;
 
                 // Increase character moving speeds
-                character_script.directional_speed += 1f;
-                character_script.rotate_speed = character_script.directional_speed / 2 * character_script.directional_speed * character_script.directional_speed;
-                character_script.jump_force *= 1.5f;
+                characterScript.directionalSpeed += 1f;
+                characterScript.rotateSpeed = characterScript.directionalSpeed / 2 * characterScript.directionalSpeed * characterScript.directionalSpeed;
+                characterScript.jumpForce *= 1.5f;
             }
         }
     }

@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    private static Vector3 start_pos;
-    private static Vector3 target_pos;
+    private static Vector3 startPos;
+    private static Vector3 targetPos;
     public float speed;
     public float distance;
 
     void Start()
     {
-        start_pos = transform.position;
-        target_pos = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
+        startPos = transform.position;
+        targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
     }
 
     void Update()
     {
-        if (transform.position == start_pos)
+        if (transform.position == startPos)
             StartCoroutine(LerpCoroutineToEnd());
-        if (transform.position == target_pos)
+        if (transform.position == targetPos)
             StartCoroutine(LerpCoroutineToStart());
     }
 
@@ -27,9 +27,9 @@ public class MovePlatform : MonoBehaviour
     {
         float time = 0f;
  
-        while(transform.position != target_pos)
+        while(transform.position != targetPos)
         {
-            transform.position = Vector3.Lerp(start_pos, target_pos, (time / Vector3.Distance(start_pos, target_pos)) * speed);
+            transform.position = Vector3.Lerp(startPos, targetPos, (time / Vector3.Distance(startPos, targetPos)) * speed);
             time += Time.deltaTime;
             yield return null;
         }
@@ -39,9 +39,9 @@ public class MovePlatform : MonoBehaviour
     {
         float time = 0f;
  
-        while(transform.position != start_pos)
+        while(transform.position != startPos)
         {
-            transform.position = Vector3.Lerp(target_pos, start_pos, (time / Vector3.Distance(target_pos, start_pos)) * speed);
+            transform.position = Vector3.Lerp(targetPos, startPos, (time / Vector3.Distance(targetPos, startPos)) * speed);
             time += Time.deltaTime;
             yield return null;
         }

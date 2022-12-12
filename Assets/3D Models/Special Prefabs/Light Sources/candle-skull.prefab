@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decc396c9a90a3d268f1f9a78957a024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlit_skull_prefab: {fileID: 5250659286268021285, guid: 5cd97b84979069440ad59df73c135724, type: 3}
+  unlitSkullPrefab: {fileID: 5250659286268021285, guid: 5cd97b84979069440ad59df73c135724, type: 3}
 --- !u!1 &9206083777910039170
 GameObject:
   m_ObjectHideFlags: 0

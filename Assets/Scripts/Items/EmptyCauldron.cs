@@ -3,10 +3,10 @@ using UnityEngine;
 public class EmptyCauldron : MonoBehaviour
 {
     [SerializeField]
-    private GameObject empty_cauldron_prefab;
+    private GameObject emptyCauldronPrefab;
     [SerializeField]
-    private GameObject candy_prefab;
-    private Vector3 candy_position;
+    private GameObject candyPrefab;
+    private Vector3 candyPosition;
 
     void Update()
     {
@@ -14,11 +14,11 @@ public class EmptyCauldron : MonoBehaviour
         if (transform.rotation.x < -0.4 || transform.rotation.x > 0.4 || transform.rotation.z < -0.4 || transform.rotation.z > 0.4)
         {
             // Drop candy in front of it (and a bit above ground so it doesn't clip)
-            candy_position = transform.position + Vector3.forward * 3;
-            Instantiate(candy_prefab, candy_position, transform.rotation);
+            candyPosition = transform.position + Vector3.forward * 3;
+            Instantiate(candyPrefab, candyPosition, transform.rotation);
 
             // Replace cauldron with empty version
-            Instantiate(empty_cauldron_prefab, transform.position, transform.rotation);
+            Instantiate(emptyCauldronPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

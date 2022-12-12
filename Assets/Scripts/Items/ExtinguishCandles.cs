@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExtinguishCandles : MonoBehaviour
 {
     [SerializeField]
-    private GameObject unlit_skull_prefab;
+    private GameObject unlitSkullPrefab;
 
     void Update()
     {
@@ -13,7 +13,7 @@ public class ExtinguishCandles : MonoBehaviour
         if (transform.rotation.x < -0.5 || transform.rotation.x > 0.5 || transform.rotation.z < -0.5 || transform.rotation.z > 0.5)
         {
             // Replace with unlit version
-            Instantiate(unlit_skull_prefab, transform.position, transform.rotation);
+            Instantiate(unlitSkullPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
