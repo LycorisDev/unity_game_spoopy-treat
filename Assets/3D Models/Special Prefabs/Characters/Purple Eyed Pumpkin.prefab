@@ -242,7 +242,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &4024009187325064957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35154747464199413a278515f3579fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directional_speed: 0
-  rotate_speed: 0
-  jump_force: 0
-  is_on_ground: 0
-  nbr_candies: 0
+  directionalSpeed: 0
+  rotateSpeed: 0
+  jumpForce: 0
+  isOnGround: 0
+  nbrCandies: 0
