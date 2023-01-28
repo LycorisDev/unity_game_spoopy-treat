@@ -17,9 +17,9 @@ public class CollectCandy : MonoBehaviour
 
                 if (other.CompareTag("Player"))
                 {
-                    GUIManager.PlayCandyCollectionSound();
-                    GUIManager.UpdateCandyCounter();
-                    GUIManager.UpdateCandyIcon();
+                    HUDManager.PlayCandyCollectionSound();
+                    HUDManager.UpdateCandyCounter();
+                    HUDManager.UpdateCandyIcon();
                 }
 
                 // Increase character mass

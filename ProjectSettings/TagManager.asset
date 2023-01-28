@@ -8,14 +8,14 @@ TagManager:
   - InvisibleWall
   - PlayerCandyCounter
   - MenuCamera
-  - UICamera
-  - UICandy
   - MainMenuScreen
   - MenuLicensesScreen
   - MenuGoBackOption
   - MenuOption
   - MenuOptionsScreen
   - CameraCollide
+  - HUDCamera
+  - HUDCandy
   layers:
   - Default
   - TransparentFX

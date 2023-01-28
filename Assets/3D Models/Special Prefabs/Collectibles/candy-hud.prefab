@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 3116105003953697861}
   - component: {fileID: 5569168385236695410}
   m_Layer: 5
-  m_Name: candy-ui
-  m_TagString: UICandy
+  m_Name: candy-hud
+  m_TagString: HUDCandy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     private static AudioManager audioManager;
     private static Behaviour menuCamera;
-    private static Behaviour uiCamera;
+    private static Behaviour hudCamera;
     private static GameObject screenMain, screenOptions, screenLicenses;
     private static TextMeshProUGUI[] arrTmpMain, arrTmpOptions, arrTmpLicenses;
     public static int indexOption;
@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
 
         audioManager = FindObjectOfType<AudioManager>();
         menuCamera = (Behaviour)GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
-        uiCamera = (Behaviour)GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
+        hudCamera = (Behaviour)GameObject.FindGameObjectWithTag("HUDCamera").GetComponent<Camera>();
 
         // Set the screen variables
         screenMain = GameObject.FindGameObjectWithTag("MainMenuScreen");
@@ -88,8 +88,8 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0;
         // Activate the menu camera
         menuCamera.enabled = true;
-        // Deactivate the UI camera so it doesn't show in the menu
-        uiCamera.enabled = false;
+        // Deactivate the HUD camera so it doesn't show in the menu
+        hudCamera.enabled = false;
         indexOption = minIndexOption;
         StopGameAmbience();
         audioManager.Play("MenuTheme");
@@ -102,8 +102,8 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         // Deactivate the menu camera
         menuCamera.enabled = false;
-        // Reactivate the UI camera for the game
-        uiCamera.enabled = true;
+        // Reactivate the HUD camera for the game
+        hudCamera.enabled = true;
         // Reset the menu option selector
         indexOption = minIndexOption;
         audioManager.Stop("MenuTheme");

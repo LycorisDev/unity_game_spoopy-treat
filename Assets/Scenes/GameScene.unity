@@ -9262,7 +9262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290281812158737284, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
       propertyPath: m_Name
-      value: candy-ui (1)
+      value: candy-hud (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
@@ -16366,7 +16366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290281812158737284, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
       propertyPath: m_Name
-      value: candy-ui (0)
+      value: candy-hud (0)
       objectReference: {fileID: 0}
     - target: {fileID: 4290281812158737284, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
       propertyPath: m_Layer
@@ -17974,7 +17974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290281812158737284, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
       propertyPath: m_Name
-      value: candy-ui (3)
+      value: candy-hud (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
@@ -19291,7 +19291,7 @@ GameObject:
   - component: {fileID: 1471657344}
   - component: {fileID: 1471657343}
   m_Layer: 5
-  m_Name: Canvas (Game UI)
+  m_Name: Canvas (HUD)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22583,7 +22583,7 @@ GameObject:
   - component: {fileID: 1736612866}
   - component: {fileID: 1736612867}
   m_Layer: 0
-  m_Name: Game UI
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26216,8 +26216,8 @@ GameObject:
   - component: {fileID: 1993256916}
   - component: {fileID: 1993256915}
   m_Layer: 5
-  m_Name: Camera (Game UI)
-  m_TagString: UICamera
+  m_Name: Camera (HUD)
+  m_TagString: HUDCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26611,7 +26611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290281812158737284, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}
       propertyPath: m_Name
-      value: candy-ui (2)
+      value: candy-hud (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d25ffa682a50406cb4ebbc16f7676e6, type: 3}

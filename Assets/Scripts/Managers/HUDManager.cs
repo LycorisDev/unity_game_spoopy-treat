@@ -2,27 +2,27 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 
-public class GUIManager : MonoBehaviour
+public class HUDManager : MonoBehaviour
 {
     private static AudioManager audioManager;
     private static TextMeshProUGUI tmp;
     private static Character playerScript;
-    private static GameObject[] uiCandies;
-    private static Vector3 uiCandyPosDisplayed, uiCandyPosHidden;
+    private static GameObject[] hudCandies;
+    private static Vector3 hudCandyPosDisplayed, hudCandyPosHidden;
 
     void Awake()
     {
         audioManager = FindObjectOfType<AudioManager>();
         tmp = GameObject.FindGameObjectWithTag("PlayerCandyCounter").GetComponent<TextMeshProUGUI>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        uiCandies = GameObject.FindGameObjectsWithTag("UICandy");
+        hudCandies = GameObject.FindGameObjectsWithTag("HUDCandy");
     }
 
     void Start()
     {
-        uiCandies = uiCandies.OrderBy(e => e.name).ToArray();
-        uiCandyPosDisplayed = uiCandies[0].transform.position;
-        uiCandyPosHidden = uiCandies[1].transform.position;
+        hudCandies = hudCandies.OrderBy(e => e.name).ToArray();
+        hudCandyPosDisplayed = hudCandies[0].transform.position;
+        hudCandyPosHidden = hudCandies[1].transform.position;
     }
 
     public static void PlayCandyCollectionSound()
@@ -42,23 +42,23 @@ public class GUIManager : MonoBehaviour
     public static void UpdateCandyIcon()
     {
         // Hide all the versions
-        foreach (GameObject candy in uiCandies)
-            candy.transform.position = uiCandyPosHidden;
+        foreach (GameObject candy in hudCandies)
+            candy.transform.position = hudCandyPosHidden;
 
         // Display the right one
         switch (playerScript.nbrCandies)
         {
             case 1:
-                uiCandies[1].transform.position = uiCandyPosDisplayed;
+                hudCandies[1].transform.position = hudCandyPosDisplayed;
                 break;
             case 2:
-                uiCandies[2].transform.position = uiCandyPosDisplayed;
+                hudCandies[2].transform.position = hudCandyPosDisplayed;
                 break;
             case 3:
-                uiCandies[3].transform.position = uiCandyPosDisplayed;
+                hudCandies[3].transform.position = hudCandyPosDisplayed;
                 break;
             default:
-                uiCandies[0].transform.position = uiCandyPosDisplayed;
+                hudCandies[0].transform.position = hudCandyPosDisplayed;
                 break;
         }
     }
