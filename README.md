@@ -6,6 +6,11 @@
 
 *Spoopy Treat* is a Unity game made for a school's recruiting process. Enjoying the concept I've found for it so much, I've decided to turn it into an actual game and will ship it as a Mofumofu product. It will be a 3D platformer, and this repository holds the demo version.  
 
+As for the technical specificities, this project is the exception amongst all my other Unity projects. Instead of migrating to the URP and the new input system, Spoopy Treat will remain with the old input system and the built-in render pipeline. There are different reasons as to why I've made the decision:
+- I enjoy the idea of having one project like that.
+- Most tutorials and pieces of advice are about older versions of the engine, and I still want to be able to implement things that I learn. I would then try to apply this knowledge to an "URP/new input system" project, and if it's not compatible at least it would still exist in Spoopy Treat, so I haven't worked for nothing.
+- I feel like getting a good grip of the old way of doing things will help me become a better rounded Unity developer.
+
 **DISCLAIMERS**  
 For a given version, only the most recent sub-version builds are available. If you are interested in testing earlier sub-versions, a link to each sub-version's last commit is available in the notes down below. You are allowed to clone and build from Unity.  
 
