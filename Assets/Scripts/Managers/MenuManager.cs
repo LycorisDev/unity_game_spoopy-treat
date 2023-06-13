@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 using TMPro;
 
 public class MenuManager : MonoBehaviour
@@ -221,7 +222,12 @@ public class MenuManager : MonoBehaviour
     public static void Quit()
     {
         audioManager.Play("MenuBack");
+
+        #if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+        #else
         Application.Quit();
+        #endif
     }
 
     public static void OpenSubMenu(string menu)
