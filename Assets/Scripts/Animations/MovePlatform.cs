@@ -1,35 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovePlatform : MonoBehaviour
 {
-    private static Vector3 startPos;
-    private static Vector3 targetPos;
-    public float speed;
-    public float distance;
+    [SerializeField] private float _speed = 2f;
+    [SerializeField] private float _distance = 15f;
+    private Vector3 _startPos;
+    private Vector3 _targetPos;
 
-    void Start()
+    private void Start()
     {
-        startPos = transform.position;
-        targetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + distance);
+        _startPos = transform.position;
+        _targetPos = _startPos + new Vector3(0f, 0f, _distance);
     }
 
-    void Update()
+    private void Update()
     {
-        if (transform.position == startPos)
+        if (transform.position == _startPos)
             StartCoroutine(LerpCoroutineToEnd());
-        if (transform.position == targetPos)
+        if (transform.position == _targetPos)
             StartCoroutine(LerpCoroutineToStart());
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        other.transform.SetParent(transform, true);
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        other.transform.parent = null;
     }
 
     private IEnumerator LerpCoroutineToEnd()
     {
         float time = 0f;
  
-        while(transform.position != targetPos)
+        while (transform.position != _targetPos)
         {
-            transform.position = Vector3.Lerp(startPos, targetPos, (time / Vector3.Distance(startPos, targetPos)) * speed);
+            transform.position = Vector3.Lerp(_startPos, _targetPos, (time / Vector3.Distance(_startPos, _targetPos)) * _speed);
             time += Time.deltaTime;
             yield return null;
         }
@@ -39,21 +48,11 @@ public class MovePlatform : MonoBehaviour
     {
         float time = 0f;
  
-        while(transform.position != startPos)
+        while (transform.position != _startPos)
         {
-            transform.position = Vector3.Lerp(targetPos, startPos, (time / Vector3.Distance(targetPos, startPos)) * speed);
+            transform.position = Vector3.Lerp(_targetPos, _startPos, (time / Vector3.Distance(_targetPos, _startPos)) * _speed);
             time += Time.deltaTime;
             yield return null;
         }
-    }
-
-    void OnCollisionEnter(Collision other)
-    {
-        other.gameObject.transform.SetParent(transform, true);
-    }
-
-    void OnCollisionExit(Collision other)
-    {
-        other.gameObject.transform.parent = null;
     }
 }

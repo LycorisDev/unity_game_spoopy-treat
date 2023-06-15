@@ -3,110 +3,100 @@ using UnityEngine;
 
 public class CameraManager: MonoBehaviour
 {
-    private static Transform target;
-    private static bool isPovThirdPerson;
-    private static Vector3 back;
-    private static float minDistance, maxDistance, currDistance, sliderDistance;
-    private static float minHeight, maxHeight, currHeight, sliderHeight;
-    private static Collider[] currColliders;
+    private static float _minDistance = -0.2f;
+    private static float _maxDistance = 4f;
+    private static float _sliderDistance = (_maxDistance - _minDistance) / 5f;
+    private static float _minHeight = 1.8f;
+    private static float _maxHeight = 2.5f;
+    private static float _sliderHeight = (_maxHeight - _minHeight) / 5f;
 
-    void Awake()
+    private bool _isPovThirdPerson = true;
+    private float _currDistance = _maxDistance;
+    private float _currHeight = _maxHeight;
+    private Collider[] _currColliders = new Collider[10];
+    private Transform _target;
+    private Vector3 _back;
+
+    private void Awake()
     {
         // The camera is the target's child as to inherit its position
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        transform.SetParent(target);
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        transform.SetParent(_target);
     }
 
-    void Start()
-    {
-        isPovThirdPerson = true;
-
-        minDistance = -0.2f;
-        maxDistance = 4f;
-        currDistance = maxDistance;
-        sliderDistance = (maxDistance - minDistance) / 5;
-
-        minHeight = 1.8f;
-        maxHeight = 2.5f;
-        currHeight = maxHeight;
-        sliderHeight = (maxHeight - minHeight) / 5;
-
-        currColliders = new Collider[10];
-    }
-
-    void LateUpdate()
+    private void LateUpdate()
     {
         int i;
         bool anyColliderGotNulled = false;
 
-        back = -target.forward * currDistance;
-        back.y = currHeight;
-        transform.position = target.position + back;
+        _back = -_target.forward * _currDistance;
+        _back.y = _currHeight;
+        transform.position = _target.position + _back;
 
         // Reset the values once all the collided with objects are far enough
-        if (isPovThirdPerson && currDistance != maxDistance)
+        if (_isPovThirdPerson && _currDistance != _maxDistance)
         {
-            if (currColliders[0] == null)
+            if (_currColliders[0] == null)
             {
-                currDistance = maxDistance;
-                currHeight = maxHeight;
+                _currDistance = _maxDistance;
+                _currHeight = _maxHeight;
             }
             else
             {
-                for (i = 0; i < currColliders.Length; ++i)
+                for (i = 0; i < _currColliders.Length; ++i)
                 {
-                    if (currColliders[i] == null)
+                    if (_currColliders[i] == null)
                         break;
-                    else if (Vector3.Distance(currColliders[i].transform.position, transform.position) > 13f)
+                    else if (Vector3.Distance(_currColliders[i].transform.position, transform.position) > 13f)
                     {
-                        currColliders[i] = null;
+                        _currColliders[i] = null;
                         anyColliderGotNulled = true;
                     }
                 }
 
                 if (anyColliderGotNulled)
-                    currColliders = currColliders.OrderBy(e => e != null).ToArray();
+                    _currColliders = _currColliders.OrderBy(e => e != null).ToArray();
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isPovThirdPerson && other.CompareTag("CameraCollide") && currDistance > 0f)
+        if (_isPovThirdPerson && other.CompareTag("CameraCollide") && _currDistance > 0f)
         {
             // The minimum values put the camera in 1st person POV
-            currDistance -= sliderDistance;
-            currHeight -= sliderHeight;
+            _currDistance -= _sliderDistance;
+            _currHeight -= _sliderHeight;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         int i;
-        if (isPovThirdPerson && other.CompareTag("CameraCollide"))
+        if (_isPovThirdPerson && other.CompareTag("CameraCollide"))
         {
             // Add new colliding object to array
-            for (i = 0; i < currColliders.Length; ++i)
+            for (i = 0; i < _currColliders.Length; ++i)
             {
-                if (currColliders[i] != null)
+                if (_currColliders[i] != null)
                 {
-                    if (currColliders[i].name == other.name)
+                    if (_currColliders[i].name == other.name)
                         break;
                 }
                 else
-                    currColliders[i] = other;
+                    _currColliders[i] = other;
             }
         }
     }
 
-    public static void SwitchCameraMode()
+    public void SwitchCameraMode()
     {
-        isPovThirdPerson = !isPovThirdPerson;
+        _isPovThirdPerson = !_isPovThirdPerson;
 
-        if (!isPovThirdPerson)
+        if (!_isPovThirdPerson)
         {
-            currDistance = minDistance;
-            currHeight = minHeight;
+            _currDistance = _minDistance;
+            _currHeight = _minHeight;
         }
     }
 }

@@ -2,34 +2,25 @@ using UnityEngine;
 
 public class CollectCandy : MonoBehaviour
 {
-    private Character characterScript;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Character"))
+        Character characterScript = other.GetComponent<Character>();
+        HUDManager _hudScript;
+
+        if (characterScript != null && characterScript.CandyAmount < 3)
         {
-            characterScript = other.GetComponent<Character>();
-            if (characterScript.nbrCandies < 3)
+            characterScript.ModifyCandyAmount(1);
+            Destroy(gameObject);
+
+            if (other.CompareTag("Player"))
             {
-                // Collect candy
-                characterScript.nbrCandies++;
-                Destroy(gameObject);
-
-                if (other.CompareTag("Player"))
-                {
-                    HUDManager.PlayCandyCollectionSound();
-                    HUDManager.UpdateCandyCounter();
-                    HUDManager.UpdateCandyIcon();
-                }
-
-                // Increase character mass
-                other.GetComponent<Rigidbody>().mass += 2;
-
-                // Increase character moving speeds
-                characterScript.directionalSpeed += 1f;
-                characterScript.rotateSpeed = characterScript.directionalSpeed / 2 * characterScript.directionalSpeed * characterScript.directionalSpeed;
-                characterScript.jumpForce *= 1.5f;
+                _hudScript = FindObjectOfType<HUDManager>();
+                _hudScript.PlayCandyCollectionSound();
+                _hudScript.UpdateCandyCounter();
+                _hudScript.UpdateCandyIcon();
             }
+
+            characterScript.IncreasePhysicalStats();
         }
     }
 }

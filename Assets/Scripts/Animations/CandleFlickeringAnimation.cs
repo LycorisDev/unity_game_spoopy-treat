@@ -1,35 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Light))]
 public class CandleFlickeringAnimation : MonoBehaviour
 {
-    private Light lightComponent;
-    private static float minRange, maxRange;
-    private static float minIntensity, maxIntensity;
+    private static float _minRange = 1.5f, _maxRange = 2f;
+    private static float _minIntensity = 1.8f, _maxIntensity = 2f;
+    private Light _lightComponent;
 
-    void Awake()
+    private void Awake()
     {
-        lightComponent = GetComponent<Light>();
+        _lightComponent = GetComponent<Light>();
     }
 
-    void Start()
-    {
-        minRange = 1.5f;
-        maxRange = 2f;
-        minIntensity = 1.8f;
-        maxIntensity = 2f;
-    }
-
-    void Update()
+    private void Update()
     {
         StartCoroutine(Flicker());
     }
 
     private IEnumerator Flicker()
     {
-        lightComponent.range = UnityEngine.Random.Range(minRange, maxRange);
-        lightComponent.intensity = UnityEngine.Random.Range(minIntensity, maxIntensity);
+        _lightComponent.range = Random.Range(_minRange, _maxRange);
+        _lightComponent.intensity = Random.Range(_minIntensity, _maxIntensity);
         yield return new WaitForSecondsRealtime(5f);
     }
 }

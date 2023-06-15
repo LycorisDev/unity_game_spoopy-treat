@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2854430988182952134}
   - component: {fileID: 2854430988182952132}
-  - component: {fileID: 2854430988182952135}
+  - component: {fileID: 2891854093231808430}
   m_Layer: 0
   m_Name: portal
   m_TagString: Untagged
@@ -142,7 +142,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 2.5, z: 1.1}
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!114 &2854430988182952135
+--- !u!114 &2891854093231808430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3717ddd9a4f01348d3b3cc6f6cecb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_portal_fed: 0
-  required_nbr_candies: 3
+  isPortalFed: 0
+  requiredNbrCandies: 3
 --- !u!1001 &2854430988017619400
 PrefabInstance:
   m_ObjectHideFlags: 0

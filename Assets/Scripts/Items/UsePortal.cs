@@ -3,47 +3,48 @@ using UnityEngine;
 
 public class UsePortal : MonoBehaviour
 {
-    private static AudioManager audioManager;
-    private static Character playerScript;
-    private static Light lightComponent;
-    private Color defaultColor, dullColor, candyColor;
-    public bool isPortalFed;
-    public int requiredNbrCandies;
+    private static AudioManager _audioManager;
 
-    void Awake()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        lightComponent = gameObject.GetComponentInChildren(typeof(Light)) as Light;
-    }
+    [SerializeField] private bool isPortalFed = false;
+    [SerializeField] private int requiredCandyAmount = 3;
 
-    void Start()
+    private Character _characterScript;
+    private Light _lightComponent;
+    private Color _defaultColor, _dullColor, _candyColor;
+
+    private void Awake()
     {
-        defaultColor = lightComponent.color;
-        dullColor = Color.gray;
-        switch (requiredNbrCandies)
+        _audioManager = FindObjectOfType<AudioManager>();
+        _characterScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        _lightComponent = gameObject.GetComponentInChildren(typeof(Light)) as Light;
+
+        _defaultColor = _lightComponent.color;
+        _dullColor = Color.gray;
+        switch (requiredCandyAmount)
         {
             case 1:
-                candyColor = Color.red;
+                _candyColor = Color.red;
                 break;
             case 2:
-                candyColor = Color.blue;
+                _candyColor = Color.blue;
                 break;
             case 3:
-                candyColor = Color.yellow;
+                _candyColor = Color.yellow;
                 break;
             default:
-                candyColor = Color.black;
+                _candyColor = Color.black;
                 break;
         }
     }
 
-    void Update()
+    private void Update()
     {
+        float time;
+
         if (!isPortalFed)
         {
-            float time = Mathf.PingPong(Time.time, 1f) / 1f;
-            lightComponent.color = Color.Lerp(dullColor, candyColor, time);
+            time = Mathf.PingPong(Time.time, 1f) / 1f;
+            _lightComponent.color = Color.Lerp(_dullColor, _candyColor, time);
         }
     }
 
@@ -53,19 +54,19 @@ public class UsePortal : MonoBehaviour
         {
             if (!isPortalFed)
             {
-                if (playerScript.nbrCandies >= requiredNbrCandies)
+                if (_characterScript.CandyAmount >= requiredCandyAmount)
                 {
-                    playerScript.nbrCandies -= requiredNbrCandies;
+                    _characterScript.ModifyCandyAmount(-requiredCandyAmount);
                     isPortalFed = true;
                 }
                 else
                     yield break;
             }
 
-            audioManager.Play("GamePortalOpening");
+            _audioManager.Play("GamePortalOpening");
             yield return new WaitForSecondsRealtime(1f);
 
-            // Version 0.0.0: End the game for now
+            // End the game now for the time being
             MenuManager.DisableFirstMainMenuOption();
             MenuManager.OpenMainMenu();
         }

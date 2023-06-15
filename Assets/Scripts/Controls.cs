@@ -2,47 +2,44 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    private static Rigidbody playerRb;
-    private static Character playerScript;
-    private static string currentSubMenu;
-    private static KeyCode keyMenu, keyHelpMode, keyQuickSave, keyPovMode, keyScreenMode, 
-        keyValidate, keyUp, keyDown, keyLeft, keyRight, keySideLeft, keySideRight, keyJump;
+    private Character _playerScript;
+    private CameraManager _cameraScript;
+    private string _currentSubMenu;
+    private KeyCode _keyMenu, _keyHelpMode, _keyQuickSave, _keyPovMode, _keyScreenMode, 
+        _keyValidate, _keyUp, _keyDown, _keyLeft, _keyRight, _keySideLeft, _keySideRight, _keyJump;
 
-    void Awake()
+    private void Awake()
     {
-        playerRb = GetComponent<Rigidbody>();
-        playerScript = GetComponent<Character>();
-    }
+        _playerScript = GetComponent<Character>();
+        _cameraScript = Camera.main.GetComponent<CameraManager>();
 
-    void Start()
-    {
-        currentSubMenu = "main";
+        _currentSubMenu = "main";
 
         // "Use Physical Keys" enabled (QWERTY)
-        keyMenu = KeyCode.Escape;
-        keyHelpMode = KeyCode.F1;
-        keyQuickSave = KeyCode.F2;
-        keyPovMode = KeyCode.F3;
-        keyScreenMode = KeyCode.F11;
-        keyValidate = KeyCode.Return;
-        keyUp = KeyCode.W;
-        keyDown = KeyCode.S;
-        keyLeft = KeyCode.A;
-        keyRight = KeyCode.D;
-        keySideLeft = KeyCode.Q;
-        keySideRight = KeyCode.E;
-        keyJump = KeyCode.Space;
+        _keyMenu = KeyCode.Escape;
+        _keyHelpMode = KeyCode.F1;
+        _keyQuickSave = KeyCode.F2;
+        _keyPovMode = KeyCode.F3;
+        _keyScreenMode = KeyCode.F11;
+        _keyValidate = KeyCode.Return;
+        _keyUp = KeyCode.W;
+        _keyDown = KeyCode.S;
+        _keyLeft = KeyCode.A;
+        _keyRight = KeyCode.D;
+        _keySideLeft = KeyCode.Q;
+        _keySideRight = KeyCode.E;
+        _keyJump = KeyCode.Space;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(keyMenu))
+        if (Input.GetKeyDown(_keyMenu))
         {
             // Open menu if in game
             if (Time.timeScale == 1)
                 MenuManager.OpenMainMenu();
             // Close the soft if in main menu
-            else if (currentSubMenu == "main")
+            else if (_currentSubMenu == "main")
                 MenuManager.Quit();
             // Go back to main menu if in sub-menu
             else
@@ -55,21 +52,21 @@ public class Controls : MonoBehaviour
             HandleGameInput();
 
         // Switch between fullscreen and windowed mode
-        if (Input.GetKeyDown(keyScreenMode))
+        if (Input.GetKeyDown(_keyScreenMode))
             Screen.fullScreen = !Screen.fullScreen;
     }
 
-    private static void HandleMenuInput()
+    private void HandleMenuInput()
     {
-        if (currentSubMenu == "options")
+        if (_currentSubMenu == "options")
             HandleOptionsMenuInput();
-        else if (currentSubMenu == "licenses")
+        else if (_currentSubMenu == "licenses")
             HandleLicensesMenuInput();
         else
             HandleMainMenuInput();
     }
 
-    private static void SelectMenuOption()
+    private void SelectMenuOption()
     {
         /*
             - Go up with UP and LEFT input
@@ -81,38 +78,38 @@ public class Controls : MonoBehaviour
             LEFT keys before I realize that the user wanted to go down instead.
         */
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(keyUp))
-            MenuManager.SelectUp(currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(keyDown))
-            MenuManager.SelectDown(currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(keyLeft) || Input.GetKeyDown(keySideLeft))
-            MenuManager.SelectUp(currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(keyRight) || Input.GetKeyDown(keySideRight))
-            MenuManager.SelectDown(currentSubMenu);
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(_keyUp))
+            MenuManager.SelectUp(_currentSubMenu);
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(_keyDown))
+            MenuManager.SelectDown(_currentSubMenu);
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(_keyLeft) || Input.GetKeyDown(_keySideLeft))
+            MenuManager.SelectUp(_currentSubMenu);
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(_keyRight) || Input.GetKeyDown(_keySideRight))
+            MenuManager.SelectDown(_currentSubMenu);
     }
 
-    private static void SelectMenuOptionVerticalOnly()
+    private void SelectMenuOptionVerticalOnly()
     {
         /* Used for when the sub-menu requires the horizontal input for other specific options (e.g. volume sliders). */
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(keyUp))
-            MenuManager.SelectUp(currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(keyDown))
-            MenuManager.SelectDown(currentSubMenu);
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(_keyUp))
+            MenuManager.SelectUp(_currentSubMenu);
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(_keyDown))
+            MenuManager.SelectDown(_currentSubMenu);
     }
 
-    private static void GoBackToMainMenu()
+    private void GoBackToMainMenu()
     {
-        MenuManager.CloseSubMenu(currentSubMenu);
-        currentSubMenu = "main";
+        MenuManager.CloseSubMenu(_currentSubMenu);
+        _currentSubMenu = "main";
     }
 
-    private static void HandleMainMenuInput()
+    private void HandleMainMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption(currentSubMenu);
+        MenuManager.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOption();
 
-        if (Input.GetKeyDown(keyValidate))
+        if (Input.GetKeyDown(_keyValidate))
         {
             switch (MenuManager.indexOption)
             {
@@ -123,12 +120,12 @@ public class Controls : MonoBehaviour
                     MenuManager.NewGame();
                     break;
                 case 2:
-                    currentSubMenu = "options";
-                    MenuManager.OpenSubMenu(currentSubMenu);
+                    _currentSubMenu = "options";
+                    MenuManager.OpenSubMenu(_currentSubMenu);
                     break;
                 case 3:
-                    currentSubMenu = "licenses";
-                    MenuManager.OpenSubMenu(currentSubMenu);
+                    _currentSubMenu = "licenses";
+                    MenuManager.OpenSubMenu(_currentSubMenu);
                     break;
                 case 4:
                     MenuManager.Quit();
@@ -137,28 +134,28 @@ public class Controls : MonoBehaviour
         }
     }
 
-    private static void HandleOptionsMenuInput()
+    private void HandleOptionsMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption(currentSubMenu);
+        MenuManager.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOptionVerticalOnly();
 
         if (MenuManager.indexOption == 4)
         {
-            if (Input.GetKeyDown(keyValidate))
+            if (Input.GetKeyDown(_keyValidate))
                 GoBackToMainMenu();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(keyLeft) || Input.GetKeyDown(keySideLeft))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(_keyLeft) || Input.GetKeyDown(_keySideLeft))
             MenuManager.UpdateVolume(MenuManager.indexOption, -1);
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(keyRight) || Input.GetKeyDown(keySideRight))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(_keyRight) || Input.GetKeyDown(_keySideRight))
             MenuManager.UpdateVolume(MenuManager.indexOption, 1);
     }
 
-    private static void HandleLicensesMenuInput()
+    private void HandleLicensesMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption(currentSubMenu);
+        MenuManager.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOption();
 
-        if (Input.GetKeyDown(keyValidate))
+        if (Input.GetKeyDown(_keyValidate))
         {
             switch (MenuManager.indexOption)
             {
@@ -193,46 +190,43 @@ public class Controls : MonoBehaviour
     private void HandleGameInput()
     {
         // Move the player forward or backward
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(keyUp))
-            transform.Translate(Vector3.forward * Time.deltaTime * playerScript.directionalSpeed);
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(keyDown))
-            transform.Translate(Vector3.back * Time.deltaTime * playerScript.directionalSpeed);
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(_keyUp))
+            transform.Translate(Vector3.forward * Time.deltaTime * _playerScript.DirectionalSpeed);
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(_keyDown))
+            transform.Translate(Vector3.back * Time.deltaTime * _playerScript.DirectionalSpeed);
 
         // Rotate the player to the left or the right
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(keyLeft))
-            transform.Rotate(Vector3.down * Time.deltaTime * playerScript.rotateSpeed);
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(keyRight))
-            transform.Rotate(Vector3.up * Time.deltaTime * playerScript.rotateSpeed);
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(_keyLeft))
+            transform.Rotate(Vector3.down * Time.deltaTime * _playerScript.RotationalSpeed);
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(_keyRight))
+            transform.Rotate(Vector3.up * Time.deltaTime * _playerScript.RotationalSpeed);
 
         // Move the player to the side
-        if (Input.GetKey(keySideLeft))
-            transform.Translate(Vector3.left * Time.deltaTime * playerScript.directionalSpeed);
-        if (Input.GetKey(keySideRight))
-            transform.Translate(Vector3.right * Time.deltaTime * playerScript.directionalSpeed);
+        if (Input.GetKey(_keySideLeft))
+            transform.Translate(Vector3.left * Time.deltaTime * _playerScript.DirectionalSpeed);
+        if (Input.GetKey(_keySideRight))
+            transform.Translate(Vector3.right * Time.deltaTime * _playerScript.DirectionalSpeed);
 
         // Make the player jump
-        if (Input.GetKeyDown(keyJump) && playerScript.isOnGround)
-        {
-            playerRb.AddForce(Vector3.up * playerScript.jumpForce, ForceMode.Impulse);
-            playerScript.isOnGround = false;
-        }
+        if (Input.GetKeyDown(_keyJump))
+            _playerScript.Jump();
 
         // Toggle/Untoggle help mode
-        if (Input.GetKeyDown(keyHelpMode))
+        if (Input.GetKeyDown(_keyHelpMode))
         {
             // Tutorial/Advice and not just a display of the different keys
             Debug.Log("Help Key");
         }
 
         // Quick save
-        if (Input.GetKeyDown(keyQuickSave))
+        if (Input.GetKeyDown(_keyQuickSave))
         {
             // Quick save only - Do not open the save sub-menu
             Debug.Log("Quick Save Key");
         }
 
         // Switch between 3rd (default) and 1st person POV
-        if (Input.GetKeyDown(keyPovMode))
-            CameraManager.SwitchCameraMode();
+        if (Input.GetKeyDown(_keyPovMode))
+            _cameraScript.SwitchCameraMode();
     }
 }

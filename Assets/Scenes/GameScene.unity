@@ -8166,6 +8166,10 @@ PrefabInstance:
       propertyPath: distance
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 2586833917897821376, guid: 8c36e7f9c221bd118a651cb4b169f772, type: 3}
+      propertyPath: _distance
+      value: -15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c36e7f9c221bd118a651cb4b169f772, type: 3}
 --- !u!4 &661078194 stripped
@@ -14234,10 +14238,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1136385243}
+  - component: {fileID: 1136385241}
   - component: {fileID: 1136385242}
   - component: {fileID: 1136385245}
   - component: {fileID: 1136385246}
-  - component: {fileID: 1136385241}
   - component: {fileID: 1136385244}
   m_Layer: 0
   m_Name: Main Camera
@@ -28662,10 +28666,6 @@ PrefabInstance:
     - target: {fileID: 2854430988182952134, guid: e0ff17931e0cd604f9658b2ae15aea66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2854430988182952135, guid: e0ff17931e0cd604f9658b2ae15aea66, type: 3}
-      propertyPath: requiredNbrCandies
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0ff17931e0cd604f9658b2ae15aea66, type: 3}

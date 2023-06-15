@@ -4,61 +4,61 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    private static AudioManager audioManager;
-    private static TextMeshProUGUI tmp;
-    private static Character playerScript;
-    private static GameObject[] hudCandies;
-    private static Vector3 hudCandyPosDisplayed, hudCandyPosHidden;
+    private static AudioManager _audioManager;
+    private TextMeshProUGUI _tmpro;
+    private Character _playerScript;
+    private GameObject[] _hudCandies;
+    private Vector3 _hudCandyPosDisplayed, _hudCandyPosHidden;
 
-    void Awake()
+    private void Awake()
     {
-        audioManager = FindObjectOfType<AudioManager>();
-        tmp = GameObject.FindGameObjectWithTag("PlayerCandyCounter").GetComponent<TextMeshProUGUI>();
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        hudCandies = GameObject.FindGameObjectsWithTag("HUDCandy");
+        _audioManager = FindObjectOfType<AudioManager>();
+        _tmpro = GameObject.FindGameObjectWithTag("PlayerCandyCounter").GetComponent<TextMeshProUGUI>();
+        _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        _hudCandies = GameObject.FindGameObjectsWithTag("HUDCandy");
     }
 
-    void Start()
+    private void Start()
     {
-        hudCandies = hudCandies.OrderBy(e => e.name).ToArray();
-        hudCandyPosDisplayed = hudCandies[0].transform.position;
-        hudCandyPosHidden = hudCandies[1].transform.position;
+        _hudCandies = _hudCandies.OrderBy(e => e.name).ToArray();
+        _hudCandyPosDisplayed = _hudCandies[0].transform.position;
+        _hudCandyPosHidden = _hudCandies[1].transform.position;
     }
 
-    public static void PlayCandyCollectionSound()
+    public void PlayCandyCollectionSound()
     {
         // If candy is gained (and not lost)
-        if (playerScript.nbrCandies == 3)
-            audioManager.Play("GameCandyCollectionComplete");
+        if (_playerScript.CandyAmount == _playerScript.MaxCandyAmount)
+            _audioManager.Play("GameCandyCollectionComplete");
         else
-            audioManager.Play("GameCandyOneCollected");
+            _audioManager.Play("GameCandyOneCollected");
     }
 
-    public static void UpdateCandyCounter()
+    public void UpdateCandyCounter()
     {
-        tmp.text = playerScript.nbrCandies.ToString() + "/3";
+        _tmpro.text = _playerScript.CandyAmount.ToString() + "/" + _playerScript.MaxCandyAmount.ToString();
     }
 
-    public static void UpdateCandyIcon()
+    public void UpdateCandyIcon()
     {
         // Hide all the versions
-        foreach (GameObject candy in hudCandies)
-            candy.transform.position = hudCandyPosHidden;
+        foreach (GameObject candy in _hudCandies)
+            candy.transform.position = _hudCandyPosHidden;
 
         // Display the right one
-        switch (playerScript.nbrCandies)
+        switch (_playerScript.CandyAmount)
         {
             case 1:
-                hudCandies[1].transform.position = hudCandyPosDisplayed;
+                _hudCandies[1].transform.position = _hudCandyPosDisplayed;
                 break;
             case 2:
-                hudCandies[2].transform.position = hudCandyPosDisplayed;
+                _hudCandies[2].transform.position = _hudCandyPosDisplayed;
                 break;
             case 3:
-                hudCandies[3].transform.position = hudCandyPosDisplayed;
+                _hudCandies[3].transform.position = _hudCandyPosDisplayed;
                 break;
             default:
-                hudCandies[0].transform.position = hudCandyPosDisplayed;
+                _hudCandies[0].transform.position = _hudCandyPosDisplayed;
                 break;
         }
     }

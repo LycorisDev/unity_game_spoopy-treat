@@ -1,6 +1,3 @@
-// Video: https://www.youtube.com/watch?v=6OT43pvUyfY
-// Download Link: https://downloads.brackeys.com/wp-content/FilesForDownload/AudioManager.zip
-
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -11,7 +8,7 @@ public class AudioManager : MonoBehaviour
 	public AudioMixerGroup mixerGroup;
 	public Sound[] sounds;
 
-	void Awake()
+	private void Awake()
 	{
 		foreach (Sound s in sounds)
 		{
