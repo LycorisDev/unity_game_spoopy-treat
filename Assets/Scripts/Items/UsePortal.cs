@@ -9,6 +9,7 @@ public class UsePortal : MonoBehaviour
     [SerializeField] private int requiredCandyAmount = 3;
 
     private Character _characterScript;
+    private MenuManager _menuScript;
     private Light _lightComponent;
     private Color _defaultColor, _dullColor, _candyColor;
 
@@ -16,6 +17,7 @@ public class UsePortal : MonoBehaviour
     {
         _audioManager = FindObjectOfType<AudioManager>();
         _characterScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        _menuScript = FindObjectOfType<MenuManager>();
         _lightComponent = gameObject.GetComponentInChildren(typeof(Light)) as Light;
 
         _defaultColor = _lightComponent.color;
@@ -67,8 +69,8 @@ public class UsePortal : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
 
             // End the game now for the time being
-            MenuManager.DisableFirstMainMenuOption();
-            MenuManager.OpenMainMenu();
+            _menuScript.DisableFirstMainMenuOption();
+            _menuScript.OpenMainMenu();
         }
     }
 }

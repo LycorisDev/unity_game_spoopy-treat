@@ -4,6 +4,7 @@ public class Controls : MonoBehaviour
 {
     private Character _playerScript;
     private CameraManager _cameraScript;
+    private MenuManager _menuScript;
     private string _currentSubMenu;
     private KeyCode _keyMenu, _keyHelpMode, _keyQuickSave, _keyPovMode, _keyScreenMode, 
         _keyValidate, _keyUp, _keyDown, _keyLeft, _keyRight, _keySideLeft, _keySideRight, _keyJump;
@@ -12,6 +13,7 @@ public class Controls : MonoBehaviour
     {
         _playerScript = GetComponent<Character>();
         _cameraScript = Camera.main.GetComponent<CameraManager>();
+        _menuScript = FindObjectOfType<MenuManager>();
 
         _currentSubMenu = "main";
 
@@ -37,10 +39,10 @@ public class Controls : MonoBehaviour
         {
             // Open menu if in game
             if (Time.timeScale == 1)
-                MenuManager.OpenMainMenu();
+                _menuScript.OpenMainMenu();
             // Close the soft if in main menu
             else if (_currentSubMenu == "main")
-                MenuManager.Quit();
+                _menuScript.Quit();
             // Go back to main menu if in sub-menu
             else
                 GoBackToMainMenu();
@@ -79,13 +81,13 @@ public class Controls : MonoBehaviour
         */
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(_keyUp))
-            MenuManager.SelectUp(_currentSubMenu);
+            _menuScript.SelectUp(_currentSubMenu);
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(_keyDown))
-            MenuManager.SelectDown(_currentSubMenu);
+            _menuScript.SelectDown(_currentSubMenu);
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(_keyLeft) || Input.GetKeyDown(_keySideLeft))
-            MenuManager.SelectUp(_currentSubMenu);
+            _menuScript.SelectUp(_currentSubMenu);
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(_keyRight) || Input.GetKeyDown(_keySideRight))
-            MenuManager.SelectDown(_currentSubMenu);
+            _menuScript.SelectDown(_currentSubMenu);
     }
 
     private void SelectMenuOptionVerticalOnly()
@@ -93,42 +95,42 @@ public class Controls : MonoBehaviour
         /* Used for when the sub-menu requires the horizontal input for other specific options (e.g. volume sliders). */
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(_keyUp))
-            MenuManager.SelectUp(_currentSubMenu);
+            _menuScript.SelectUp(_currentSubMenu);
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(_keyDown))
-            MenuManager.SelectDown(_currentSubMenu);
+            _menuScript.SelectDown(_currentSubMenu);
     }
 
     private void GoBackToMainMenu()
     {
-        MenuManager.CloseSubMenu(_currentSubMenu);
+        _menuScript.CloseSubMenu(_currentSubMenu);
         _currentSubMenu = "main";
     }
 
     private void HandleMainMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption(_currentSubMenu);
+        _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOption();
 
         if (Input.GetKeyDown(_keyValidate))
         {
-            switch (MenuManager.indexOption)
+            switch (_menuScript.IndexOption)
             {
                 case 0:
-                    MenuManager.ResumeCurrentGame();
+                    _menuScript.ResumeCurrentGame();
                     break;
                 case 1:
-                    MenuManager.NewGame();
+                    _menuScript.NewGame();
                     break;
                 case 2:
                     _currentSubMenu = "options";
-                    MenuManager.OpenSubMenu(_currentSubMenu);
+                    _menuScript.OpenSubMenu(_currentSubMenu);
                     break;
                 case 3:
                     _currentSubMenu = "licenses";
-                    MenuManager.OpenSubMenu(_currentSubMenu);
+                    _menuScript.OpenSubMenu(_currentSubMenu);
                     break;
                 case 4:
-                    MenuManager.Quit();
+                    _menuScript.Quit();
                     break;
             }
         }
@@ -136,49 +138,49 @@ public class Controls : MonoBehaviour
 
     private void HandleOptionsMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption(_currentSubMenu);
+        _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOptionVerticalOnly();
 
-        if (MenuManager.indexOption == 4)
+        if (_menuScript.IndexOption == 4)
         {
             if (Input.GetKeyDown(_keyValidate))
                 GoBackToMainMenu();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(_keyLeft) || Input.GetKeyDown(_keySideLeft))
-            MenuManager.UpdateVolume(MenuManager.indexOption, -1);
+            _menuScript.UpdateVolume(_menuScript.IndexOption, -1);
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(_keyRight) || Input.GetKeyDown(_keySideRight))
-            MenuManager.UpdateVolume(MenuManager.indexOption, 1);
+            _menuScript.UpdateVolume(_menuScript.IndexOption, 1);
     }
 
     private void HandleLicensesMenuInput()
     {
-        MenuManager.SetGraphicsForSelectedOption(_currentSubMenu);
+        _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOption();
 
         if (Input.GetKeyDown(_keyValidate))
         {
-            switch (MenuManager.indexOption)
+            switch (_menuScript.IndexOption)
             {
                 case 0:
-                    MenuManager.OpenLink("https://opengameart.org/content/a-tricky-puzzle-loop");
+                    _menuScript.OpenLink("https://opengameart.org/content/a-tricky-puzzle-loop");
                     break;
                 case 1:
-                    MenuManager.OpenLink("https://www.ghosthack.de");
+                    _menuScript.OpenLink("https://www.ghosthack.de");
                     break;
                 case 2:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/exterior/halloween-pumpkins-50597");
+                    _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/props/exterior/halloween-pumpkins-50597");
                     break;
                 case 3:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153");
+                    _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153");
                     break;
                 case 4:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/mausoleum-128753");
+                    _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/mausoleum-128753");
                     break;
                 case 5:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/props/poly-halloween-pack-236625");
+                    _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/props/poly-halloween-pack-236625");
                     break;
                 case 6:
-                    MenuManager.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
+                    _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
                     break;
                 case 7:
                     GoBackToMainMenu();
