@@ -5,18 +5,15 @@ using UnityEngine.Audio;
 public class Sound
 {
 	public string name;
-
 	public AudioClip clip;
-
-	[Range(0f, 1f)] public float volume = .75f;
-	[Range(0f, 1f)] public float volumeVariance = .1f;
-
-	[Range(.1f, 3f)] public float pitch = 1f;
-	[Range(0f, 1f)] public float pitchVariance = .1f;
+	[HideInInspector] public AudioSource source;
+	public AudioMixerGroup mixerGroup;
 
 	public bool loop = false;
 
-	public AudioMixerGroup mixerGroup;
+	[Range(0f, 1f)] public float volume = 0.75f;
+	[Range(0f, 1f)] public float volumeVariance = 0.1f;
 
-	[HideInInspector] public AudioSource source;
+	[Range(0.1f, 3f)] public float pitch = 1f;
+	[Range(0f, 1f)] public float pitchVariance = 0.1f;
 }

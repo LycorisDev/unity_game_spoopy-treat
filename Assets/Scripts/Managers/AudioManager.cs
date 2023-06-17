@@ -4,24 +4,24 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-	public AudioMixer audioMixer;
-	public AudioMixerGroup mixerGroup;
-	public Sound[] sounds;
+	[SerializeField] private AudioMixer _audioMixer;
+	[SerializeField] private AudioMixerGroup _mixerGroup;
+	[SerializeField] private Sound[] _sounds;
 
 	private void Awake()
 	{
-		foreach (Sound s in sounds)
+		foreach (Sound s in _sounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
+			s.source.outputAudioMixerGroup = s.mixerGroup != null ? s.mixerGroup : _mixerGroup;
 			s.source.loop = s.loop;
-			s.source.outputAudioMixerGroup = s.mixerGroup != null ? s.mixerGroup : mixerGroup;
 		}
 	}
 
 	public void Play(string sound)
 	{
-		Sound s = Array.Find(sounds, item => item.name == sound);
+		Sound s = Array.Find(_sounds, item => item.name == sound);
 		if (s == null)
 		{
 			Debug.LogWarning("Sound: " + sound + " not found!");
@@ -36,7 +36,7 @@ public class AudioManager : MonoBehaviour
 
 	public void Stop(string sound)
 	{
-		Sound s = Array.Find(sounds, item => item.name == sound);
+		Sound s = Array.Find(_sounds, item => item.name == sound);
 		if (s == null)
 		{
 			Debug.LogWarning("Sound: " + sound + " not found!");
@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
 	{
 		string group = indexOption == 1 ? "MusicVolume" : indexOption == 2 ? "AmbienceVolume" : indexOption == 3 ? "EffectsVolume" : "MasterVolume";
 		float currVolume = 0f;
-		bool result = audioMixer.GetFloat(group, out currVolume);
+		bool result = _audioMixer.GetFloat(group, out currVolume);
 		int percentage = 0;
 
 		// "currVolume": 0f (100%) / -80f (0%)
@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour
 
 		// Update volume
 		currVolume = (percentage - 100) * 0.8f;
-		audioMixer.SetFloat(group, currVolume);
+		_audioMixer.SetFloat(group, currVolume);
 
 		return percentage;
 	}
