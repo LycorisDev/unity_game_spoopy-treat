@@ -4,7 +4,6 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
-    private static AudioManager _audioManager;
     private TextMeshProUGUI _tmpro;
     private Character _playerScript;
     private GameObject[] _hudCandies;
@@ -12,7 +11,6 @@ public class HUDManager : MonoBehaviour
 
     private void Awake()
     {
-        _audioManager = FindObjectOfType<AudioManager>();
         _tmpro = GameObject.FindGameObjectWithTag("PlayerCandyCounter").GetComponent<TextMeshProUGUI>();
         _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         _hudCandies = GameObject.FindGameObjectsWithTag("HUDCandy");
@@ -29,9 +27,9 @@ public class HUDManager : MonoBehaviour
     {
         // If candy is gained (and not lost)
         if (_playerScript.CandyAmount == _playerScript.MaxCandyAmount)
-            _audioManager.Play("GameCandyCollectionComplete");
+            AudioManager.Instance.Play("GameCandyCollectionComplete");
         else
-            _audioManager.Play("GameCandyOneCollected");
+            AudioManager.Instance.Play("GameCandyOneCollected");
     }
 
     public void UpdateCandyCounter()

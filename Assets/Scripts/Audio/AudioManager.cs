@@ -4,13 +4,25 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
+	public static AudioManager Instance { get; private set; }
+
 	[SerializeField] private AudioMixer _audioMixer;
 	[SerializeField] private AudioMixerGroup _mixerGroup;
-	[SerializeField] private Sound[] _sounds;
+	[SerializeField] private SoundObject[] _sounds;
 
 	private void Awake()
 	{
-		foreach (Sound s in _sounds)
+		if (Instance == null)
+			Instance = this;
+		else
+			Destroy(this);
+
+		AddAudioSources();
+	}
+
+	private void AddAudioSources()
+    {
+		foreach (SoundObject s in _sounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
@@ -19,12 +31,12 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	public void Play(string sound)
+	public void Play(string soundName)
 	{
-		Sound s = Array.Find(_sounds, item => item.name == sound);
+		SoundObject s = Array.Find(_sounds, e => e.soundName == soundName);
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + sound + " not found!");
+			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}
 
@@ -34,12 +46,12 @@ public class AudioManager : MonoBehaviour
 		s.source.Play();
 	}
 
-	public void Stop(string sound)
+	public void Stop(string soundName)
 	{
-		Sound s = Array.Find(_sounds, item => item.name == sound);
+		SoundObject s = Array.Find(_sounds, e => e.soundName == soundName);
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + sound + " not found!");
+			Debug.LogWarning("Sound: " + soundName + " not found!");
 			return;
 		}
 
