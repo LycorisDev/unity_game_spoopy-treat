@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
 		AddAudioSources();
 	}
 
-	private void AddAudioSources()
+    private void AddAudioSources()
     {
 		foreach (SoundObject s in _sounds)
 		{
@@ -28,6 +28,8 @@ public class AudioManager : MonoBehaviour
 			s.source.clip = s.clip;
 			s.source.outputAudioMixerGroup = s.mixerGroup != null ? s.mixerGroup : _mixerGroup;
 			s.source.loop = s.loop;
+			s.source.volume = s.volume;
+			s.source.pitch = s.pitch;
 		}
 	}
 
@@ -39,9 +41,6 @@ public class AudioManager : MonoBehaviour
 			Debug.LogWarning("Sound: " + name + " not found!");
 			return;
 		}
-
-		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		s.source.Play();
 	}
