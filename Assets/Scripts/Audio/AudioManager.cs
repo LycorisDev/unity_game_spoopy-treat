@@ -6,6 +6,14 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance { get; private set; }
 
+	public enum AudioMixerVolumeGroup
+    {
+		MasterVolume,
+		MusicVolume,
+		AmbienceVolume,
+		EffectsVolume
+    }
+
 	[SerializeField] private AudioMixer _audioMixer;
 	[SerializeField] private AudioMixerGroup _mixerGroup;
 	[SerializeField] private SoundObject[] _sounds;
@@ -17,20 +25,24 @@ public class AudioManager : MonoBehaviour
 		else
 			Destroy(this);
 
-		AddAudioSources();
+		foreach (SoundObject sound in _sounds)
+			AddAudioSource(sound, gameObject);
+
+		Debug.Log("TODO: Refactor SetMixerVolume() as best as possible.");
+		Debug.Log("TODO: New input system.");
+		Debug.Log("TODO: Instead of having to press the key for each volume point, allow the key to remain pressed.");
+		Debug.Log("TODO: Instead of having all the sounds in the Audio Manager gameobject, put some inside of certain objects, " +
+			"for example the candies, and have the sound be triggered from within the candy's script. This way we can have 3D sound.");
 	}
 
-    private void AddAudioSources()
+    public void AddAudioSource(SoundObject s, GameObject g)
     {
-		foreach (SoundObject s in _sounds)
-		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-			s.source.outputAudioMixerGroup = s.mixerGroup != null ? s.mixerGroup : _mixerGroup;
-			s.source.loop = s.loop;
-			s.source.volume = s.volume;
-			s.source.pitch = s.pitch;
-		}
+		s.source = g.AddComponent<AudioSource>();
+		s.source.clip = s.clip;
+		s.source.outputAudioMixerGroup = s.mixerGroup != null ? s.mixerGroup : _mixerGroup;
+		s.source.loop = s.loop;
+		s.source.volume = s.volume;
+		s.source.pitch = s.pitch;
 	}
 
 	public void Play(string soundName)
@@ -38,7 +50,7 @@ public class AudioManager : MonoBehaviour
 		SoundObject s = Array.Find(_sounds, e => e.soundName == soundName);
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + name + " not found!");
+			Debug.LogWarning("Sound: " + soundName + " not found!");
 			return;
 		}
 

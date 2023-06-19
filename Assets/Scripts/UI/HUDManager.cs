@@ -23,15 +23,6 @@ public class HUDManager : MonoBehaviour
         _hudCandyPosHidden = _hudCandies[1].transform.position;
     }
 
-    public void PlayCandyCollectionSound()
-    {
-        // If candy is gained (and not lost)
-        if (_playerScript.CandyAmount == _playerScript.MaxCandyAmount)
-            AudioManager.Instance.Play("GameCandyCollectionComplete");
-        else
-            AudioManager.Instance.Play("GameCandyOneCollected");
-    }
-
     public void UpdateCandyCounter()
     {
         _tmpro.text = _playerScript.CandyAmount.ToString() + "/" + _playerScript.MaxCandyAmount.ToString();

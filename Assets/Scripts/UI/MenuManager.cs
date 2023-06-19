@@ -8,9 +8,9 @@ public class MenuManager : MonoBehaviour
 {
     public int IndexOption { get; private set; }
 
+    private static bool _userAskedForRestart = false;
     private int _minIndexOption;
     private bool _isFirstGame;
-    private bool _userAskedForRestart = false;
     private Behaviour _menuCamera;
     private Behaviour _hudCamera;
     private GameObject _screenMain, _screenOptions, _screenLicenses;
@@ -20,6 +20,8 @@ public class MenuManager : MonoBehaviour
     {
         int i;
         GameObject[] arrGo;
+
+        Debug.Log("TODO: _userAskedForRestart shouldn't be static, it should be in a file that belongs to this player, so that every player can have their own _userAskedForRestart value.");
 
         _menuCamera = GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
         _hudCamera = GameObject.FindGameObjectWithTag("HUDCamera").GetComponent<Camera>();

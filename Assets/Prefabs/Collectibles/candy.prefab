@@ -153,3 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bce006cfb071a248c8550e5d00db4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundCandyCollectionComplete: {fileID: 11400000, guid: 985f09ee85ac23847b7f993c1e08649c, type: 2}
+  _soundCandyOneCollected: {fileID: 11400000, guid: 1296c8154ad2b464487920118d399961, type: 2}

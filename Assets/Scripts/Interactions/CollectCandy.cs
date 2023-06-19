@@ -2,25 +2,43 @@ using UnityEngine;
 
 public class CollectCandy : MonoBehaviour
 {
+    [SerializeField] private SoundObject _soundCandyCollectionComplete;
+    [SerializeField] private SoundObject _soundCandyOneCollected;
+
+    private void Start()
+    {
+        AudioManager.Instance.AddAudioSource(_soundCandyCollectionComplete, gameObject);
+        AudioManager.Instance.AddAudioSource(_soundCandyOneCollected, gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Character characterScript = other.GetComponent<Character>();
+        Character character = other.GetComponent<Character>();
         HUDManager _hudScript;
 
-        if (characterScript != null && characterScript.CandyAmount < 3)
+        if (character != null && character.CandyAmount < 3)
         {
-            characterScript.ModifyCandyAmount(1);
-            Destroy(gameObject);
+            character.ModifyCandyAmount(1);
 
             if (other.CompareTag("Player"))
             {
+                PlayCandyCollectionSound(character.CandyAmount >= character.MaxCandyAmount);
+
                 _hudScript = FindObjectOfType<HUDManager>();
-                _hudScript.PlayCandyCollectionSound();
                 _hudScript.UpdateCandyCounter();
                 _hudScript.UpdateCandyIcon();
             }
 
-            characterScript.IncreasePhysicalStats();
+            character.IncreasePhysicalStats();
+            Destroy(gameObject);
         }
+    }
+
+    private void PlayCandyCollectionSound(bool isCollectionComplete)
+    {
+        if (isCollectionComplete)
+            _soundCandyCollectionComplete.source.Play();
+        else
+            _soundCandyOneCollected.source.Play();
     }
 }
