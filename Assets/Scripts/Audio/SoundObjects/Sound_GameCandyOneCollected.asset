@@ -16,7 +16,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 10a7227919216aca2a6dd513b86fb928, type: 3}
   mixerGroup: {fileID: 6640308326344527431, guid: 95d733ef21d99e69191bdd4f1e79c8ec, type: 2}
   loop: 0
+  is3d: 1
   volume: 1
-  volumeVariance: 0
   pitch: 1
-  pitchVariance: 0
+  source: {fileID: 0}

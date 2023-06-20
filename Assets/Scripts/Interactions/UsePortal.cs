@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class UsePortal : MonoBehaviour
 {
-    private static AudioManager _audioManager;
-
     [SerializeField] private bool isPortalFed = false;
     [SerializeField] private int requiredCandyAmount = 3;
+    [SerializeField] private Sound _soundPortalOpening;
 
     private Character _characterScript;
     private MenuManager _menuScript;
@@ -15,7 +14,6 @@ public class UsePortal : MonoBehaviour
 
     private void Awake()
     {
-        _audioManager = FindObjectOfType<AudioManager>();
         _characterScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         _menuScript = FindObjectOfType<MenuManager>();
         _lightComponent = gameObject.GetComponentInChildren(typeof(Light)) as Light;
@@ -65,7 +63,7 @@ public class UsePortal : MonoBehaviour
                     yield break;
             }
 
-            _audioManager.Play("GamePortalOpening");
+            _soundPortalOpening.Play();
             yield return new WaitForSecondsRealtime(1f);
 
             // End the game now for the time being

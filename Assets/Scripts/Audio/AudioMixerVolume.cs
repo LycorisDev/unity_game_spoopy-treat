@@ -2,12 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
+public class AudioMixerVolume : MonoBehaviour
 {
-	public static AudioManager Instance { get; private set; }
+	public static AudioMixerVolume Instance { get; private set; }
 
 	public enum AudioMixerVolumeGroup
-    {
+	{
 		MasterVolume,
 		MusicVolume,
 		AmbienceVolume,
@@ -15,8 +15,12 @@ public class AudioManager : MonoBehaviour
     }
 
 	[SerializeField] private AudioMixer _audioMixer;
-	[SerializeField] private AudioMixerGroup _mixerGroup;
-	[SerializeField] private SoundObject[] _sounds;
+	[field: SerializeField] public AudioMixerGroup MixerGroup { get; private set; }
+
+	[SerializeField] private Sound _soundError;
+	[SerializeField] private Sound _soundForward;
+	[SerializeField] private Sound _soundBack;
+	[SerializeField] private Sound _soundLimit;
 
 	private void Awake()
 	{
@@ -25,48 +29,11 @@ public class AudioManager : MonoBehaviour
 		else
 			Destroy(this);
 
-		foreach (SoundObject sound in _sounds)
-			AddAudioSource(sound, gameObject);
-
 		Debug.Log("TODO: Refactor SetMixerVolume() as best as possible.");
 		Debug.Log("TODO: New input system.");
 		Debug.Log("TODO: Instead of having to press the key for each volume point, allow the key to remain pressed.");
 		Debug.Log("TODO: Instead of having all the sounds in the Audio Manager gameobject, put some inside of certain objects, " +
 			"for example the candies, and have the sound be triggered from within the candy's script. This way we can have 3D sound.");
-	}
-
-    public void AddAudioSource(SoundObject s, GameObject g)
-    {
-		s.source = g.AddComponent<AudioSource>();
-		s.source.clip = s.clip;
-		s.source.outputAudioMixerGroup = s.mixerGroup != null ? s.mixerGroup : _mixerGroup;
-		s.source.loop = s.loop;
-		s.source.volume = s.volume;
-		s.source.pitch = s.pitch;
-	}
-
-	public void Play(string soundName)
-	{
-		SoundObject s = Array.Find(_sounds, e => e.soundName == soundName);
-		if (s == null)
-		{
-			Debug.LogWarning("Sound: " + soundName + " not found!");
-			return;
-		}
-
-		s.source.Play();
-	}
-
-	public void Stop(string soundName)
-	{
-		SoundObject s = Array.Find(_sounds, e => e.soundName == soundName);
-		if (s == null)
-		{
-			Debug.LogWarning("Sound: " + soundName + " not found!");
-			return;
-		}
-
-		s.source.Stop();
 	}
 
 	public int SetMixerVolume(int indexOption, int input)
@@ -90,25 +57,25 @@ public class AudioManager : MonoBehaviour
 		{
 			if (percentage == 100)
 			{
-				Play("MenuLimit");
+				_soundLimit.Play();
 				return -1;
 			}
 
-			Play("MenuForward");
+			_soundForward.Play();
 		}
 		else if (input == -1)
 		{
 			if (percentage == 0)
 			{
-				Play("MenuLimit");
+				_soundLimit.Play();
 				return -1;
 			}
 
-			Play("MenuBack");
+			_soundBack.Play();
 		}
 		else
 		{
-			Play("Error");
+			_soundError.Play();
 			return -1;
 		}
 

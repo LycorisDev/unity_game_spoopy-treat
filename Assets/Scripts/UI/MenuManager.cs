@@ -16,6 +16,16 @@ public class MenuManager : MonoBehaviour
     private GameObject _screenMain, _screenOptions, _screenLicenses;
     private TextMeshProUGUI[] _arrTmpMain, _arrTmpOptions, _arrTmpLicenses;
 
+    [SerializeField] private Sound _menuSelect;
+    [SerializeField] private Sound _soundValidate;
+    [SerializeField] private Sound _menuForward;
+    [SerializeField] private Sound _soundBack;
+
+    [SerializeField] private Sound _soundMusicTheme;
+    [SerializeField] private Sound _soundAmbiencePulse;
+    [SerializeField] private Sound _soundAmbienceForest;
+    [SerializeField] private Sound _soundAmbienceCreeper;
+
     private void Awake()
     {
         int i;
@@ -73,7 +83,7 @@ public class MenuManager : MonoBehaviour
         // If user had started a game and then selects "New Game" again, the new game needs to start immediately
         if (_userAskedForRestart)
         {
-            AudioManager.Instance.Play("MenuValidate");
+            _soundValidate.Play();
             ResumeGame();
             // A game starting also implies that "Resume Current Game" needs to be enabled
             EnableFirstMainMenuOption();
@@ -85,7 +95,7 @@ public class MenuManager : MonoBehaviour
     public void OpenMainMenu()
     {
         if (!_isFirstGame)
-            AudioManager.Instance.Play("MenuBack");
+            _soundBack.Play();
         // Pause the game
         Time.timeScale = 0;
         // Activate the menu camera
@@ -94,7 +104,7 @@ public class MenuManager : MonoBehaviour
         _hudCamera.enabled = false;
         IndexOption = _minIndexOption;
         StopGameAmbience();
-        AudioManager.Instance.Play("MenuTheme");
+        _soundMusicTheme.Play();
     }
 
     private void ResumeGame()
@@ -108,22 +118,22 @@ public class MenuManager : MonoBehaviour
         _hudCamera.enabled = true;
         // Reset the menu option selector
         IndexOption = _minIndexOption;
-        AudioManager.Instance.Stop("MenuTheme");
+        _soundMusicTheme.Stop();
         PlayGameAmbience();
     }
 
     private void PlayGameAmbience()
     {
-        AudioManager.Instance.Play("GameAmbiencePulse");
-        AudioManager.Instance.Play("GameAmbienceForest");
-        AudioManager.Instance.Play("GameAmbienceCreeper");
+        _soundAmbiencePulse.Play();
+        _soundAmbienceForest.Play();
+        _soundAmbienceCreeper.Play();
     }
 
     private void StopGameAmbience()
     {
-        AudioManager.Instance.Stop("GameAmbiencePulse");
-        AudioManager.Instance.Stop("GameAmbienceForest");
-        AudioManager.Instance.Stop("GameAmbienceCreeper");
+        _soundAmbiencePulse.Stop();
+        _soundAmbienceForest.Stop();
+        _soundAmbienceCreeper.Stop();
     }
 
     public void DisableFirstMainMenuOption()
@@ -175,7 +185,7 @@ public class MenuManager : MonoBehaviour
             min = _minIndexOption;
         }
 
-        AudioManager.Instance.Play("MenuSelect");
+        _menuSelect.Play();
         IndexOption = IndexOption > min ? IndexOption - 1 : length - 1;
     }
 
@@ -198,19 +208,19 @@ public class MenuManager : MonoBehaviour
             min = _minIndexOption;
         }
 
-        AudioManager.Instance.Play("MenuSelect");
+        _menuSelect.Play();
         IndexOption = IndexOption < length - 1 ? IndexOption + 1 : min;
     }
 
     public void ResumeCurrentGame()
     {
-        AudioManager.Instance.Play("MenuForward");
+        _menuForward.Play();
         ResumeGame();
     }
 
     public void NewGame()
     {
-        AudioManager.Instance.Play("MenuValidate");
+        _soundValidate.Play();
         if (!_isFirstGame)
         {
             _userAskedForRestart = true;
@@ -222,7 +232,7 @@ public class MenuManager : MonoBehaviour
 
     public void Quit()
     {
-        AudioManager.Instance.Play("MenuBack");
+        _soundBack.Play();
 
         #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
@@ -233,7 +243,7 @@ public class MenuManager : MonoBehaviour
 
     public void OpenSubMenu(string menu)
     {
-        AudioManager.Instance.Play("MenuValidate");
+        _soundValidate.Play();
         _screenMain.SetActive(false);
 
         if (menu == "options")
@@ -249,7 +259,7 @@ public class MenuManager : MonoBehaviour
 
     public void CloseSubMenu(string menu)
     {
-        AudioManager.Instance.Play("MenuBack");
+        _soundBack.Play();
 
         if (menu == "options")
             _screenOptions.SetActive(false);
@@ -262,14 +272,13 @@ public class MenuManager : MonoBehaviour
 
     public void OpenLink(string link)
     {
-        AudioManager.Instance.Play("MenuValidate");
+        _soundValidate.Play();
         Application.OpenURL(link);
     }
 
     public void UpdateVolume(int IndexOption, int input)
     {
-        int newPercentage = 0;
-        newPercentage = AudioManager.Instance.SetMixerVolume(IndexOption, input);
+        int newPercentage = AudioMixerVolume.Instance.SetMixerVolume(IndexOption, input);
         if (newPercentage != -1)
             _arrTmpOptions[IndexOption].text = newPercentage.ToString() + "%";
     }

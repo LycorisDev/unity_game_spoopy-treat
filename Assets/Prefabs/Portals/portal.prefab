@@ -126,6 +126,7 @@ Transform:
   m_Children:
   - {fileID: 7910785355167594616}
   - {fileID: 2854430987278537343}
+  - {fileID: 442328966132508490}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,7 +156,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPortalFed: 0
-  requiredNbrCandies: 3
+  requiredCandyAmount: 3
+  _soundPortalOpening: {fileID: 6113299636594911382}
+--- !u!1 &6960354794491769477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442328966132508490}
+  - component: {fileID: 6113299636594911382}
+  m_Layer: 0
+  m_Name: Sound - Portal Opening
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442328966132508490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960354794491769477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2854430988182952134}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6113299636594911382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6960354794491769477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9cba899df62b8429d3b84537bcda74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundObject: {fileID: 11400000, guid: 0ec12ddfb10cbca40896dba352880b04, type: 2}
 --- !u!1001 &2854430988017619400
 PrefabInstance:
   m_ObjectHideFlags: 0
