@@ -278,7 +278,7 @@ public class MenuManager : MonoBehaviour
 
     public void UpdateVolume(int IndexOption, int input)
     {
-        int newPercentage = AudioMixerVolume.Instance.SetMixerVolume(IndexOption, input);
+        int newPercentage = AudioMixerVolume.Instance.SetMixerVolume((AudioMixerVolume.VolumeGroup)IndexOption, input);
         if (newPercentage != -1)
             _arrTmpOptions[IndexOption].text = newPercentage.ToString() + "%";
     }

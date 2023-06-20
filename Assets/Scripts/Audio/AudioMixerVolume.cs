@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -6,12 +7,12 @@ public class AudioMixerVolume : MonoBehaviour
 {
 	public static AudioMixerVolume Instance { get; private set; }
 
-	public enum AudioMixerVolumeGroup
+	public enum VolumeGroup
 	{
-		MasterVolume,
-		MusicVolume,
-		AmbienceVolume,
-		EffectsVolume
+		[Description("MasterVolume")] MasterVolume,
+		[Description("MusicVolume")] MusicVolume,
+		[Description("AmbienceVolume")] AmbienceVolume,
+		[Description("EffectsVolume")] EffectsVolume
     }
 
 	[SerializeField] private AudioMixer _audioMixer;
@@ -29,28 +30,23 @@ public class AudioMixerVolume : MonoBehaviour
 		else
 			Destroy(this);
 
-		Debug.Log("TODO: Refactor SetMixerVolume() as best as possible.");
 		Debug.Log("TODO: New input system.");
 		Debug.Log("TODO: Instead of having to press the key for each volume point, allow the key to remain pressed.");
-		Debug.Log("TODO: Instead of having all the sounds in the Audio Manager gameobject, put some inside of certain objects, " +
-			"for example the candies, and have the sound be triggered from within the candy's script. This way we can have 3D sound.");
 	}
 
-	public int SetMixerVolume(int indexOption, int input)
+	public int SetMixerVolume(VolumeGroup group, int input)
 	{
-		string group = indexOption == 1 ? "MusicVolume" : indexOption == 2 ? "AmbienceVolume" : indexOption == 3 ? "EffectsVolume" : "MasterVolume";
-		float currVolume = 0f;
-		bool result = _audioMixer.GetFloat(group, out currVolume);
-		int percentage = 0;
+		float currVolume;
+		int percentage;
 
-		// "currVolume": 0f (100%) / -80f (0%)
-		// 1% is 0.8
+		/*
+			-80f is 0% of volume, and 0f is 100%
+			1% is 0.8f
+		*/
+		_audioMixer.GetFloat(group.ToString(), out currVolume);
 
 		// Compensate for floating point imprecision
-		if (currVolume > 0f) currVolume = 0f;
-		else if (currVolume < -80f) currVolume = -80f;
-
-		// The rounding is around "currVolume / 0.8f" for the same reason
+		currVolume = Mathf.Clamp(currVolume, -80f, 0f);
 		percentage = 100 + (int)Math.Round(currVolume / 0.8f, 0);
 
 		if (input == 1)
@@ -84,7 +80,7 @@ public class AudioMixerVolume : MonoBehaviour
 
 		// Update volume
 		currVolume = (percentage - 100) * 0.8f;
-		_audioMixer.SetFloat(group, currVolume);
+		_audioMixer.SetFloat(group.ToString(), currVolume);
 
 		return percentage;
 	}
