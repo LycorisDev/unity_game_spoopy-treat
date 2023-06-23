@@ -8,13 +8,13 @@ public class MovePlatform : MonoBehaviour
     private Vector3 _startPos;
     private Vector3 _targetPos;
 
-    private void Start()
+    private void Awake()
     {
         _startPos = transform.position;
         _targetPos = _startPos + new Vector3(0f, 0f, _distance);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (transform.position == _startPos)
             StartCoroutine(LerpCoroutineToEnd());

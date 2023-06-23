@@ -7,13 +7,13 @@ public class CandyIdleAnimation : MonoBehaviour
     private static float _frequency = 0.8f;
     private Vector3 _positionOffset;
 
-    private void Start()
+    private void Awake()
     {
         _positionOffset = transform.position;
         _positionOffset.y += 1f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         SetVerticalPosition();
         SetRotation();

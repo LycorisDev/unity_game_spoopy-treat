@@ -11,14 +11,14 @@ public class MenuPumpkinAnimation : MonoBehaviour
 
     private static float _zLimit;
     private static float _degrees = 0.2f;
-    private static bool _turningLeft = true;
+    private bool _turningLeft = true;
 
-    private void Start()
+    private void Awake()
     {
         _zLimit = transform.rotation.z - 0.001f;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (_turningLeft)
         {

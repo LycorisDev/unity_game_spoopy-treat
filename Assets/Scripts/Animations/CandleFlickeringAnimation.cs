@@ -13,7 +13,7 @@ public class CandleFlickeringAnimation : MonoBehaviour
         _lightComponent = GetComponent<Light>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         StartCoroutine(Flicker());
     }
