@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Controls : MonoBehaviour
 {
@@ -7,7 +8,14 @@ public class Controls : MonoBehaviour
     private MenuManager _menuScript;
     private string _currentSubMenu;
     private KeyCode _keyMenu, _keyHelpMode, _keyQuickSave, _keyPovMode, _keyScreenMode, 
-        _keyValidate, _keyUp, _keyDown, _keyLeft, _keyRight, _keySideLeft, _keySideRight, _keyJump;
+        _keyValidate, _keySideLeft, _keySideRight, _keyJump;
+
+    private Vector2 _directions;
+
+    public void InputDirections(InputAction.CallbackContext context)
+    {
+        _directions = context.ReadValue<Vector2>();
+    }
 
     private void Awake()
     {
@@ -24,10 +32,6 @@ public class Controls : MonoBehaviour
         _keyPovMode = KeyCode.F3;
         _keyScreenMode = KeyCode.F11;
         _keyValidate = KeyCode.Return;
-        _keyUp = KeyCode.W;
-        _keyDown = KeyCode.S;
-        _keyLeft = KeyCode.A;
-        _keyRight = KeyCode.D;
         _keySideLeft = KeyCode.Q;
         _keySideRight = KeyCode.E;
         _keyJump = KeyCode.Space;
@@ -80,13 +84,9 @@ public class Controls : MonoBehaviour
             LEFT keys before I realize that the user wanted to go down instead.
         */
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(_keyUp))
+        if (_directions.y > 0f ||_directions.x < 0f || Input.GetKeyDown(_keySideLeft))
             _menuScript.SelectUp(_currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(_keyDown))
-            _menuScript.SelectDown(_currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(_keyLeft) || Input.GetKeyDown(_keySideLeft))
-            _menuScript.SelectUp(_currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(_keyRight) || Input.GetKeyDown(_keySideRight))
+        else if (_directions.y < 0f || _directions.x > 0f || Input.GetKeyDown(_keySideRight))
             _menuScript.SelectDown(_currentSubMenu);
     }
 
@@ -94,9 +94,9 @@ public class Controls : MonoBehaviour
     {
         /* Used for when the sub-menu requires the horizontal input for other specific options (e.g. volume sliders). */
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(_keyUp))
+        if (_directions.y > 0f)
             _menuScript.SelectUp(_currentSubMenu);
-        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(_keyDown))
+        else if (_directions.y < 0f)
             _menuScript.SelectDown(_currentSubMenu);
     }
 
@@ -146,9 +146,9 @@ public class Controls : MonoBehaviour
             if (Input.GetKeyDown(_keyValidate))
                 GoBackToMainMenu();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(_keyLeft) || Input.GetKeyDown(_keySideLeft))
+        else if (_directions.x < 0f || Input.GetKeyDown(_keySideLeft))
             _menuScript.UpdateVolume(_menuScript.IndexOption, -1);
-        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(_keyRight) || Input.GetKeyDown(_keySideRight))
+        else if (_directions.x > 0f || Input.GetKeyDown(_keySideRight))
             _menuScript.UpdateVolume(_menuScript.IndexOption, 1);
     }
 
@@ -192,15 +192,15 @@ public class Controls : MonoBehaviour
     private void HandleGameInput()
     {
         // Move the player forward or backward
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(_keyUp))
+        if (_directions.y > 0f)
             transform.Translate(Vector3.forward * Time.deltaTime * _playerScript.DirectionalSpeed);
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(_keyDown))
+        if (_directions.y < 0f)
             transform.Translate(Vector3.back * Time.deltaTime * _playerScript.DirectionalSpeed);
 
         // Rotate the player to the left or the right
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(_keyLeft))
+        if (_directions.x < 0f)
             transform.Rotate(Vector3.down * Time.deltaTime * _playerScript.RotationalSpeed);
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(_keyRight))
+        if (_directions.x > 0f)
             transform.Rotate(Vector3.up * Time.deltaTime * _playerScript.RotationalSpeed);
 
         // Move the player to the side

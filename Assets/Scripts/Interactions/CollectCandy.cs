@@ -10,7 +10,7 @@ public class CollectCandy : MonoBehaviour
         Character character = other.GetComponent<Character>();
         HUDManager _hudScript;
 
-        if (character != null && character.CandyAmount < 3)
+        if (character != null && character.CandyAmount < character.MaxCandyAmount)
         {
             character.ModifyCandyAmount(1);
 

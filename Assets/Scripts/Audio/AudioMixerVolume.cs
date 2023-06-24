@@ -30,7 +30,6 @@ public class AudioMixerVolume : MonoBehaviour
 		else
 			Destroy(this);
 
-		Debug.Log("TODO: New input system.");
 		Debug.Log("TODO: Instead of having to press the key for each volume point, allow the key to remain pressed.");
 	}
 
