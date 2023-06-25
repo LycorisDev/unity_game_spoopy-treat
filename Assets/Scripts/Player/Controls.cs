@@ -7,15 +7,23 @@ public class Controls : MonoBehaviour
     private CameraManager _cameraScript;
     private MenuManager _menuScript;
     private string _currentSubMenu;
-    private KeyCode _keyMenu, _keyHelpMode, _keyQuickSave, _keyPovMode, _keyScreenMode, 
-        _keyValidate, _keySideLeft, _keySideRight, _keyJump;
 
-    private Vector2 _directions;
+    private bool _isInGame = false;
+    private Vector2 _directions = Vector2.zero;
+    private float _sideStep = 0f;
 
-    public void InputDirections(InputAction.CallbackContext context)
-    {
-        _directions = context.ReadValue<Vector2>();
-    }
+    [SerializeField] private InputActionReference _horizontalDirectionValue;
+    [SerializeField] private InputActionReference _verticalDirectionValue;
+    [SerializeField] private InputActionReference _sideStepValue;
+
+    [SerializeField] private InputActionReference _validateButton;
+
+    [SerializeField] private InputActionReference _jumpButton;
+    [SerializeField] private InputActionReference _escapeButton;
+    [SerializeField] private InputActionReference _helpModeButton;
+    [SerializeField] private InputActionReference _quickSaveButton;
+    [SerializeField] private InputActionReference _povModeButton;
+    [SerializeField] private InputActionReference _screenModeButton;
 
     private void Awake()
     {
@@ -25,41 +33,120 @@ public class Controls : MonoBehaviour
 
         _currentSubMenu = "main";
 
-        // "Use Physical Keys" enabled (QWERTY)
-        _keyMenu = KeyCode.Escape;
-        _keyHelpMode = KeyCode.F1;
-        _keyQuickSave = KeyCode.F2;
-        _keyPovMode = KeyCode.F3;
-        _keyScreenMode = KeyCode.F11;
-        _keyValidate = KeyCode.Return;
-        _keySideLeft = KeyCode.Q;
-        _keySideRight = KeyCode.E;
-        _keyJump = KeyCode.Space;
+        _horizontalDirectionValue.action.started += HorizontalDirection;
+        _horizontalDirectionValue.action.canceled += HorizontalDirection;
+        _verticalDirectionValue.action.started += VerticalDirection;
+        _verticalDirectionValue.action.canceled += VerticalDirection;
+        _sideStepValue.action.started += SideStep;
+        _sideStepValue.action.canceled += SideStep;
+
+        _validateButton.action.started += Validate;
+
+        _jumpButton.action.started += Jump;
+        _escapeButton.action.started += EscapeButton;
+        _helpModeButton.action.started += HelpMode;
+        _quickSaveButton.action.started += QuickSave;
+        _povModeButton.action.started += PovMode;
+        _screenModeButton.action.started += ScreenMode;
+    }
+
+    private void HorizontalDirection(InputAction.CallbackContext context)
+    {
+        // TODO: Perfect for in-game movement, but not for menu
+        _directions.x = context.ReadValue<float>();
+    }
+
+    private void VerticalDirection(InputAction.CallbackContext context)
+    {
+        // TODO: Perfect for in-game movement, but not for menu
+        _directions.y = context.ReadValue<float>();
+    }
+
+    private void SideStep(InputAction.CallbackContext context)
+    {
+        // TODO: Perfect for in-game movement, but not for menu
+        _sideStep = context.ReadValue<float>();
+    }
+
+    private void Validate(InputAction.CallbackContext context)
+    {
+        // TODO: KeyCode.Return
+    }
+
+    private void Jump(InputAction.CallbackContext context)
+    {
+        _playerScript.Jump();
+    }
+
+    private void EscapeButton(InputAction.CallbackContext context)
+    {
+        // Open menu if in game
+        if (Time.timeScale == 1)
+        {
+            _menuScript.OpenMainMenu();
+        } 
+        // Close the soft if in main menu
+        else if (_currentSubMenu == "main")
+        {
+            _menuScript.Quit();
+        }
+        // Go back to main menu if in sub-menu
+        else
+        {
+            _menuScript.CloseSubMenu(_currentSubMenu);
+            _currentSubMenu = "main";
+        }
+    }
+
+    private void HelpMode(InputAction.CallbackContext context)
+    {
+        // Toggle/Untoggle help mode
+        // Tutorial/Advice and not just a display of the different keys
+        Debug.Log("Help Key");
+    }
+
+    private void QuickSave(InputAction.CallbackContext context)
+    {
+        // Quick save only - Do not open the save sub-menu
+        Debug.Log("Quick Save Key");
+    }
+
+    private void PovMode(InputAction.CallbackContext context)
+    {
+        // Switch between 3rd (default) and 1st person POV
+        _cameraScript.SwitchCameraMode();
+    }
+
+    private void ScreenMode(InputAction.CallbackContext context)
+    {
+        // Switch between fullscreen and windowed mode
+        Screen.fullScreen = !Screen.fullScreen;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(_keyMenu))
-        {
-            // Open menu if in game
-            if (Time.timeScale == 1)
-                _menuScript.OpenMainMenu();
-            // Close the soft if in main menu
-            else if (_currentSubMenu == "main")
-                _menuScript.Quit();
-            // Go back to main menu if in sub-menu
-            else
-                GoBackToMainMenu();
-        }
-
         if (Time.timeScale == 0)
             HandleMenuInput();
         else
-            HandleGameInput();
+        {
+            // Move the player forward or backward
+            if (_directions.y > 0f)
+                transform.Translate(Vector3.forward * Time.deltaTime * _playerScript.DirectionalSpeed);
+            if (_directions.y < 0f)
+                transform.Translate(Vector3.back * Time.deltaTime * _playerScript.DirectionalSpeed);
 
-        // Switch between fullscreen and windowed mode
-        if (Input.GetKeyDown(_keyScreenMode))
-            Screen.fullScreen = !Screen.fullScreen;
+            // Rotate the player to the left or the right
+            if (_directions.x < 0f)
+                transform.Rotate(Vector3.down * Time.deltaTime * _playerScript.RotationalSpeed);
+            if (_directions.x > 0f)
+                transform.Rotate(Vector3.up * Time.deltaTime * _playerScript.RotationalSpeed);
+
+            // Move the player to the side
+            if (_sideStep < 0f)
+                transform.Translate(Vector3.left * Time.deltaTime * _playerScript.DirectionalSpeed);
+            if (_sideStep > 0f)
+                transform.Translate(Vector3.right * Time.deltaTime * _playerScript.DirectionalSpeed);
+        } 
     }
 
     private void HandleMenuInput()
@@ -84,9 +171,9 @@ public class Controls : MonoBehaviour
             LEFT keys before I realize that the user wanted to go down instead.
         */
 
-        if (_directions.y > 0f ||_directions.x < 0f || Input.GetKeyDown(_keySideLeft))
+        if (_directions.y > 0f ||_directions.x < 0f || _sideStep < 0f)
             _menuScript.SelectUp(_currentSubMenu);
-        else if (_directions.y < 0f || _directions.x > 0f || Input.GetKeyDown(_keySideRight))
+        else if (_directions.y < 0f || _directions.x > 0f || _sideStep > 0f)
             _menuScript.SelectDown(_currentSubMenu);
     }
 
@@ -100,18 +187,12 @@ public class Controls : MonoBehaviour
             _menuScript.SelectDown(_currentSubMenu);
     }
 
-    private void GoBackToMainMenu()
-    {
-        _menuScript.CloseSubMenu(_currentSubMenu);
-        _currentSubMenu = "main";
-    }
-
     private void HandleMainMenuInput()
     {
         _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOption();
 
-        if (Input.GetKeyDown(_keyValidate))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             switch (_menuScript.IndexOption)
             {
@@ -143,12 +224,15 @@ public class Controls : MonoBehaviour
 
         if (_menuScript.IndexOption == 4)
         {
-            if (Input.GetKeyDown(_keyValidate))
-                GoBackToMainMenu();
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                _menuScript.CloseSubMenu(_currentSubMenu);
+                _currentSubMenu = "main";
+            }
         }
-        else if (_directions.x < 0f || Input.GetKeyDown(_keySideLeft))
+        else if (_directions.x < 0f || _sideStep < 0f)
             _menuScript.UpdateVolume(_menuScript.IndexOption, -1);
-        else if (_directions.x > 0f || Input.GetKeyDown(_keySideRight))
+        else if (_directions.x > 0f || _sideStep > 0f)
             _menuScript.UpdateVolume(_menuScript.IndexOption, 1);
     }
 
@@ -157,7 +241,7 @@ public class Controls : MonoBehaviour
         _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
         SelectMenuOption();
 
-        if (Input.GetKeyDown(_keyValidate))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             switch (_menuScript.IndexOption)
             {
@@ -183,52 +267,10 @@ public class Controls : MonoBehaviour
                     _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
                     break;
                 case 7:
-                    GoBackToMainMenu();
+                    _menuScript.CloseSubMenu(_currentSubMenu);
+                    _currentSubMenu = "main";
                     break;
             }
         }
-    }
-
-    private void HandleGameInput()
-    {
-        // Move the player forward or backward
-        if (_directions.y > 0f)
-            transform.Translate(Vector3.forward * Time.deltaTime * _playerScript.DirectionalSpeed);
-        if (_directions.y < 0f)
-            transform.Translate(Vector3.back * Time.deltaTime * _playerScript.DirectionalSpeed);
-
-        // Rotate the player to the left or the right
-        if (_directions.x < 0f)
-            transform.Rotate(Vector3.down * Time.deltaTime * _playerScript.RotationalSpeed);
-        if (_directions.x > 0f)
-            transform.Rotate(Vector3.up * Time.deltaTime * _playerScript.RotationalSpeed);
-
-        // Move the player to the side
-        if (Input.GetKey(_keySideLeft))
-            transform.Translate(Vector3.left * Time.deltaTime * _playerScript.DirectionalSpeed);
-        if (Input.GetKey(_keySideRight))
-            transform.Translate(Vector3.right * Time.deltaTime * _playerScript.DirectionalSpeed);
-
-        // Make the player jump
-        if (Input.GetKeyDown(_keyJump))
-            _playerScript.Jump();
-
-        // Toggle/Untoggle help mode
-        if (Input.GetKeyDown(_keyHelpMode))
-        {
-            // Tutorial/Advice and not just a display of the different keys
-            Debug.Log("Help Key");
-        }
-
-        // Quick save
-        if (Input.GetKeyDown(_keyQuickSave))
-        {
-            // Quick save only - Do not open the save sub-menu
-            Debug.Log("Quick Save Key");
-        }
-
-        // Switch between 3rd (default) and 1st person POV
-        if (Input.GetKeyDown(_keyPovMode))
-            _cameraScript.SwitchCameraMode();
     }
 }
