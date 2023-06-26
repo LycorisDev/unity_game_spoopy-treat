@@ -3,12 +3,19 @@ using UnityEngine.InputSystem;
 
 public class Controls : MonoBehaviour
 {
+    public enum GameState
+    {
+        InGame,
+        MainMenu,
+        MenuOptions,
+        MenuLicenses,
+    }
+
+    private GameState _currentState = GameState.MainMenu;
     private Character _playerScript;
     private CameraManager _cameraScript;
     private MenuManager _menuScript;
-    private string _currentSubMenu;
 
-    private bool _isInGame = false;
     private Vector2 _directions = Vector2.zero;
     private float _sideStep = 0f;
 
@@ -30,8 +37,6 @@ public class Controls : MonoBehaviour
         _playerScript = GetComponent<Character>();
         _cameraScript = Camera.main.GetComponent<CameraManager>();
         _menuScript = FindObjectOfType<MenuManager>();
-
-        _currentSubMenu = "main";
 
         _horizontalDirectionValue.action.started += HorizontalDirection;
         _horizontalDirectionValue.action.canceled += HorizontalDirection;
@@ -86,15 +91,15 @@ public class Controls : MonoBehaviour
             _menuScript.OpenMainMenu();
         } 
         // Close the soft if in main menu
-        else if (_currentSubMenu == "main")
+        else if (_currentState == GameState.MainMenu)
         {
             _menuScript.Quit();
         }
         // Go back to main menu if in sub-menu
         else
         {
-            _menuScript.CloseSubMenu(_currentSubMenu);
-            _currentSubMenu = "main";
+            _menuScript.CloseSubMenu(_currentState);
+            _currentState = GameState.MainMenu;
         }
     }
 
@@ -151,9 +156,9 @@ public class Controls : MonoBehaviour
 
     private void HandleMenuInput()
     {
-        if (_currentSubMenu == "options")
+        if (_currentState == GameState.MenuOptions)
             HandleOptionsMenuInput();
-        else if (_currentSubMenu == "licenses")
+        else if (_currentState == GameState.MenuLicenses)
             HandleLicensesMenuInput();
         else
             HandleMainMenuInput();
@@ -172,9 +177,9 @@ public class Controls : MonoBehaviour
         */
 
         if (_directions.y > 0f ||_directions.x < 0f || _sideStep < 0f)
-            _menuScript.SelectUp(_currentSubMenu);
+            _menuScript.SelectUp(_currentState);
         else if (_directions.y < 0f || _directions.x > 0f || _sideStep > 0f)
-            _menuScript.SelectDown(_currentSubMenu);
+            _menuScript.SelectDown(_currentState);
     }
 
     private void SelectMenuOptionVerticalOnly()
@@ -182,14 +187,14 @@ public class Controls : MonoBehaviour
         /* Used for when the sub-menu requires the horizontal input for other specific options (e.g. volume sliders). */
 
         if (_directions.y > 0f)
-            _menuScript.SelectUp(_currentSubMenu);
+            _menuScript.SelectUp(_currentState);
         else if (_directions.y < 0f)
-            _menuScript.SelectDown(_currentSubMenu);
+            _menuScript.SelectDown(_currentState);
     }
 
     private void HandleMainMenuInput()
     {
-        _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
+        _menuScript.SetGraphicsForSelectedOption(_currentState);
         SelectMenuOption();
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -203,12 +208,12 @@ public class Controls : MonoBehaviour
                     _menuScript.NewGame();
                     break;
                 case 2:
-                    _currentSubMenu = "options";
-                    _menuScript.OpenSubMenu(_currentSubMenu);
+                    _currentState = GameState.MenuOptions;
+                    _menuScript.OpenSubMenu(_currentState);
                     break;
                 case 3:
-                    _currentSubMenu = "licenses";
-                    _menuScript.OpenSubMenu(_currentSubMenu);
+                    _currentState = GameState.MenuLicenses;
+                    _menuScript.OpenSubMenu(_currentState);
                     break;
                 case 4:
                     _menuScript.Quit();
@@ -219,15 +224,15 @@ public class Controls : MonoBehaviour
 
     private void HandleOptionsMenuInput()
     {
-        _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
+        _menuScript.SetGraphicsForSelectedOption(_currentState);
         SelectMenuOptionVerticalOnly();
 
         if (_menuScript.IndexOption == 4)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                _menuScript.CloseSubMenu(_currentSubMenu);
-                _currentSubMenu = "main";
+                _menuScript.CloseSubMenu(_currentState);
+                _currentState = GameState.MainMenu;
             }
         }
         else if (_directions.x < 0f || _sideStep < 0f)
@@ -238,7 +243,7 @@ public class Controls : MonoBehaviour
 
     private void HandleLicensesMenuInput()
     {
-        _menuScript.SetGraphicsForSelectedOption(_currentSubMenu);
+        _menuScript.SetGraphicsForSelectedOption(_currentState);
         SelectMenuOption();
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -267,8 +272,8 @@ public class Controls : MonoBehaviour
                     _menuScript.OpenLink("https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125");
                     break;
                 case 7:
-                    _menuScript.CloseSubMenu(_currentSubMenu);
-                    _currentSubMenu = "main";
+                    _menuScript.CloseSubMenu(_currentState);
+                    _currentState = GameState.MainMenu;
                     break;
             }
         }

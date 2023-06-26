@@ -148,12 +148,12 @@ public class MenuManager : MonoBehaviour
         _minIndexOption = 0;
     }
 
-    public void SetGraphicsForSelectedOption(string menu)
+    public void SetGraphicsForSelectedOption(Controls.GameState menu)
     {
         TextMeshProUGUI[] arrTmp;
-        if (menu == "options")
+        if (menu == Controls.GameState.MenuOptions)
             arrTmp = _arrTmpOptions;
-        else if (menu == "licenses")
+        else if (menu == Controls.GameState.MenuLicenses)
             arrTmp = _arrTmpLicenses;
         else
             arrTmp = _arrTmpMain;
@@ -166,15 +166,15 @@ public class MenuManager : MonoBehaviour
         arrTmp[IndexOption].color = new Color(0.65f, 0.19f, 0.08f, 1f);
     }
 
-    public void SelectUp(string menu)
+    public void SelectUp(Controls.GameState menu)
     {
         int length, min;
-        if (menu == "options")
+        if (menu == Controls.GameState.MenuOptions)
         {
             length = _arrTmpOptions.Length;
             min = 0;
         }
-        else if (menu == "licenses")
+        else if (menu == Controls.GameState.MenuLicenses)
         {
             length = _arrTmpLicenses.Length;
             min = 0;
@@ -189,15 +189,15 @@ public class MenuManager : MonoBehaviour
         IndexOption = IndexOption > min ? IndexOption - 1 : length - 1;
     }
 
-    public void SelectDown(string menu)
+    public void SelectDown(Controls.GameState menu)
     {
         int length, min;
-        if (menu == "options")
+        if (menu == Controls.GameState.MenuOptions)
         {
             length = _arrTmpOptions.Length;
             min = 0;
         }
-        else if (menu == "licenses")
+        else if (menu == Controls.GameState.MenuLicenses)
         {
             length = _arrTmpLicenses.Length;
             min = 0;
@@ -241,14 +241,14 @@ public class MenuManager : MonoBehaviour
         #endif
     }
 
-    public void OpenSubMenu(string menu)
+    public void OpenSubMenu(Controls.GameState menu)
     {
         _soundValidate.Play();
         _screenMain.SetActive(false);
 
-        if (menu == "options")
+        if (menu == Controls.GameState.MenuOptions)
             _screenOptions.SetActive(true);
-        else if (menu == "licenses")
+        else if (menu == Controls.GameState.MenuLicenses)
             _screenLicenses.SetActive(true);
         // Error, so just quit
         else
@@ -257,13 +257,13 @@ public class MenuManager : MonoBehaviour
         IndexOption = 0;
     }
 
-    public void CloseSubMenu(string menu)
+    public void CloseSubMenu(Controls.GameState menu)
     {
         _soundBack.Play();
 
-        if (menu == "options")
+        if (menu == Controls.GameState.MenuOptions)
             _screenOptions.SetActive(false);
-        else if (menu == "licenses")
+        else if (menu == Controls.GameState.MenuLicenses)
             _screenLicenses.SetActive(false);
 
         _screenMain.SetActive(true);
