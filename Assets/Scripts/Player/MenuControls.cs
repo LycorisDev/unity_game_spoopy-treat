@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Controls : MonoBehaviour
+public class MenuControls : MonoBehaviour
 {
     public enum GameState
     {
@@ -12,114 +12,29 @@ public class Controls : MonoBehaviour
     }
 
     private GameState _currentState = GameState.MainMenu;
-    private Character _playerScript;
-    private CameraManager _cameraScript;
+
     private MenuManager _menuScript;
 
     private Vector2 _directions = Vector2.zero;
     private float _sideStep = 0f;
 
-    [SerializeField] private InputActionReference _horizontalDirectionValue;
-    [SerializeField] private InputActionReference _verticalDirectionValue;
-    [SerializeField] private InputActionReference _sideStepValue;
-
-    [SerializeField] private InputActionReference _validateButton;
-
-    [SerializeField] private InputActionReference _jumpButton;
-    [SerializeField] private InputActionReference _escapeButton;
-    [SerializeField] private InputActionReference _helpModeButton;
-    [SerializeField] private InputActionReference _quickSaveButton;
-    [SerializeField] private InputActionReference _povModeButton;
     [SerializeField] private InputActionReference _screenModeButton;
+    [SerializeField] private InputActionReference _escapeButton;
+    [SerializeField] private InputActionReference _validateButton;
 
     private void Awake()
     {
-        _playerScript = GetComponent<Character>();
-        _cameraScript = Camera.main.GetComponent<CameraManager>();
         _menuScript = FindObjectOfType<MenuManager>();
 
-        _horizontalDirectionValue.action.started += HorizontalDirection;
-        _horizontalDirectionValue.action.canceled += HorizontalDirection;
-        _verticalDirectionValue.action.started += VerticalDirection;
-        _verticalDirectionValue.action.canceled += VerticalDirection;
-        _sideStepValue.action.started += SideStep;
-        _sideStepValue.action.canceled += SideStep;
-
-        _validateButton.action.started += Validate;
-
-        _jumpButton.action.started += Jump;
-        _escapeButton.action.started += EscapeButton;
-        _helpModeButton.action.started += HelpMode;
-        _quickSaveButton.action.started += QuickSave;
-        _povModeButton.action.started += PovMode;
         _screenModeButton.action.started += ScreenMode;
+        _escapeButton.action.started += EscapeButton;
+        _validateButton.action.started += Validate;
     }
 
-    private void HorizontalDirection(InputAction.CallbackContext context)
+    private void Update()
     {
-        // TODO: Perfect for in-game movement, but not for menu
-        _directions.x = context.ReadValue<float>();
-    }
-
-    private void VerticalDirection(InputAction.CallbackContext context)
-    {
-        // TODO: Perfect for in-game movement, but not for menu
-        _directions.y = context.ReadValue<float>();
-    }
-
-    private void SideStep(InputAction.CallbackContext context)
-    {
-        // TODO: Perfect for in-game movement, but not for menu
-        _sideStep = context.ReadValue<float>();
-    }
-
-    private void Validate(InputAction.CallbackContext context)
-    {
-        // TODO: KeyCode.Return
-    }
-
-    private void Jump(InputAction.CallbackContext context)
-    {
-        _playerScript.Jump();
-    }
-
-    private void EscapeButton(InputAction.CallbackContext context)
-    {
-        // Open menu if in game
-        if (Time.timeScale == 1)
-        {
-            _menuScript.OpenMainMenu();
-        } 
-        // Close the soft if in main menu
-        else if (_currentState == GameState.MainMenu)
-        {
-            _menuScript.Quit();
-        }
-        // Go back to main menu if in sub-menu
-        else
-        {
-            _menuScript.CloseSubMenu(_currentState);
-            _currentState = GameState.MainMenu;
-        }
-    }
-
-    private void HelpMode(InputAction.CallbackContext context)
-    {
-        // Toggle/Untoggle help mode
-        // Tutorial/Advice and not just a display of the different keys
-        Debug.Log("Help Key");
-    }
-
-    private void QuickSave(InputAction.CallbackContext context)
-    {
-        // Quick save only - Do not open the save sub-menu
-        Debug.Log("Quick Save Key");
-    }
-
-    private void PovMode(InputAction.CallbackContext context)
-    {
-        // Switch between 3rd (default) and 1st person POV
-        _cameraScript.SwitchCameraMode();
+        if (_currentState != GameState.InGame)
+            HandleMenuInput();
     }
 
     private void ScreenMode(InputAction.CallbackContext context)
@@ -128,30 +43,27 @@ public class Controls : MonoBehaviour
         Screen.fullScreen = !Screen.fullScreen;
     }
 
-    private void Update()
+    private void EscapeButton(InputAction.CallbackContext context)
     {
-        if (Time.timeScale == 0)
-            HandleMenuInput();
+        if (_currentState == GameState.InGame)
+        {
+            _menuScript.OpenMainMenu();
+            _currentState = GameState.MainMenu;
+        }
+        else if (_currentState == GameState.MainMenu)
+        {
+            _menuScript.Quit();
+        }
         else
         {
-            // Move the player forward or backward
-            if (_directions.y > 0f)
-                transform.Translate(Vector3.forward * Time.deltaTime * _playerScript.DirectionalSpeed);
-            if (_directions.y < 0f)
-                transform.Translate(Vector3.back * Time.deltaTime * _playerScript.DirectionalSpeed);
+            _menuScript.CloseSubMenu(_currentState);
+            _currentState = GameState.MainMenu;
+        }
+    }
 
-            // Rotate the player to the left or the right
-            if (_directions.x < 0f)
-                transform.Rotate(Vector3.down * Time.deltaTime * _playerScript.RotationalSpeed);
-            if (_directions.x > 0f)
-                transform.Rotate(Vector3.up * Time.deltaTime * _playerScript.RotationalSpeed);
-
-            // Move the player to the side
-            if (_sideStep < 0f)
-                transform.Translate(Vector3.left * Time.deltaTime * _playerScript.DirectionalSpeed);
-            if (_sideStep > 0f)
-                transform.Translate(Vector3.right * Time.deltaTime * _playerScript.DirectionalSpeed);
-        } 
+    private void Validate(InputAction.CallbackContext context)
+    {
+        // TODO: KeyCode.Return
     }
 
     private void HandleMenuInput()
@@ -203,17 +115,19 @@ public class Controls : MonoBehaviour
             {
                 case 0:
                     _menuScript.ResumeCurrentGame();
+                    _currentState = GameState.InGame;
                     break;
                 case 1:
                     _menuScript.NewGame();
+                    _currentState = GameState.InGame;
                     break;
                 case 2:
-                    _currentState = GameState.MenuOptions;
                     _menuScript.OpenSubMenu(_currentState);
+                    _currentState = GameState.MenuOptions;
                     break;
                 case 3:
-                    _currentState = GameState.MenuLicenses;
                     _menuScript.OpenSubMenu(_currentState);
+                    _currentState = GameState.MenuLicenses;
                     break;
                 case 4:
                     _menuScript.Quit();

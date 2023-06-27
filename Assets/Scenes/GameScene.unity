@@ -27707,6 +27707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59899a1ce1a42fc558e2dbd5d8e1bd64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameActionsScript: {fileID: 4685029898923656696}
   _menuSelect: {fileID: 293010810}
   _soundValidate: {fileID: 670263775}
   _menuForward: {fileID: 1881703420}
@@ -29067,3 +29068,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 111969832516321958, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
   m_PrefabInstance: {fileID: 4650347212912445265}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4685029898923656696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7449595982950676236, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+  m_PrefabInstance: {fileID: 4650347212912445265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191156a61cfdb284b872a6f120be7567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

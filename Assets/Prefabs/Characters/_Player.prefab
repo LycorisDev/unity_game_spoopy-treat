@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 111969832516321955}
   - component: {fileID: 8575337868048942674}
   - component: {fileID: 4650347212386146930}
+  - component: {fileID: 7449595982950676236}
   - component: {fileID: 4650347212386146894}
   m_Layer: 0
   m_Name: _Player
@@ -173,6 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35154747464199413a278515f3579fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Movements: {x: 0, y: 0}
+  SideStep: 0
 --- !u!114 &4650347212386146930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,19 +202,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4650347212386146894}
-        m_TargetAssemblyTypeName: Controls, Assembly-CSharp
-        m_MethodName: InputDirections
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0a6c34d8-cfee-49cd-9b1a-acb17ba8d840
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -246,11 +237,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: df2553bf-ad1a-4d10-aebb-84079bcf034b
     m_ActionName: Player/POV Mode1[/Keyboard/f3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2db2ad13-e5d6-4b01-8e61-8a93f545000c
+    m_ActionName: Player/Horizontal Direction[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7449595982950676236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111969832516321954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191156a61cfdb284b872a6f120be7567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalMovementValue: {fileID: 3876308006494929839, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _verticalMovementValue: {fileID: 576456857565407947, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _sideStepValue: {fileID: -3655047666529132180, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _jumpButton: {fileID: 2621518286813495000, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _helpModeButton: {fileID: 8761930233099656893, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _quickSaveButton: {fileID: 5572039246663067852, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _povModeButton: {fileID: 1730757192818456665, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
 --- !u!114 &4650347212386146894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,15 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c3d30e8f7f1b8b695baa1565f3db1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalDirectionValue: {fileID: 3876308006494929839, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _verticalDirectionValue: {fileID: 576456857565407947, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _sideStepValue: {fileID: -3655047666529132180, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _validateButton: {fileID: 9111201555324432381, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _jumpButton: {fileID: 2621518286813495000, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _escapeButton: {fileID: 557461953219632284, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _helpModeButton: {fileID: 8761930233099656893, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _quickSaveButton: {fileID: 5572039246663067852, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _povModeButton: {fileID: 1730757192818456665, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _screenModeButton: {fileID: 6804480081574262297, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
 --- !u!1 &111969833534390079
 GameObject:
