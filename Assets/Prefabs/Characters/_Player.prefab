@@ -262,6 +262,8 @@ MonoBehaviour:
   _verticalMovementValue: {fileID: 576456857565407947, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _sideStepValue: {fileID: -3655047666529132180, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _jumpButton: {fileID: 2621518286813495000, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _escapeButton: {fileID: 4110882779826655159, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _screenModeButton: {fileID: -7120349406828459, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _helpModeButton: {fileID: 8761930233099656893, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _quickSaveButton: {fileID: 5572039246663067852, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
   _povModeButton: {fileID: 1730757192818456665, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
@@ -277,9 +279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c3d30e8f7f1b8b695baa1565f3db1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _validateButton: {fileID: 9111201555324432381, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _escapeButton: {fileID: 557461953219632284, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
-  _screenModeButton: {fileID: 6804480081574262297, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _screenModeButton: {fileID: 4874775265953718456, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _escapeButton: {fileID: -6972044020321887436, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _validateButton: {fileID: -8813753981049623801, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _verticalDirection: {fileID: 705811085878547921, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
+  _horizontalDirection: {fileID: 7713787771088180274, guid: 7ce224521b14c8643930ee6075c79c2d, type: 3}
 --- !u!1 &111969833534390079
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using TMPro;
@@ -11,10 +12,11 @@ public class MenuManager : MonoBehaviour
     private static bool _userAskedForRestart = false;
     private int _minIndexOption;
     private bool _isFirstGame;
+    [SerializeField] private PlayerInput _input;
     private Behaviour _menuCamera;
     private Behaviour _hudCamera;
     private GameObject _screenMain, _screenOptions, _screenLicenses;
-    private TextMeshProUGUI[] _arrTmpMain, _arrTmpOptions, _arrTmpLicenses;
+    private TextMeshProUGUI[] _arrTmproMain, _arrTmproOptions, _arrTmproLicenses;
 
     [SerializeField] private Sound _menuSelect;
     [SerializeField] private Sound _soundValidate;
@@ -41,32 +43,32 @@ public class MenuManager : MonoBehaviour
         _screenOptions = GameObject.FindGameObjectWithTag("MenuOptionsScreen");
         _screenLicenses = GameObject.FindGameObjectWithTag("MenuLicensesScreen");
 
-        // Set arrTmpMain
+        // Set arrTmproMain
         _screenOptions.SetActive(false);
         _screenLicenses.SetActive(false);
         arrGo = GameObject.FindGameObjectsWithTag("MenuOption");
         arrGo = arrGo.OrderBy(e => e.name).ToArray();
-        _arrTmpMain = new TextMeshProUGUI[arrGo.Length];
+        _arrTmproMain = new TextMeshProUGUI[arrGo.Length];
         for (i = 0; i < arrGo.Length; ++i)
-            _arrTmpMain[i] = arrGo[i].GetComponent<TextMeshProUGUI>();
+            _arrTmproMain[i] = arrGo[i].GetComponent<TextMeshProUGUI>();
 
-        // Set arrTmpOptions
+        // Set arrTmproOptions
         _screenMain.SetActive(false);
         _screenOptions.SetActive(true);
         arrGo = GameObject.FindGameObjectsWithTag("MenuOption");
         arrGo = arrGo.OrderBy(e => e.name).ToArray();
-        _arrTmpOptions = new TextMeshProUGUI[arrGo.Length];
+        _arrTmproOptions = new TextMeshProUGUI[arrGo.Length];
         for (i = 0; i < arrGo.Length; ++i)
-            _arrTmpOptions[i] = arrGo[i].GetComponent<TextMeshProUGUI>();
+            _arrTmproOptions[i] = arrGo[i].GetComponent<TextMeshProUGUI>();
 
-        // Set arrTmpLicenses
+        // Set arrTmproLicenses
         _screenOptions.SetActive(false);
         _screenLicenses.SetActive(true);
         arrGo = GameObject.FindGameObjectsWithTag("MenuOption");
         arrGo = arrGo.OrderBy(e => e.name).ToArray();
-        _arrTmpLicenses = new TextMeshProUGUI[arrGo.Length];
+        _arrTmproLicenses = new TextMeshProUGUI[arrGo.Length];
         for (i = 0; i < arrGo.Length; ++i)
-            _arrTmpLicenses[i] = arrGo[i].GetComponent<TextMeshProUGUI>();
+            _arrTmproLicenses[i] = arrGo[i].GetComponent<TextMeshProUGUI>();
 
         // Only activate the main screen
         _screenLicenses.SetActive(false);
@@ -103,8 +105,11 @@ public class MenuManager : MonoBehaviour
         // Deactivate the HUD camera so it doesn't show in the menu
         _hudCamera.enabled = false;
         IndexOption = _minIndexOption;
+        SetGraphicsForSelectedOption(MenuControls.MenuState.MainMenu);
         StopGameAmbience();
         _soundMusicTheme.Play();
+        // Activate UI input
+        _input.SwitchCurrentActionMap("UI");
     }
 
     private void ResumeGame()
@@ -120,6 +125,8 @@ public class MenuManager : MonoBehaviour
         IndexOption = _minIndexOption;
         _soundMusicTheme.Stop();
         PlayGameAmbience();
+        // Activate Player input
+        _input.SwitchCurrentActionMap("Player");
     }
 
     private void PlayGameAmbience()
@@ -138,78 +145,80 @@ public class MenuManager : MonoBehaviour
 
     public void DisableFirstMainMenuOption()
     {
-        _arrTmpMain[0].enabled = false;
+        _arrTmproMain[0].enabled = false;
         _minIndexOption = 1;
     }
 
     private void EnableFirstMainMenuOption()
     {
-        _arrTmpMain[0].enabled = true;
+        _arrTmproMain[0].enabled = true;
         _minIndexOption = 0;
     }
 
-    public void SetGraphicsForSelectedOption(MenuControls.GameState menu)
+    private void SetGraphicsForSelectedOption(MenuControls.MenuState menu)
     {
-        TextMeshProUGUI[] arrTmp;
-        if (menu == MenuControls.GameState.MenuOptions)
-            arrTmp = _arrTmpOptions;
-        else if (menu == MenuControls.GameState.MenuLicenses)
-            arrTmp = _arrTmpLicenses;
+        TextMeshProUGUI[] arrTmpro;
+        if (menu == MenuControls.MenuState.MenuOptions)
+            arrTmpro = _arrTmproOptions;
+        else if (menu == MenuControls.MenuState.MenuLicenses)
+            arrTmpro = _arrTmproLicenses;
         else
-            arrTmp = _arrTmpMain;
+            arrTmpro = _arrTmproMain;
 
         // Set all options to white
-        foreach (TextMeshProUGUI tmp in arrTmp)
-            tmp.color = new Color(1f, 1f, 1f, 1f);
+        foreach (TextMeshProUGUI tmpro in arrTmpro)
+            tmpro.color = new Color(1f, 1f, 1f, 1f);
 
         // Set the selected option to orange
-        arrTmp[IndexOption].color = new Color(0.65f, 0.19f, 0.08f, 1f);
+        arrTmpro[IndexOption].color = new Color(0.65f, 0.19f, 0.08f, 1f);
     }
 
-    public void SelectUp(MenuControls.GameState menu)
+    public void SelectUp(MenuControls.MenuState menu)
     {
         int length, min;
-        if (menu == MenuControls.GameState.MenuOptions)
+        if (menu == MenuControls.MenuState.MenuOptions)
         {
-            length = _arrTmpOptions.Length;
+            length = _arrTmproOptions.Length;
             min = 0;
         }
-        else if (menu == MenuControls.GameState.MenuLicenses)
+        else if (menu == MenuControls.MenuState.MenuLicenses)
         {
-            length = _arrTmpLicenses.Length;
+            length = _arrTmproLicenses.Length;
             min = 0;
         }
         else
         {
-            length = _arrTmpMain.Length;
+            length = _arrTmproMain.Length;
             min = _minIndexOption;
         }
 
         _menuSelect.Play();
         IndexOption = IndexOption > min ? IndexOption - 1 : length - 1;
+        SetGraphicsForSelectedOption(menu);
     }
 
-    public void SelectDown(MenuControls.GameState menu)
+    public void SelectDown(MenuControls.MenuState menu)
     {
         int length, min;
-        if (menu == MenuControls.GameState.MenuOptions)
+        if (menu == MenuControls.MenuState.MenuOptions)
         {
-            length = _arrTmpOptions.Length;
+            length = _arrTmproOptions.Length;
             min = 0;
         }
-        else if (menu == MenuControls.GameState.MenuLicenses)
+        else if (menu == MenuControls.MenuState.MenuLicenses)
         {
-            length = _arrTmpLicenses.Length;
+            length = _arrTmproLicenses.Length;
             min = 0;
         }
         else
         {
-            length = _arrTmpMain.Length;
+            length = _arrTmproMain.Length;
             min = _minIndexOption;
         }
 
         _menuSelect.Play();
         IndexOption = IndexOption < length - 1 ? IndexOption + 1 : min;
+        SetGraphicsForSelectedOption(menu);
     }
 
     public void ResumeCurrentGame()
@@ -241,33 +250,35 @@ public class MenuManager : MonoBehaviour
         #endif
     }
 
-    public void OpenSubMenu(MenuControls.GameState menu)
+    public void OpenSubMenu(MenuControls.MenuState menu)
     {
         _soundValidate.Play();
         _screenMain.SetActive(false);
 
-        if (menu == MenuControls.GameState.MenuOptions)
+        if (menu == MenuControls.MenuState.MenuOptions)
             _screenOptions.SetActive(true);
-        else if (menu == MenuControls.GameState.MenuLicenses)
+        else if (menu == MenuControls.MenuState.MenuLicenses)
             _screenLicenses.SetActive(true);
         // Error, so just quit
         else
             Quit();
 
         IndexOption = 0;
+        SetGraphicsForSelectedOption(menu);
     }
 
-    public void CloseSubMenu(MenuControls.GameState menu)
+    public void CloseSubMenu(MenuControls.MenuState menu)
     {
         _soundBack.Play();
 
-        if (menu == MenuControls.GameState.MenuOptions)
+        if (menu == MenuControls.MenuState.MenuOptions)
             _screenOptions.SetActive(false);
-        else if (menu == MenuControls.GameState.MenuLicenses)
+        else if (menu == MenuControls.MenuState.MenuLicenses)
             _screenLicenses.SetActive(false);
 
         _screenMain.SetActive(true);
         IndexOption = _minIndexOption;
+        SetGraphicsForSelectedOption(MenuControls.MenuState.MainMenu);
     }
 
     public void OpenLink(string link)
@@ -280,6 +291,6 @@ public class MenuManager : MonoBehaviour
     {
         int newPercentage = AudioMixerVolume.Instance.SetMixerVolume((AudioMixerVolume.VolumeGroup)IndexOption, input);
         if (newPercentage != -1)
-            _arrTmpOptions[IndexOption].text = newPercentage.ToString() + "%";
+            _arrTmproOptions[IndexOption].text = newPercentage.ToString() + "%";
     }
 }

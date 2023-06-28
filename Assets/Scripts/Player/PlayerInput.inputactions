@@ -2,9 +2,278 @@
     "name": "PlayerInput",
     "maps": [
         {
+            "name": "UI",
+            "id": "2c72bfa5-26cc-41f3-b84c-bf8d6089df07",
+            "actions": [
+                {
+                    "name": "Screen Mode",
+                    "type": "Button",
+                    "id": "bd1f44de-7b4b-4f03-b11c-30a85d9937f5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "95191c33-7637-4739-8ae1-77e0bfcee924",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Horizontal Direction",
+                    "type": "Value",
+                    "id": "a8f72501-60d3-4cad-a603-7b7c794c35ee",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Vertical Direction",
+                    "type": "Value",
+                    "id": "99054a11-ef8d-42f1-83fc-85bde86c6fa8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Validate",
+                    "type": "Button",
+                    "id": "304aab9b-48e1-4275-bcd0-8dfa9072f29c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "S/W",
+                    "id": "4a8ebe30-face-4dc0-aa55-71ebb46471c0",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Vertical Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "67c74516-cf70-4647-86b4-52f1b8721619",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Vertical Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "059bc7de-479b-4d74-8221-f57d47561aa4",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Vertical Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrows",
+                    "id": "d0236ef9-5843-4d3c-9a25-f483e54ca8f2",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Vertical Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "4067ce8d-3a88-4f3e-9b13-b8b2f2c77553",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Vertical Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "db68ff00-1e05-4bab-9a8d-1b063030ae7b",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Vertical Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0825b93f-4a13-404a-9faa-39c274b12a60",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Validate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "A/D",
+                    "id": "ef8a2a00-ff12-406a-9b0d-1061a44b6572",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Horizontal Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "a20f9a32-878e-49fb-8847-fbea41b65217",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Horizontal Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "9ccdbd61-8c91-497e-9ae0-c4a5bd18ce1b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Horizontal Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Arrows",
+                    "id": "0bf1a893-f1c9-4ebf-86ba-ef6d3a129be1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Horizontal Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "7c9ebdaa-c7b7-4f35-a2e4-efc107521804",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Horizontal Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "f3621efd-2d0c-4855-9e69-57634296d69e",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Horizontal Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Q/E",
+                    "id": "f27fe677-c6e4-472c-b4fe-06495e111a14",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Horizontal Direction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "ca172c83-a336-4e5d-a099-6f40dbbf75dd",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Horizontal Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "272585b0-85c8-43ab-b419-bbb586d43eb9",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Horizontal Direction",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "181c9aea-5dd0-44fd-8de2-902934fd7317",
+                    "path": "<Keyboard>/f11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Screen Mode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3b7e1e2-20b4-4265-bf56-fdef04572a76",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Player",
             "id": "c8353d4f-76e9-44df-9683-4f84616e46ff",
             "actions": [
+                {
+                    "name": "Screen Mode",
+                    "type": "Button",
+                    "id": "6a144708-78fa-4b96-871e-43021b3e7e0f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "b1aaa59e-7974-4356-a810-b8b6bb70a23d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
                 {
                     "name": "Horizontal Direction",
                     "type": "Value",
@@ -42,24 +311,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Escape",
-                    "type": "Button",
-                    "id": "ec57b6f4-8142-4101-b49f-8609e792e008",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Validate",
-                    "type": "Button",
-                    "id": "a257f993-aa72-41c5-a3e0-7a0ed37121e2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Help Mode",
                     "type": "Button",
                     "id": "50d9387e-7db7-4388-8bc3-4db4e7793c80",
@@ -81,15 +332,6 @@
                     "name": "POV Mode",
                     "type": "Button",
                     "id": "a653323f-2845-4bee-86e0-731ac795416c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Screen Mode",
-                    "type": "Button",
-                    "id": "df2553bf-ad1a-4d10-aebb-84079bcf034b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -209,28 +451,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a3321681-b3e7-46b8-bbde-1cb2aca587cf",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Escape",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "21a2ca92-27e3-4c94-8a5f-dcccbefd2a6d",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Validate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8a3b3955-180f-4266-85b1-e1cd6308d38b",
                     "path": "<Keyboard>/f1",
                     "interactions": "",
@@ -259,17 +479,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "POV Mode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "024839e8-e800-4ba0-8438-cbc589546fcb",
-                    "path": "<Keyboard>/f11",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Screen Mode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -338,6 +547,28 @@
                     "action": "Horizontal Direction",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "79aaf31e-4b13-49e0-a4f5-973265081fc7",
+                    "path": "<Keyboard>/f11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Screen Mode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f04566e-4238-4806-9923-2d5b2ca3174d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

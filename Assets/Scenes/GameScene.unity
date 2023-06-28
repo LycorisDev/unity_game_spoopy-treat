@@ -27707,7 +27707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59899a1ce1a42fc558e2dbd5d8e1bd64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameActionsScript: {fileID: 4685029898923656696}
+  _input: {fileID: 4685029898923656698}
   _menuSelect: {fileID: 293010810}
   _soundValidate: {fileID: 670263775}
   _menuForward: {fileID: 1881703420}
@@ -29061,6 +29061,82 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 50d9387e-7db7-4388-8bc3-4db4e7793c80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: cab17fbb-da34-4c29-b2be-8b9df8bec298
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: a653323f-2845-4bee-86e0-731ac795416c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+      value: 2db2ad13-e5d6-4b01-8e61-8a93f545000c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: a8f72501-60d3-4cad-a603-7b7c794c35ee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+      value: 99054a11-ef8d-42f1-83fc-85bde86c6fa8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[9].m_ActionId
+      value: 95191c33-7637-4739-8ae1-77e0bfcee924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_ActionId
+      value: 304aab9b-48e1-4275-bcd0-8dfa9072f29c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionId
+      value: bd1f44de-7b4b-4f03-b11c-30a85d9937f5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Player/Help Mode1[/Keyboard/f1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Player/Help Mode1[/Keyboard/f1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+      value: Player/Horizontal Direction[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: UI/Horizontal Direction[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/q,/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+      value: UI/Vertical Direction[/Keyboard/s,/Keyboard/w,/Keyboard/downArrow,/Keyboard/upArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[9].m_ActionName
+      value: UI/Escape[/Keyboard/escape]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[10].m_ActionName
+      value: UI/Validate[/Keyboard/enter]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[11].m_ActionName
+      value: UI/Screen Mode[/Keyboard/f11]
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
 --- !u!4 &4685029898923656695 stripped
@@ -29068,14 +29144,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 111969832516321958, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
   m_PrefabInstance: {fileID: 4650347212912445265}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4685029898923656696 stripped
+--- !u!114 &4685029898923656698 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7449595982950676236, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4650347212386146930, guid: e8aa4365983391b47811bd9fde3c045d, type: 3}
   m_PrefabInstance: {fileID: 4650347212912445265}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191156a61cfdb284b872a6f120be7567, type: 3}
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

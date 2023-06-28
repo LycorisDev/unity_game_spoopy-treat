@@ -1,6 +1,6 @@
 # Spoopy Treat
 
-3D platformer made with Unity. For now with the built-in RP and the old input system.
+3D platformer demo made with Unity. For now with the built-in render pipeline.
 
 ![](./ingame_screenshot.png)
 
