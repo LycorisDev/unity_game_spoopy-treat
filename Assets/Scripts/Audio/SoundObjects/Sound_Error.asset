@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sound_Error
   m_EditorClassIdentifier: 
   soundName: Error
-  clip: {fileID: 8300000, guid: 7126bfb45da71c066868a85ccdce3e00, type: 3}
+  clip: {fileID: 8300000, guid: 1fa4c64d07289a678b91048ead0d198c, type: 3}
   mixerGroup: {fileID: 6640308326344527431, guid: 95d733ef21d99e69191bdd4f1e79c8ec, type: 2}
   loop: 0
-  volume: 1
-  volumeVariance: 0
+  is3d: 0
+  volume: 0.7
   pitch: 1
-  pitchVariance: 0
+  source: {fileID: 0}
