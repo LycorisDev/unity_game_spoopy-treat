@@ -63,49 +63,8 @@ GAME > PORTALS
 
 CURRENTLY UNUSED
 
-	[Pumpkins - Damage]
-	Note: Each for each pumpkin - For the player it's at random
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: short_zombie_growl_29
-		Title: short_zombie_growl_30
-		Title: short_zombie_growl_31
-		Title: short_zombie_growl_32
-
-	[Zombie Hand - Popping Up]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: creature_growl_07
-
-	[Zombie Hand - Death]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: creature_growl_17
-
-	[Portals - Default Portal]
+	[Portals - Idle noise]
 		Album: GhostHack - Ambient Motion
 		Title: light_c
 		--> Has been edited
-
-	[Portals - Corrupted Portal]
-		Album: GhostHack - Ambient Motion
-		Title: haunted_c
-
-	[Music Theme - Game Over]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: music_box_cm_90bpm_05
-		--> Has been edited
-
-	[Music Theme - Timer]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: music_box_fm_80bpm_02
-
-	[Deep Waters]
-	Album: GhostHack - Ambient Motion
-		Title: uplift_drone_c
-
-	[Inverted Commands]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: mournful_spirit
-
-	[Sky Flight]
-		Album: GhostHack - Halloween 2022 Freebie
-		Title: graveyard_breeze
 
