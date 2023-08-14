@@ -13,7 +13,7 @@ public class AudioMixerVolume : MonoBehaviour
 		[Description("MusicVolume")] MusicVolume,
 		[Description("AmbienceVolume")] AmbienceVolume,
 		[Description("EffectsVolume")] EffectsVolume
-    }
+	}
 
 	[SerializeField] private AudioMixer _audioMixer;
 	[field: SerializeField] public AudioMixerGroup MixerGroup { get; private set; }
@@ -29,8 +29,6 @@ public class AudioMixerVolume : MonoBehaviour
 			Instance = this;
 		else
 			Destroy(this);
-
-		Debug.Log("TODO: Instead of having to press the key for each volume point, allow the key to remain pressed.");
 	}
 
 	public int SetMixerVolume(VolumeGroup group, int input)
