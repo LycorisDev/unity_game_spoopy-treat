@@ -17,7 +17,6 @@ public class GameActions : MonoBehaviour
     [SerializeField] private InputActionReference _escapeButton;
     [SerializeField] private InputActionReference _screenModeButton;
     [SerializeField] private InputActionReference _helpModeButton;
-    [SerializeField] private InputActionReference _quickSaveButton;
     [SerializeField] private InputActionReference _povModeButton;
 
     private void Awake()
@@ -42,7 +41,6 @@ public class GameActions : MonoBehaviour
         _escapeButton.action.started += EscapeButton;
         _screenModeButton.action.started += ScreenMode;
         _helpModeButton.action.started += HelpMode;
-        _quickSaveButton.action.started += QuickSave;
         _povModeButton.action.started += PovMode;
     }
 
@@ -61,7 +59,6 @@ public class GameActions : MonoBehaviour
         _escapeButton.action.started -= EscapeButton;
         _screenModeButton.action.started -= ScreenMode;
         _helpModeButton.action.started -= HelpMode;
-        _quickSaveButton.action.started -= QuickSave;
         _povModeButton.action.started -= PovMode;
     }
 
@@ -99,14 +96,7 @@ public class GameActions : MonoBehaviour
     private void HelpMode(InputAction.CallbackContext context)
     {
         // Toggle/Untoggle help mode
-        // Tutorial/Advice and not just a display of the different keys
         Debug.Log("Help Key");
-    }
-
-    private void QuickSave(InputAction.CallbackContext context)
-    {
-        // Quick save only - Do not open the save sub-menu
-        Debug.Log("Quick Save Key");
     }
 
     private void PovMode(InputAction.CallbackContext context)

@@ -320,15 +320,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Quick Save",
-                    "type": "Button",
-                    "id": "cab17fbb-da34-4c29-b2be-8b9df8bec298",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "POV Mode",
                     "type": "Button",
                     "id": "a653323f-2845-4bee-86e0-731ac795416c",
@@ -457,17 +448,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Help Mode",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e7d86afc-bb42-4f31-bffe-237946316180",
-                    "path": "<Keyboard>/f2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Quick Save",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
