@@ -16,6 +16,7 @@ TagManager:
   - CameraCollide
   - HUDCamera
   - HUDCandy
+  - BoundingArea
   layers:
   - Default
   - TransparentFX

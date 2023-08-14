@@ -11,7 +11,7 @@ public class BoundingArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "InvisibleWall")
+        if (other.tag == "BoundingArea")
             transform.position = _spawnPoint;
     }
 }
