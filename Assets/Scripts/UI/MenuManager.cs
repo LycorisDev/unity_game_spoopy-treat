@@ -33,8 +33,6 @@ public class MenuManager : MonoBehaviour
         int i;
         GameObject[] arrGo;
 
-        Debug.Log("TODO: _userAskedForRestart shouldn't be static, it should be in a file that belongs to this player, so that every player can have their own _userAskedForRestart value.");
-
         _menuCamera = GameObject.FindGameObjectWithTag("MenuCamera").GetComponent<Camera>();
         _hudCamera = GameObject.FindGameObjectWithTag("HUDCamera").GetComponent<Camera>();
 
