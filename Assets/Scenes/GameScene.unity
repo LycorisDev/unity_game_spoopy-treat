@@ -4308,6 +4308,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.1773295, y: 14.241122, z: 0.3449817}
   m_Center: {x: -1.4157283, y: 6.4153485, z: 0.00044576885}
+--- !u!114 &407387848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2891854093231808430, guid: e0ff17931e0cd604f9658b2ae15aea66, type: 3}
+  m_PrefabInstance: {fileID: 2854430987952604314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3717ddd9a4f01348d3b3cc6f6cecb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &408264506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19428,6 +19439,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 462154919}
     m_Modifications:
+    - target: {fileID: 1443425339432966204, guid: 834562c73fca1c251ad2be2446647692, type: 3}
+      propertyPath: _portalScript
+      value: 
+      objectReference: {fileID: 407387848}
     - target: {fileID: 5403184374607403036, guid: 834562c73fca1c251ad2be2446647692, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -19840,6 +19855,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3163559853693561210, guid: 85805862c6f82c341af4aaa9ed189d05, type: 3}
   m_PrefabInstance: {fileID: 1157411944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1923119080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4922865022402641635, guid: 02e438162c7af2d4f826afb8d9455d09, type: 3}
+  m_PrefabInstance: {fileID: 8347815372834848736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35154747464199413a278515f3579fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1924243631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22156,6 +22182,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2891854093231808430, guid: e0ff17931e0cd604f9658b2ae15aea66, type: 3}
+      propertyPath: _playerScript
+      value: 
+      objectReference: {fileID: 1923119080}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0ff17931e0cd604f9658b2ae15aea66, type: 3}
 --- !u!1001 &8347815372834848736

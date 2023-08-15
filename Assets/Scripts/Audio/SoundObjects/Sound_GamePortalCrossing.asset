@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f273a033558308f4ea4b8dd4bd0caa8e, type: 3}
-  m_Name: Sound_GamePortalOpening
+  m_Name: Sound_GamePortalCrossing
   m_EditorClassIdentifier: 
-  soundName: GamePortalOpening
+  soundName: GamePortalCrossing
   clip: {fileID: 8300000, guid: 7126bfb45da71c066868a85ccdce3e00, type: 3}
   mixerGroup: {fileID: 6640308326344527431, guid: 95d733ef21d99e69191bdd4f1e79c8ec, type: 2}
   loop: 0
   is3d: 1
-  volume: 0.8
+  volume: 0.85
   pitch: 1
   source: {fileID: 0}

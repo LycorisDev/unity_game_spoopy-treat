@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class UsePortal : MonoBehaviour
 {
-    [SerializeField] private bool isPortalFed = false;
-    [SerializeField] private int requiredCandyAmount = 3;
-    [SerializeField] private Sound _soundPortalOpening;
+    [SerializeField] private Character _playerScript;
+    [SerializeField] private bool _isPortalFed = false;
+    [SerializeField] private int _requiredCandyAmount = 3;
+    [SerializeField] private Sound _soundPortalIdleNoise;
+    [SerializeField] private Sound _soundPortalCrossing;
 
+    private bool _isIdleNoisePlaying = false;
     private Character _characterScript;
     private MenuManager _menuScript;
     private Light _lightComponent;
@@ -20,7 +23,7 @@ public class UsePortal : MonoBehaviour
 
         _defaultColor = _lightComponent.color;
         _dullColor = Color.gray;
-        switch (requiredCandyAmount)
+        switch (_requiredCandyAmount)
         {
             case 1:
                 _candyColor = Color.red;
@@ -41,34 +44,53 @@ public class UsePortal : MonoBehaviour
     {
         float time;
 
-        if (!isPortalFed)
+        if (!_isPortalFed)
         {
             time = Mathf.PingPong(Time.time, 1f) / 1f;
             _lightComponent.color = Color.Lerp(_dullColor, _candyColor, time);
         }
+
+        CanPortalBeFed(_playerScript.CandyAmount);
     }
 
     private IEnumerator OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (!isPortalFed)
+            if (!_isPortalFed)
             {
-                if (_characterScript.CandyAmount >= requiredCandyAmount)
+                if (_characterScript.CandyAmount >= _requiredCandyAmount)
                 {
-                    _characterScript.ModifyCandyAmount(-requiredCandyAmount);
-                    isPortalFed = true;
+                    _characterScript.ModifyCandyAmount(-_requiredCandyAmount);
+                    _isPortalFed = true;
                 }
                 else
                     yield break;
             }
 
-            _soundPortalOpening.Play();
+            _soundPortalCrossing.Play();
             yield return new WaitForSecondsRealtime(1f);
 
-            // End the game now for the time being
+            // End the game
             _menuScript.DisableFirstMainMenuOption();
             _menuScript.OpenMainMenu();
+        }
+    }
+
+    private void CanPortalBeFed(int playerCandyAmount)
+    {
+        if (!_isIdleNoisePlaying)
+        {
+            if (!_isPortalFed && playerCandyAmount == _requiredCandyAmount)
+            {
+                _isIdleNoisePlaying = true;
+                _soundPortalIdleNoise.Play();
+            }
+        }
+        else if (_isPortalFed || playerCandyAmount < _requiredCandyAmount)
+        {
+            _isIdleNoisePlaying = false;
+            _soundPortalIdleNoise.Stop();
         }
     }
 }

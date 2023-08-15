@@ -56,15 +56,13 @@ GAME > CANDIES
 
 GAME > PORTALS
 
+	[Idle noise]
+		Album: GhostHack - Ambient Motion
+		Title: light_c
+		--> Has been edited
+
 	[Crossing]
 		Album: GhostHack - Ambient Motion
 		Title: portals_c
 		--> Used right now for the victory sound
-
-CURRENTLY UNUSED
-
-	[Portals - Idle noise]
-		Album: GhostHack - Ambient Motion
-		Title: light_c
-		--> Has been edited
 
