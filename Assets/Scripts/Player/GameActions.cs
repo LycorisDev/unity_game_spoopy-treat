@@ -9,6 +9,8 @@ public class GameActions : MonoBehaviour
     private CameraManager _cameraScript;
     private MenuControls _menuControls;
 
+    [SerializeField] private GameObject _keysCanvas;
+
     [SerializeField] private InputActionReference _horizontalMovementValue;
     [SerializeField] private InputActionReference _verticalMovementValue;
     [SerializeField] private InputActionReference _sideStepValue;
@@ -96,7 +98,7 @@ public class GameActions : MonoBehaviour
     private void HelpMode(InputAction.CallbackContext context)
     {
         // Toggle/Untoggle help mode
-        Debug.Log("Help Key");
+        _keysCanvas.SetActive(!_keysCanvas.activeSelf);
     }
 
     private void PovMode(InputAction.CallbackContext context)

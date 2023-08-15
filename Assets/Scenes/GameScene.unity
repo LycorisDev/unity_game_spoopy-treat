@@ -22195,6 +22195,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1755049726309254025, guid: 02e438162c7af2d4f826afb8d9455d09, type: 3}
+      propertyPath: m_Name
+      value: Keys
+      objectReference: {fileID: 0}
+    - target: {fileID: 1755049726309254025, guid: 02e438162c7af2d4f826afb8d9455d09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3665353972907014675, guid: 02e438162c7af2d4f826afb8d9455d09, type: 3}
       propertyPath: m_Name
       value: Player - Empty Eyed Pumpkin
