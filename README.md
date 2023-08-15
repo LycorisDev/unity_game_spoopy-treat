@@ -1,6 +1,7 @@
 # Spoopy Treat
 
-3D platformer demo made with Unity. For now with the built-in render pipeline.
+My very first 3D project, made with Unity's built-in render pipeline.  
+In this platformer level, the cute pumpkin is collecting candies.  
 
 ![](./ingame_screenshot.png)
 
