@@ -7,7 +7,6 @@ public class HUDManager : MonoBehaviour
     private TextMeshProUGUI _tmpro;
     private Character _playerScript;
     private GameObject[] _hudCandies;
-    private Vector3 _hudCandyPosDisplayed, _hudCandyPosHidden;
 
     private void Awake()
     {
@@ -19,8 +18,8 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         _hudCandies = _hudCandies.OrderBy(e => e.name).ToArray();
-        _hudCandyPosDisplayed = _hudCandies[0].transform.position;
-        _hudCandyPosHidden = _hudCandies[1].transform.position;
+        HideAllCandies();
+        DisplayAppropriateCandy(_hudCandies[0]);
     }
 
     public void UpdateCandyCounter()
@@ -30,25 +29,22 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateCandyIcon()
     {
-        // Hide all the versions
-        foreach (GameObject candy in _hudCandies)
-            candy.transform.position = _hudCandyPosHidden;
+        HideAllCandies();
 
-        // Display the right one
-        switch (_playerScript.CandyAmount)
-        {
-            case 1:
-                _hudCandies[1].transform.position = _hudCandyPosDisplayed;
-                break;
-            case 2:
-                _hudCandies[2].transform.position = _hudCandyPosDisplayed;
-                break;
-            case 3:
-                _hudCandies[3].transform.position = _hudCandyPosDisplayed;
-                break;
-            default:
-                _hudCandies[0].transform.position = _hudCandyPosDisplayed;
-                break;
-        }
+        if (_playerScript.CandyAmount >= 1 && _playerScript.CandyAmount <= 3)
+            DisplayAppropriateCandy(_hudCandies[_playerScript.CandyAmount]);
+        else
+            DisplayAppropriateCandy(_hudCandies[0]);
+    }
+
+    private void HideAllCandies()
+    {
+        foreach (GameObject candy in _hudCandies)
+            candy.SetActive(false);
+    }
+
+    private void DisplayAppropriateCandy(GameObject candy)
+    {
+        candy.SetActive(true);
     }
 }
